@@ -78,14 +78,15 @@ let selectedMod = null;
 function renderModules() {
   const grid = document.getElementById('modGrid');
   if (!grid) return;
-  grid.innerHTML = modules.map((m, i) => `
-    <div class="mod-card ${selectedMod === i ? 'selected' : ''}" onclick="selectModule(${i})">
-      <div class="mod-num">${m.num}</div>
-      <div class="mod-icon">${m.icon}</div>
-      <div class="mod-title">${m.title}</div>
-      <div class="tags">${m.tags.map(function(t){ return '<span class="tag">' + t + '</span>'; }).join('')}</div>
-    </div>
-  `).join('');
+  grid.innerHTML = modules.map(function(m, i) {
+    var tagsHtml = m.tags.map(function(t){ return '<span class="tag">' + t + '</span>'; }).join('');
+    return '<div class="mod-card ' + (selectedMod === i ? 'selected' : '') + '" onclick="selectModule(' + i + ')">' +
+      '<div class="mod-num">' + m.num + '</div>' +
+      '<div class="mod-icon">' + m.icon + '</div>' +
+      '<div class="mod-title">' + m.title + '</div>' +
+      '<div class="tags">' + tagsHtml + '</div>' +
+    '</div>';
+  }).join('');
 }
 
 function selectModule(i) {
