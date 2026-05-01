@@ -12,6 +12,19 @@ let toggleThemeSetting = () => {
   }
 };
 
+// Update the theme toggle button title to describe what clicking will do next.
+let updateToggleTitle = () => {
+  const toggle = document.getElementById("light-toggle");
+  if (!toggle) return;
+  const themeSetting = determineThemeSetting();
+  const titles = {
+    system: "Switch to light mode",
+    light: "Switch to dark mode",
+    dark: "Use system theme",
+  };
+  toggle.title = titles[themeSetting] || "Change theme";
+};
+
 // Change the theme setting and apply the theme.
 let setThemeSetting = (themeSetting) => {
   localStorage.setItem("theme", themeSetting);
@@ -19,6 +32,7 @@ let setThemeSetting = (themeSetting) => {
   document.documentElement.setAttribute("data-theme-setting", themeSetting);
 
   applyTheme();
+  updateToggleTitle();
 };
 
 // Apply the computed dark or light theme to the website.
@@ -303,6 +317,8 @@ let initTheme = () => {
     mode_toggle.addEventListener("click", function () {
       toggleThemeSetting();
     });
+
+    updateToggleTitle();
   });
 
   // Add event listener to the system theme preference change.

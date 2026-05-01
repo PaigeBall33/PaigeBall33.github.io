@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IBM Data Analyst Capstone — Portfolio Part 1</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 860px; margin: 0 auto; padding: 24px 32px; color: #1a1a1a; line-height: 1.7; font-size: 15px; }
+  h1 { font-size: 1.9em; border-bottom: 3px solid #2563eb; padding-bottom: 10px; margin-top: 0; }
+  h2 { font-size: 1.45em; border-bottom: 2px solid #e5e7eb; padding-bottom: 6px; margin-top: 2em; color: #1e40af; }
+  h3 { font-size: 1.15em; margin-top: 1.8em; color: #374151; }
+  h4 { font-size: 1em; margin-top: 1.4em; color: #6b7280; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+  code { background: #f3f4f6; padding: 2px 6px; border-radius: 4px; font-size: 0.88em; font-family: 'SF Mono', 'Fira Code', monospace; }
+  pre { background: #1e293b; color: #e2e8f0; padding: 16px 20px; border-radius: 8px; overflow-x: auto; font-size: 0.83em; line-height: 1.6; }
+  pre code { background: none; padding: 0; color: inherit; font-size: inherit; }
+  table { border-collapse: collapse; width: 100%; margin: 12px 0 20px; font-size: 0.9em; }
+  th { background: #eff6ff; color: #1e40af; font-weight: 600; text-align: left; padding: 8px 12px; border: 1px solid #bfdbfe; }
+  td { padding: 7px 12px; border: 1px solid #e5e7eb; }
+  tr:nth-child(even) td { background: #f9fafb; }
+  .pipeline { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 12px 0 20px; }
+  .pipe-step { background: #2563eb; color: white; padding: 5px 14px; border-radius: 20px; font-size: 0.83em; font-weight: 600; }
+  .pipe-arrow { color: #9ca3af; font-size: 1.1em; }
+  .screenshot { background: #fef9c3; border-left: 4px solid #eab308; padding: 8px 14px; border-radius: 4px; font-size: 0.88em; color: #713f12; margin: 10px 0; }
+  .skills-box { background: #f0fdf4; border: 1px solid #86efac; border-radius: 8px; padding: 14px 18px; margin-top: 1.5em; }
+  .skills-box h3 { margin-top: 0; color: #15803d; }
+  .skills-box ul { margin: 0; padding-left: 20px; }
+  .skills-box li { margin: 4px 0; font-size: 0.92em; }
+  .meta { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 18px; margin-bottom: 24px; }
+  .meta p { margin: 4px 0; font-size: 0.92em; }
+  .meta strong { color: #475569; }
+  .part-banner { background: #1e40af; color: white; text-align: center; padding: 10px; border-radius: 8px; margin-bottom: 20px; font-weight: 700; font-size: 0.95em; letter-spacing: 0.04em; }
+  hr { border: none; border-top: 1px solid #e5e7eb; margin: 2em 0; }
+  ul { padding-left: 22px; }
+  li { margin: 5px 0; }
+  .module-badge { display: inline-block; background: #dbeafe; color: #1e40af; border-radius: 6px; padding: 2px 10px; font-size: 0.8em; font-weight: 700; margin-right: 8px; vertical-align: middle; }
+  .finding { background: #f0f9ff; border-left: 4px solid #38bdf8; padding: 8px 14px; border-radius: 4px; font-size: 0.9em; color: #0c4a6e; margin: 10px 0; }
+</style>
+</head>
+<body>
+
+<div class="part-banner">PART 1 OF 2 — Modules 1, 2 &amp; 3 &nbsp;|&nbsp; Continue in Part 2 for Modules 4, 5 &amp; 6</div>
+
+<h1>IBM Data Analyst Capstone — Portfolio</h1>
+<div class="meta">
+  <p><strong>Project:</strong> IBM Data Analyst Professional Certificate Capstone</p>
+  <p><strong>Dataset:</strong> Stack Overflow Developer Survey</p>
+  <p><strong>Narrative:</strong> A full data analyst workflow — from raw collection through to stakeholder presentation — applied to real-world survey data to uncover trends in programming skills, tools, and compensation.</p>
+</div>
+
+<h2>Project Pipeline</h2>
+<div class="pipeline">
+  <span class="pipe-step">Collect</span><span class="pipe-arrow">→</span>
+  <span class="pipe-step">Wrangle</span><span class="pipe-arrow">→</span>
+  <span class="pipe-step">Explore</span><span class="pipe-arrow">→</span>
+  <span class="pipe-step">Visualize</span><span class="pipe-arrow">→</span>
+  <span class="pipe-step">Dashboard</span><span class="pipe-arrow">→</span>
+  <span class="pipe-step">Present</span>
+</div>
+
+<hr>
+
+<!-- ============================================================ MODULE 1 ============================================================ -->
+<h2><span class="module-badge">MODULE 1</span> Data Collection</h2>
+<p><strong>Overview:</strong> Gathered data on in-demand programming skills from two sources: a job postings API and web scraping. All work done in Jupyter Notebook using Python.</p>
+<p><strong>Tools &amp; Libraries:</strong> Python, Requests, BeautifulSoup, Pandas, openpyxl, csv</p>
+
+<h3>Lab 2: Collecting Job Data Using APIs</h3>
+<p><strong>What I did:</strong></p>
+<ul>
+  <li>Connected to a JSON job postings endpoint containing 27,005 records</li>
+  <li>Built <code>count_jobs_for_skill()</code> and <code>count_jobs_by_location()</code> functions</li>
+  <li>Looped through 12 technologies and exported results to <code>job-postings.xlsx</code> using openpyxl</li>
+  <li>Warm-up: used the ISS live astronaut API to practice JSON parsing</li>
+</ul>
+
+<p><strong>Key result — job postings by technology:</strong></p>
+<table>
+  <tr><th>Technology</th><th>Job Count</th></tr>
+  <tr><td>C</td><td>25,114</td></tr>
+  <tr><td>Java</td><td>3,428</td></tr>
+  <tr><td>JavaScript</td><td>2,248</td></tr>
+  <tr><td>Python</td><td>1,173</td></tr>
+  <tr><td>MySQL</td><td>952</td></tr>
+  <tr><td>Oracle</td><td>899</td></tr>
+  <tr><td>C#</td><td>526</td></tr>
+  <tr><td>SQL Server</td><td>423</td></tr>
+  <tr><td>MongoDB</td><td>208</td></tr>
+  <tr><td>Scala</td><td>138</td></tr>
+  <tr><td>PostgreSQL</td><td>86</td></tr>
+</table>
+
+<h4>Key Code Snippets</h4>
+<pre><code>import requests
+
+def get_data(url):
+    response = requests.get(url)
+    return response.json()
+
+jobs_data = get_data(url)
+print("Data loaded. Number of job records:", len(jobs_data))
+# Output: Data loaded. Number of job records: 27005</code></pre>
+
+<pre><code>def count_jobs_for_skill(data, skill):
+    count = 0
+    for job in data:
+        skills = job.get("Key Skills", "")
+        if skill.lower() in skills.lower():
+            count += 1
+    return count</code></pre>
+
+<pre><code>def count_jobs_by_location(data, location):
+    count = 0
+    for job in data:
+        job_location = job.get("Location", "")
+        if location.lower() in job_location.lower():
+            count += 1
+    return count</code></pre>
+
+<pre><code>from openpyxl import Workbook
+
+technologies = ["C", "C#", "C++", "Java", "JavaScript", "Python",
+                "Scala", "Oracle", "SQL Server", "mysql", "PostgreSQL", "MongoDB"]
+
+workbook = Workbook()
+sheet = workbook.active
+sheet.title = "Job Postings"
+sheet.append(["Technology", "Job Count"])
+
+for tech in technologies:
+    job_count = count_jobs_for_skill(jobs_data, tech)
+    sheet.append([tech, job_count])
+
+workbook.save("job-postings.xlsx")</code></pre>
+
+<div class="screenshot">📸 Screenshot: Jupyter notebook showing the rendered job-postings.xlsx DataFrame output table</div>
+
+<h3>Lab 3: Web Scraping (Review + HTML Tables)</h3>
+<p><strong>What I did:</strong></p>
+<ul>
+  <li>Downloaded the live ibm.com/ca-en webpage using <code>requests</code></li>
+  <li>Parsed HTML with BeautifulSoup and scraped all hyperlinks (35 found) from <code>&lt;a&gt;</code> tags</li>
+  <li>Scraped all image URLs (12 found) from <code>&lt;img&gt;</code> tags</li>
+  <li>Scraped a structured HTML color table, extracting color names and hex codes for 32 colors</li>
+</ul>
+
+<h4>Key Code Snippets</h4>
+<pre><code>from bs4 import BeautifulSoup
+import requests
+
+url = "https://www.ibm.com/ca-en"
+soup = BeautifulSoup(requests.get(url).text, "html.parser")
+
+links = [tag.get("href") for tag in soup.find_all("a") if tag.get("href")]
+print("Total links found:", len(links))  # 35
+
+images = [img.get("src") for img in soup.find_all("img") if img.get("src")]
+print("Total images found:", len(images))  # 12</code></pre>
+
+<pre><code># Scrape HTML color table
+table = soup.find("table")
+for row in table.find_all('tr'):
+    cols = row.find_all('td')
+    if len(cols) &lt; 4:
+        continue
+    color_name = cols[2].getText().strip()
+    color_code = cols[3].getText().strip()
+    print("{} ---&gt; {}".format(color_name, color_code))
+# Output: lightsalmon ---&gt; #FFA07A, salmon ---&gt; #FA8072 ... (32 colors)</code></pre>
+
+<div class="screenshot">📸 Screenshot: Jupyter notebook overview showing all Lab 3 sections</div>
+
+<h3>Lab 4: Web Scraping — Programming Language Salaries</h3>
+<p><strong>What I did:</strong></p>
+<ul>
+  <li>Scraped an HTML table of programming languages and average annual salaries</li>
+  <li>Used <code>[1:]</code> slice on table rows to skip the header</li>
+  <li>Exported results to <code>popular-languages.csv</code> using Python's <code>csv</code> module</li>
+</ul>
+
+<p><strong>Key result — average annual salary by language:</strong></p>
+<table>
+  <tr><th>Language</th><th>Average Annual Salary</th></tr>
+  <tr><td>Swift</td><td>$130,801</td></tr>
+  <tr><td>Python</td><td>$114,383</td></tr>
+  <tr><td>C++</td><td>$113,865</td></tr>
+  <tr><td>JavaScript</td><td>$110,981</td></tr>
+  <tr><td>Java</td><td>$101,013</td></tr>
+  <tr><td>Go</td><td>$94,082</td></tr>
+  <tr><td>R</td><td>$92,037</td></tr>
+  <tr><td>C#</td><td>$88,726</td></tr>
+  <tr><td>SQL</td><td>$84,793</td></tr>
+  <tr><td>PHP</td><td>$84,727</td></tr>
+</table>
+
+<h4>Key Code Snippets</h4>
+<pre><code>table = soup.find('table')
+languages, salaries = [], []
+
+for row in table.find_all('tr')[1:]:  # skip header row
+    cols = row.find_all('td')
+    if len(cols) &gt;= 4:
+        languages.append(cols[1].get_text(strip=True))
+        salaries.append(cols[3].get_text(strip=True))</code></pre>
+
+<pre><code>import csv
+
+with open("popular-languages.csv", "w", newline="", encoding="utf-8") as f:
+    writer = csv.writer(f)
+    writer.writerow(["Language", "AverageSalary"])
+    for lang, sal in zip(languages, salaries):
+        writer.writerow([lang, sal])
+
+print("Saved to popular-languages.csv")</code></pre>
+
+<div class="screenshot">📸 Screenshot: Full Jupyter notebook view showing code + salary output</div>
+
+<h3>Lab 5: Exploring the Dataset</h3>
+<p><strong>What I did:</strong></p>
+<ul>
+  <li>Loaded the Stack Overflow Developer Survey CSV (65,457 rows × 117 columns) directly from a URL</li>
+  <li>Previewed structure with <code>df.iloc[:5, :5]</code> and identified data types with <code>df.dtypes</code></li>
+  <li>Engineered an <code>Age_midpoint</code> column using regex to convert text ranges into numeric midpoints</li>
+  <li>Calculated mean respondent age: <strong>32.6 years</strong></li>
+  <li>Found <strong>185 unique countries</strong> represented in the survey</li>
+</ul>
+
+<h4>Key Code Snippets</h4>
+<pre><code>import pandas as pd
+
+df = pd.read_csv(file_path)
+print("Rows:", df.shape[0])     # 65457
+print("Columns:", df.shape[1])  # 117
+print(df['Country'].nunique())  # 185</code></pre>
+
+<pre><code>import numpy as np
+
+df['Age'] = df['Age'].astype(str)
+df[['Age_start', 'Age_end']] = df['Age'].str.extract(r'(\d+)\D+(\d+)')
+df['Age_start'] = pd.to_numeric(df['Age_start'], errors='coerce')
+df['Age_end']   = pd.to_numeric(df['Age_end'],   errors='coerce')
+
+mask_ranges = df['Age_start'].notna() &amp; df['Age_end'].notna()
+df.loc[mask_ranges, 'Age_midpoint'] = (
+    df.loc[mask_ranges, 'Age_start'] + df.loc[mask_ranges, 'Age_end']
+) / 2
+
+mask_under18 = df['Age'].str.contains('Under 18', case=False, na=False)
+df.loc[mask_under18, 'Age_midpoint'] = 17
+
+print("Mean age:", df['Age_midpoint'].mean())  # 32.60</code></pre>
+
+<div class="screenshot">📸 Screenshot: Rendered DataFrame preview — ResponseId, MainBranch, Age, Employment, RemoteWork</div>
+
+<div class="skills-box">
+  <h3>Module 1 — Skills Demonstrated</h3>
+  <ul>
+    <li>REST API integration and JSON parsing; pagination and endpoint querying</li>
+    <li>Web scraping with BeautifulSoup (<code>find_all</code>, <code>get_text</code>, <code>get</code>); HTML table extraction</li>
+    <li>Data export to Excel (openpyxl) and CSV</li>
+    <li>Dataset profiling with Pandas (<code>shape</code>, <code>dtypes</code>, <code>nunique</code>)</li>
+    <li>Feature engineering with regex and NumPy</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ============================================================ MODULE 2 ============================================================ -->
+<h2><span class="module-badge">MODULE 2</span> Data Wrangling</h2>
+<p><strong>Overview:</strong> Cleaned and prepared the Stack Overflow Developer Survey dataset by identifying and handling duplicate entries, detecting and imputing missing values, normalizing compensation data, encoding categorical variables, and engineering new features. All work done in Jupyter Notebook using Python and Pandas.</p>
+<p><strong>Tools &amp; Libraries:</strong> Python, Pandas, NumPy, Matplotlib, Seaborn</p>
+
+<h3>Lab 6: Finding Duplicates</h3>
+<p><strong>What I did:</strong></p>
+<ul>
+  <li>Loaded the dataset (65,457 rows × 114 columns) from a URL containing intentionally seeded duplicates</li>
+  <li>Detected <strong>20 fully duplicate rows</strong> using <code>df.duplicated()</code></li>
+  <li>Used <code>keep=False</code> to display all copies of duplicate rows, not just the later ones</li>
+  <li>Analyzed partial duplicates by grouping on <code>MainBranch</code>, <code>Employment</code>, and <code>RemoteWork</code> — found <strong>65,290 rows</strong> sharing those values</li>
+  <li>Used <code>groupby</code> + <code>nunique()</code> to measure how often each column was identical within duplicate groups — the <code>Check</code> column was identical in 100% of groups</li>
+  <li>Strategically removed duplicates based on 5 critical demographic columns, reducing the dataset from <strong>65,457 → 4,748 rows</strong></li>
+</ul>
+
+<p><strong>Key results — fraction of groups where column is identical:</strong></p>
+<table>
+  <tr><th>Column</th><th>Fraction</th></tr>
+  <tr><td>Check</td><td>1.000000</td></tr>
+  <tr><td>ICorPM</td><td>0.304075</td></tr>
+  <tr><td>AIThreat</td><td>0.275862</td></tr>
+  <tr><td>SOAccount</td><td>0.266458</td></tr>
+  <tr><td>CodingActivities</td><td>0.003135</td></tr>
+  <tr><td>ResponseId</td><td>0.000000</td></tr>
+</table>
+
+<h4>Key Code Snippets</h4>
+<pre><code>duplicate_count = df.duplicated().sum()
+print("Number of duplicate rows:", duplicate_count)  # 20
+
+# Show all copies (not just later occurrences)
+duplicate_rows = df[df.duplicated(keep=False)]</code></pre>
+
+<pre><code>key_cols = ['MainBranch', 'Employment', 'RemoteWork']
+dup_subset = df[df.duplicated(subset=key_cols, keep=False)]
+print("Duplicate rows based on subset:", dup_subset.shape[0])  # 65290
+
+grouped = dup_subset.groupby(key_cols)
+nunique_per_group = grouped.nunique()
+identical_fraction = (nunique_per_group == 1).sum(axis=0) / len(nunique_per_group)
+print(identical_fraction.sort_values(ascending=False))</code></pre>
+
+<pre><code>critical_columns = ["MainBranch", "Employment", "RemoteWork", "Age", "EdLevel"]
+df_cleaned = df.drop_duplicates(subset=critical_columns, keep="first")
+print("Initial rows:", df.shape[0])              # 65457
+print("After deduplication:", df_cleaned.shape[0])  # 4748
+print("Rows removed:", 65457 - 4748)             # 60709</code></pre>
+
+<div class="screenshot">📸 Screenshot: Jupyter notebook showing duplicate analysis output and cleaned DataFrame head</div>
+
+<h3>Lab 7: Removing Duplicates</h3>
+<p><strong>What I did:</strong></p>
+<ul>
+  <li>Loaded the clean version of the dataset (65,437 rows × 114 columns) and confirmed <strong>0 duplicate rows</strong></li>
+  <li>Applied <code>drop_duplicates(keep='first')</code> to formalize the removal step</li>
+  <li>Identified missing values across all 114 columns — 109 columns had at least some missing data</li>
+  <li>Imputed missing values in <code>EdLevel</code> (4,653 missing) using the <strong>mode</strong></li>
+  <li>Imputed <code>ConvertedCompYearly</code> (42,002 missing) using the <strong>median</strong> ($65,000)</li>
+</ul>
+
+<p><strong>Key results — ConvertedCompYearly after median imputation:</strong></p>
+<table>
+  <tr><th>Statistic</th><th>Value</th></tr>
+  <tr><td>Count</td><td>65,437</td></tr>
+  <tr><td>Mean</td><td>$72,576</td></tr>
+  <tr><td>Median (50%)</td><td>$65,000</td></tr>
+  <tr><td>Min</td><td>$1</td></tr>
+  <tr><td>Max</td><td>$16,256,600</td></tr>
+</table>
+
+<h4>Key Code Snippets</h4>
+<pre><code>df = df.drop_duplicates(keep='first')
+print(f"Duplicate rows: {df.duplicated().sum()}")  # 0
+print(f"Shape: {df.shape}")  # (65437, 114)
+
+# Impute EdLevel with mode
+most_frequent_edlevel = df['EdLevel'].mode()[0]
+df['EdLevel'] = df['EdLevel'].fillna(most_frequent_edlevel)
+
+# Impute ConvertedCompYearly with median
+median_comp = df['ConvertedCompYearly'].median()
+df['ConvertedCompYearly'] = df['ConvertedCompYearly'].fillna(median_comp)</code></pre>
+
+<div class="screenshot">📸 Screenshot: Jupyter notebook showing missing value counts and ConvertedCompYearly summary statistics</div>
+
+<h3>Lab 8: Finding Missing Values</h3>
+<p><strong>What I did:</strong></p>
+<ul>
+  <li>Ran <code>df.info()</code> and <code>df.describe()</code> for a full structural overview</li>
+  <li>Built a ranked missing values summary table showing count and percentage for all 109 columns with missing data</li>
+  <li>Visualized missing data patterns using a <strong>Seaborn heatmap</strong> (<code>viridis</code> colormap)</li>
+  <li>Identified <code>Employment</code>'s most frequent value: <strong>"Employed, full-time"</strong> (39,041 occurrences)</li>
+  <li>Visualized the post-imputation <code>Employment</code> distribution using a horizontal Seaborn bar chart</li>
+</ul>
+
+<p><strong>Key results — top columns by missing percentage:</strong></p>
+<table>
+  <tr><th>Column</th><th>Missing Count</th><th>Missing %</th></tr>
+  <tr><td>AINextMuch less integrated</td><td>64,289</td><td>98.25%</td></tr>
+  <tr><td>AINextLess integrated</td><td>63,082</td><td>96.40%</td></tr>
+  <tr><td>AINextNo change</td><td>52,939</td><td>80.90%</td></tr>
+  <tr><td>AINextMuch more integrated</td><td>51,999</td><td>79.46%</td></tr>
+  <tr><td>EmbeddedAdmired</td><td>48,704</td><td>74.43%</td></tr>
+  <tr><td>ConvertedCompYearly</td><td>42,002</td><td>64.19%</td></tr>
+</table>
+
+<h4>Key Code Snippets</h4>
+<pre><code>missing_df = pd.DataFrame({
+    'Missing Count': df.isnull().sum(),
+    'Missing %': (df.isnull().sum() / len(df) * 100).round(2)
+}).sort_values('Missing %', ascending=False)
+print(missing_df[missing_df['Missing Count'] &gt; 0])</code></pre>
+
+<pre><code>import seaborn as sns
+
+plt.figure(figsize=(14, 6))
+sns.heatmap(df.isnull(), cbar=True, cmap='viridis', yticklabels=False)
+plt.title('Missing Values Heatmap')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.show()</code></pre>
+
+<div class="screenshot">📸 Screenshot: Jupyter notebook showing missing values heatmap and Employment bar chart</div>
+
+<h3>Lab 9: Impute Missing Values</h3>
+<p><strong>What I did:</strong></p>
+<ul>
+  <li>Found <code>RemoteWork</code> had <strong>10,631 missing rows</strong> (16.24% of dataset)</li>
+  <li>Determined the most frequent value: <strong>"Hybrid (some remote, some in-person)"</strong> (23,015 occurrences)</li>
+  <li>Imputed all <code>RemoteWork</code> nulls with the majority value, reducing missing count to 0</li>
+  <li>Identified all compensation-related columns: <code>CompTotal</code>, <code>AIComplex</code>, <code>ConvertedCompYearly</code></li>
+  <li>Noted that <code>CompTotal</code> had extreme outliers (max = 1e+150) making <code>ConvertedCompYearly</code> the preferred column for analysis</li>
+</ul>
+
+<p><strong>Key results — RemoteWork distribution before imputation:</strong></p>
+<table>
+  <tr><th>RemoteWork</th><th>Count</th></tr>
+  <tr><td>Hybrid (some remote, some in-person)</td><td>23,015</td></tr>
+  <tr><td>Remote</td><td>20,831</td></tr>
+  <tr><td>In-person</td><td>10,960</td></tr>
+  <tr><td>Missing (imputed)</td><td>10,631</td></tr>
+</table>
+
+<h4>Key Code Snippets</h4>
+<pre><code>remote_missing = df['RemoteWork'].isnull().sum()
+print(f"Missing in RemoteWork: {remote_missing}")  # 10631
+
+most_frequent_remote = df['RemoteWork'].mode()[0]
+print(f"Most frequent: {most_frequent_remote}")
+# Output: Hybrid (some remote, some in-person)
+
+df['RemoteWork'] = df['RemoteWork'].fillna(most_frequent_remote)
+print(f"Missing after imputation: {df['RemoteWork'].isnull().sum()}")  # 0</code></pre>
+
+<pre><code>comp_columns = [col for col in df.columns if 'Comp' in col or 'Salary' in col or 'comp' in col]
+print(f"Compensation columns: {comp_columns}")
+# Output: ['CompTotal', 'AIComplex', 'ConvertedCompYearly']
+
+for col in comp_columns:
+    print(f"\nDistribution of '{col}':")
+    print(df[col].describe())</code></pre>
+
+<div class="screenshot">📸 Screenshot: Jupyter notebook showing RemoteWork value counts and compensation describe() output</div>
+
+<h3>Lab 10: Data Normalization Techniques</h3>
+<p><strong>What I did:</strong></p>
+<ul>
+  <li>Imputed <code>CodingActivities</code> (10,971 missing, 16.77%) with <strong>forward-fill (<code>ffill</code>)</strong></li>
+  <li>Imputed <code>ConvertedCompYearly</code> (42,002 missing) with the <strong>median</strong></li>
+  <li>Applied <strong>Min-Max Scaling</strong> → <code>ConvertedCompYearly_MinMax</code> (range: 0–1)</li>
+  <li>Applied <strong>Z-score Normalization</strong> → <code>ConvertedCompYearly_Zscore</code> (mean ≈ 0, std = 1)</li>
+  <li>Visualized all three distributions side-by-side using Matplotlib histograms</li>
+</ul>
+
+<p><strong>Key results — normalization summary statistics:</strong></p>
+<table>
+  <tr><th>Column</th><th>Mean</th><th>Std</th><th>Min</th><th>Max</th></tr>
+  <tr><td>ConvertedCompYearly (original)</td><td>$86,155</td><td>$186,757</td><td>$1</td><td>$16,256,600</td></tr>
+  <tr><td>ConvertedCompYearly_MinMax</td><td>0.004464</td><td>0.006903</td><td>0.0</td><td>1.0</td></tr>
+  <tr><td>ConvertedCompYearly_Zscore</td><td>≈ 0</td><td>1.0</td><td>-0.647</td><td>144.2</td></tr>
+</table>
+
+<h4>Key Code Snippets</h4>
+<pre><code>df['CodingActivities'] = df['CodingActivities'].ffill()
+
+# Min-Max Scaling
+col_min = df['ConvertedCompYearly'].min()
+col_max = df['ConvertedCompYearly'].max()
+df['ConvertedCompYearly_MinMax'] = (df['ConvertedCompYearly'] - col_min) / (col_max - col_min)
+
+# Z-score Normalization
+mean_comp = df['ConvertedCompYearly'].mean()
+std_comp  = df['ConvertedCompYearly'].std()
+df['ConvertedCompYearly_Zscore'] = (df['ConvertedCompYearly'] - mean_comp) / std_comp</code></pre>
+
+<pre><code>fig, axes = plt.subplots(1, 3, figsize=(18, 5))
+axes[0].hist(df['ConvertedCompYearly'],        bins=50, color='steelblue', edgecolor='black')
+axes[0].set_title('Original: ConvertedCompYearly')
+axes[1].hist(df['ConvertedCompYearly_MinMax'], bins=50, color='seagreen',  edgecolor='black')
+axes[1].set_title('Min-Max Normalized')
+axes[2].hist(df['ConvertedCompYearly_Zscore'], bins=50, color='tomato',    edgecolor='black')
+axes[2].set_title('Z-score Normalized')
+plt.suptitle('Compensation Data: Normalization Comparison', fontsize=14, fontweight='bold')
+plt.tight_layout()
+plt.show()</code></pre>
+
+<div class="screenshot">📸 Screenshot: Three-panel histogram comparing Original, Min-Max, and Z-score distributions</div>
+
+<h3>Lab 11: Data Wrangling</h3>
+<p><strong>What I did:</strong></p>
+<ul>
+  <li>Standardized <code>Country</code> entries by stripping whitespace and applying title case</li>
+  <li>Mapped verbose <code>EdLevel</code> strings to concise labels using a dictionary-based <code>replace()</code> mapping</li>
+  <li>Applied <strong>one-hot encoding</strong> to <code>Employment</code> using <code>pd.get_dummies()</code> — produced 110 binary columns</li>
+  <li>Imputed <code>ConvertedCompYearly</code> with the median and <code>RemoteWork</code> with the mode</li>
+  <li>Applied <strong>Min-Max Scaling</strong> and <strong>log transformation</strong> (<code>np.log1p</code>) to reduce right skew</li>
+  <li>Engineered an <code>ExperienceLevel</code> feature from <code>YearsCodePro</code> using a custom binning function</li>
+</ul>
+
+<p><strong>Key results — EdLevel after standardization:</strong></p>
+<table>
+  <tr><th>EdLevel (Standardized)</th><th>Count</th></tr>
+  <tr><td>Bachelor's</td><td>24,942</td></tr>
+  <tr><td>Master's</td><td>15,557</td></tr>
+  <tr><td>Some College</td><td>7,651</td></tr>
+  <tr><td>Secondary School</td><td>5,793</td></tr>
+  <tr><td>Professional Degree</td><td>2,970</td></tr>
+  <tr><td>Associate's</td><td>1,793</td></tr>
+  <tr><td>Primary School</td><td>1,146</td></tr>
+  <tr><td>Other</td><td>932</td></tr>
+</table>
+
+<p><strong>Key results — ExperienceLevel distribution:</strong></p>
+<table>
+  <tr><th>ExperienceLevel</th><th>Count</th></tr>
+  <tr><td>Unknown</td><td>16,733</td></tr>
+  <tr><td>Senior (7–14 yrs)</td><td>15,108</td></tr>
+  <tr><td>Mid-level (3–6 yrs)</td><td>13,677</td></tr>
+  <tr><td>Expert (15+ yrs)</td><td>13,112</td></tr>
+  <tr><td>Junior (&lt;3 yrs)</td><td>6,807</td></tr>
+</table>
+
+<h4>Key Code Snippets</h4>
+<pre><code>df['Country'] = df['Country'].str.strip().str.title()
+
+edlevel_mapping = {
+    "Bachelor's degree (B.A., B.S., B.Eng., etc.)": "Bachelor's",
+    "Master's degree (M.A., M.S., M.Eng., MBA, etc.)": "Master's",
+    "Some college/university study without earning a degree": "Some College",
+    "Secondary school (e.g. American high school, ...)": "Secondary School",
+    "Associate degree (A.A., A.S., etc.)": "Associate's",
+    "Other doctoral degree (Ph.D., Ed.D., etc.)": "Doctorate",
+    "Professional degree (JD, MD, Ph.D, Ed.D, etc.)": "Professional Degree",
+    "Primary/elementary school": "Primary School",
+    "Something else": "Other"
+}
+df['EdLevel'] = df['EdLevel'].replace(edlevel_mapping)</code></pre>
+
+<pre><code>df_encoded = pd.get_dummies(df, columns=['Employment'], prefix='Employment')
+employment_cols = [col for col in df_encoded.columns if col.startswith('Employment_')]
+print(f"One-hot encoded Employment columns: {len(employment_cols)}")  # 110</code></pre>
+
+<pre><code>df['ConvertedCompYearly_Log'] = np.log1p(df['ConvertedCompYearly'])
+
+def assign_experience_level(years):
+    if pd.isnull(years):   return 'Unknown'
+    elif years &lt; 3:        return 'Junior'
+    elif years &lt; 7:        return 'Mid-level'
+    elif years &lt; 15:       return 'Senior'
+    else:                  return 'Expert'
+
+df['YearsCodePro'] = pd.to_numeric(df['YearsCodePro'], errors='coerce')
+df['ExperienceLevel'] = df['YearsCodePro'].apply(assign_experience_level)
+print(df['ExperienceLevel'].value_counts())</code></pre>
+
+<div class="screenshot">📸 Screenshot: EdLevel standardization output, ExperienceLevel counts, and log-transformation histogram</div>
+
+<div class="skills-box">
+  <h3>Module 2 — Skills Demonstrated</h3>
+  <ul>
+    <li>Duplicate detection with <code>df.duplicated()</code>, <code>keep=False</code>, and <code>groupby</code> analysis</li>
+    <li>Strategic subset-based deduplication using demographic identifiers</li>
+    <li>Comprehensive missing value profiling with ranked count/percentage tables</li>
+    <li>Missing value imputation: mode (categorical), median (numerical), forward-fill (sequential)</li>
+    <li>Min-Max Scaling and Z-score Normalization applied to compensation data</li>
+    <li>Log transformation to address right-skewed distributions</li>
+    <li>Categorical standardization with string methods and dictionary mapping</li>
+    <li>One-hot encoding with <code>pd.get_dummies()</code> for multi-select categorical variables</li>
+    <li>Feature engineering: custom binning function to create ordinal <code>ExperienceLevel</code> from continuous <code>YearsCodePro</code></li>
+    <li>Visualization of data quality and normalization effects using Matplotlib and Seaborn</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ============================================================ MODULE 3 ============================================================ -->
+<h2><span class="module-badge">MODULE 3</span> Exploratory Data Analysis</h2>
+<p><strong>Overview:</strong> Performed in-depth EDA on the cleaned Stack Overflow survey dataset, examining data distributions, identifying outliers using statistical methods, and measuring correlations between key variables including compensation, experience, and job satisfaction.</p>
+<p><strong>Tools &amp; Libraries:</strong> Python, Pandas, NumPy, Matplotlib, Seaborn</p>
+
+<h3>Lab 12: Exploratory Data Analysis</h3>
+<p><strong>What I did:</strong></p>
+<ul>
+  <li>Loaded the dataset (65,437 rows × 114 columns) and handled missing values in <code>Employment</code>, <code>JobSat</code> (36,311 missing), and <code>RemoteWork</code> (10,631 missing) using mode imputation</li>
+  <li>Binned <code>YearsCodePro</code> into four experience ranges and calculated median <code>JobSat</code> per range — all four groups returned a median of <strong>8.0</strong></li>
+  <li>Visualized <code>JobSat</code> distribution with a Seaborn count plot (score 8 was by far the most common)</li>
+  <li>Analyzed remote work preferences by employment type using <code>pd.crosstab()</code> — full-time employees showed the strongest hybrid preference (17,296 hybrid vs 13,193 remote vs 8,552 in-person)</li>
+  <li>Exploded the semicolon-delimited <code>LanguageHaveWorkedWith</code> column; filtered to top 5 countries and top 10 languages; visualized as an annotated heatmap</li>
+  <li>Cross-tabulated <code>EdLevel</code> vs <code>Employment</code> and visualized as a heatmap</li>
+  <li>Computed the Pearson correlation between <code>YearsCodePro</code> and <code>JobSatPoints_1</code>: <strong>r = −0.0328</strong></li>
+  <li>Exported the analyzed dataset to <code>survey_data_cleaned.csv</code> (final shape: 65,437 × 116)</li>
+</ul>
+
+<p><strong>Key result — median JobSat by experience range:</strong></p>
+<table>
+  <tr><th>Experience Range</th><th>Median JobSat (0–10)</th></tr>
+  <tr><td>0–5 years</td><td>8.0</td></tr>
+  <tr><td>5–10 years</td><td>8.0</td></tr>
+  <tr><td>10–20 years</td><td>8.0</td></tr>
+  <tr><td>&gt;20 years</td><td>8.0</td></tr>
+</table>
+
+<p><strong>Key result — remote work by top employment type:</strong></p>
+<table>
+  <tr><th>Employment Type</th><th>Hybrid</th><th>Remote</th><th>In-Person</th></tr>
+  <tr><td>Employed, full-time</td><td>17,296</td><td>13,193</td><td>8,552</td></tr>
+  <tr><td>Employed, full-time + Freelance</td><td>1,330</td><td>1,861</td><td>366</td></tr>
+</table>
+
+<h4>Key Code Snippets</h4>
+<pre><code># Bin YearsCodePro and compute median JobSat per range
+bins   = [0, 5, 10, 20, float('inf')]
+labels = ['0-5', '5-10', '10-20', '&gt;20']
+df_exp['ExperienceRange'] = pd.cut(df_exp['YearsCodePro'], bins=bins, labels=labels, right=False)
+median_satisfaction = df_exp.groupby('ExperienceRange', observed=True)['JobSat'].median()
+print(median_satisfaction)  # All ranges → 8.0</code></pre>
+
+<pre><code># Explode multi-select language column for frequency analysis
+lang_df = df_filtered[['Country', 'LanguageHaveWorkedWith']].dropna()
+lang_df = lang_df.assign(
+    Language=lang_df['LanguageHaveWorkedWith'].str.split(';')
+).explode('Language')
+lang_df['Language'] = lang_df['Language'].str.strip()
+
+lang_country = lang_df.groupby(['Country', 'Language']).size().unstack(fill_value=0)
+sns.heatmap(lang_country, cmap='YlGnBu', annot=True, fmt='d')</code></pre>
+
+<pre><code>correlation = scatter_df['YearsCodePro'].corr(scatter_df['JobSatPoints_1'])
+print(f"Correlation coefficient: {correlation:.4f}")  # -0.0328</code></pre>
+
+<div class="finding">💡 Key finding: Median job satisfaction was uniformly 8/10 across all experience ranges, suggesting experience level has no meaningful impact on how satisfied developers feel with their jobs.</div>
+<div class="screenshot">📸 Screenshot: Bar chart of median JobSat by experience range, remote work count plot, language heatmap, EdLevel × Employment heatmap</div>
+
+<h3>Lab 13: Finding How the Data Is Distributed</h3>
+<p><strong>What I did:</strong></p>
+<ul>
+  <li>Profiled the full dataset structure: 65,437 rows, 114 columns, 13 float64, 1 int64, 100 string columns</li>
+  <li>Imputed <code>Employment</code>, <code>RemoteWork</code>, and <code>JobSat</code> with mode; imputed <code>YearsCodePro</code> with median</li>
+  <li>Visualized <code>JobSat</code> with a KDE plot (sharp peak at 8) and a pie chart — mean: 7.53, median: 8.0</li>
+  <li>Compared <code>LanguageHaveWorkedWith</code> vs <code>LanguageWantToWorkWith</code> — Rust and Go showed the largest aspiration gaps</li>
+  <li>Cross-tabulated <code>RemoteWork</code> by top 8 countries as heatmap and grouped bar chart</li>
+  <li>Computed Pearson r between <code>JobSat</code> and <code>YearsCodePro</code>: <strong>r = 0.0510</strong></li>
+  <li>Visualized <code>EdLevel</code> vs <code>Employment</code> as a stacked bar chart</li>
+</ul>
+
+<p><strong>Key result — JobSat distribution summary (after mode imputation):</strong></p>
+<table>
+  <tr><th>Statistic</th><th>Value</th></tr>
+  <tr><td>Count</td><td>65,437</td></tr>
+  <tr><td>Mean</td><td>7.53</td></tr>
+  <tr><td>Median</td><td>8.0</td></tr>
+  <tr><td>Std Dev</td><td>1.49</td></tr>
+  <tr><td>Min / Max</td><td>0 / 10</td></tr>
+</table>
+
+<h4>Key Code Snippets</h4>
+<pre><code>sns.kdeplot(df['JobSat'].dropna(), fill=True, color='steelblue', linewidth=2)
+plt.axvline(df['JobSat'].median(), color='red', linestyle='--',
+            label=f'Median: {df["JobSat"].median()}')
+plt.title('Distribution of Job Satisfaction (KDE Plot)')</code></pre>
+
+<pre><code>have_worked  = df['LanguageHaveWorkedWith'].dropna().str.split(';').explode().str.strip()
+want_to_work = df['LanguageWantToWorkWith'].dropna().str.split(';').explode().str.strip()
+
+lang_comparison = pd.DataFrame({
+    'Have Worked With':  have_worked.value_counts().head(10),
+    'Want to Work With': want_to_work.value_counts().head(10)
+}).sort_values('Have Worked With', ascending=False)
+lang_comparison.plot(kind='bar', color=['steelblue', 'darkorange'], edgecolor='black')</code></pre>
+
+<pre><code>pearson_corr = corr_df['JobSat'].corr(corr_df['YearsCodePro'], method='pearson')
+print(f"Pearson Correlation: r = {pearson_corr:.4f}")  # 0.0510</code></pre>
+
+<div class="finding">💡 Key finding: Pearson r = 0.051 between job satisfaction and years of experience — confirming experience does not meaningfully predict developer satisfaction.</div>
+<div class="screenshot">📸 Screenshot: KDE + pie chart of JobSat, language comparison bar chart, remote work heatmap, stacked EdLevel × Employment bar</div>
+
+<h3>Lab 14: Finding Outliers</h3>
+<p><strong>What I did:</strong></p>
+<ul>
+  <li>Analyzed the distribution of respondents by <code>Industry</code> — Software Development dominated with 11,918 respondents</li>
+  <li>Computed compensation statistics: mean = $86,155, median = $65,000, std = $186,757</li>
+  <li>Identified high-comp outliers using the <strong>3-standard-deviations method</strong>: threshold = $646,426; found <strong>89 outliers</strong> (mean = $1.62M, max = $16.26M)</li>
+  <li>Applied the <strong>IQR method</strong>: Q1 = $32,712, Q3 = $107,972, IQR = $75,260, upper bound = $220,861; found <strong>978 outliers</strong></li>
+  <li>Removed IQR outliers, creating <code>df_clean</code>: <strong>65,437 → 22,457 rows</strong></li>
+  <li>Mapped categorical <code>Age</code> to numeric midpoints and computed a Pearson correlation matrix</li>
+</ul>
+
+<p><strong>Key result — top industries by respondent count:</strong></p>
+<table>
+  <tr><th>Industry</th><th>Respondents</th></tr>
+  <tr><td>Software Development</td><td>11,918</td></tr>
+  <tr><td>Other</td><td>3,077</td></tr>
+  <tr><td>Fintech</td><td>1,641</td></tr>
+  <tr><td>Internet, Telecomm or Information Services</td><td>1,629</td></tr>
+  <tr><td>Banking / Financial Services</td><td>1,371</td></tr>
+  <tr><td>Healthcare</td><td>1,277</td></tr>
+</table>
+
+<p><strong>Key result — Pearson correlation matrix (post-IQR removal):</strong></p>
+<table>
+  <tr><th></th><th>Age_Numeric</th><th>YearsCodePro</th><th>ConvertedCompYearly</th></tr>
+  <tr><td>Age_Numeric</td><td>1.0000</td><td>0.8201</td><td>0.3588</td></tr>
+  <tr><td>YearsCodePro</td><td>0.8201</td><td>1.0000</td><td>0.3869</td></tr>
+  <tr><td>ConvertedCompYearly</td><td>0.3588</td><td>0.3869</td><td>1.0000</td></tr>
+</table>
+
+<h4>Key Code Snippets</h4>
+<pre><code># 3-standard-deviations outlier threshold
+threshold = mean_comp + 3 * std_comp
+print(f"Outlier Threshold: ${threshold:,.2f}")        # $646,426.21
+high_comp_outliers = df[df['ConvertedCompYearly'] &gt; threshold]
+print(f"High-comp outliers: {len(high_comp_outliers)}")  # 89</code></pre>
+
+<pre><code># IQR method
+Q1, Q3 = comp_data.quantile(0.25), comp_data.quantile(0.75)
+IQR = Q3 - Q1
+lower_bound = Q1 - 1.5 * IQR   # -$80,177
+upper_bound = Q3 + 1.5 * IQR   #  $220,861
+df_clean = df[(df['ConvertedCompYearly'] &gt;= lower_bound) &amp;
+              (df['ConvertedCompYearly'] &lt;= upper_bound)].copy()  # 22,457 rows</code></pre>
+
+<pre><code>age_mapping = {'Under 18 years old':16,'18-24 years old':21,'25-34 years old':30,
+               '35-44 years old':40,'45-54 years old':50,'55-64 years old':60,'65 years or older':70}
+df_clean['Age_Numeric'] = df_clean['Age'].map(age_mapping)
+corr_matrix = df_clean[['Age_Numeric','YearsCodePro','ConvertedCompYearly']].dropna().corr()
+sns.heatmap(corr_matrix, annot=True, fmt='.4f', cmap='coolwarm')</code></pre>
+
+<div class="finding">💡 Key finding: Age and experience are very strongly correlated (r = 0.82). Both show moderate positive correlation with compensation (r ≈ 0.36–0.39).</div>
+<div class="screenshot">📸 Screenshot: Industry bar chart, box plots before/after outlier removal, correlation heatmap (Age × Experience × Compensation)</div>
+
+<h3>Lab 15: Finding Correlation</h3>
+<p><strong>What I did:</strong></p>
+<ul>
+  <li>Visualized <code>ConvertedCompYearly</code> with a histogram + KDE overlay and box plot — confirmed severe right skew (mean $86,155 vs median $65,000)</li>
+  <li>Filtered for full-time employees (39,041): median compensation = <strong>$69,814</strong> vs overall $65,000</li>
+  <li>Compared compensation distributions across top 10 countries using box plots ordered by median</li>
+  <li>Applied IQR outlier removal again: <strong>65,437 → 22,457 rows</strong> (upper bound $220,861)</li>
+  <li>Computed Pearson correlations on cleaned data: <code>ConvertedCompYearly</code> vs <code>WorkExp</code> (r = <strong>0.407</strong>), vs <code>JobSatPoints_1</code> (r = <strong>−0.060</strong>)</li>
+  <li>Created side-by-side scatter plots with <code>sns.regplot()</code> regression lines</li>
+</ul>
+
+<p><strong>Key result — compensation by group:</strong></p>
+<table>
+  <tr><th>Group</th><th>Median Compensation</th></tr>
+  <tr><td>All respondents</td><td>$65,000</td></tr>
+  <tr><td>Full-time employees only</td><td>$69,814</td></tr>
+</table>
+
+<p><strong>Key result — Pearson correlation matrix (post-IQR, cleaned data):</strong></p>
+<table>
+  <tr><th></th><th>ConvertedCompYearly</th><th>WorkExp</th><th>JobSatPoints_1</th></tr>
+  <tr><td>ConvertedCompYearly</td><td>1.0000</td><td>0.4070</td><td>−0.0596</td></tr>
+  <tr><td>WorkExp</td><td>0.4070</td><td>1.0000</td><td>−0.0324</td></tr>
+  <tr><td>JobSatPoints_1</td><td>−0.0596</td><td>−0.0324</td><td>1.0000</td></tr>
+</table>
+
+<h4>Key Code Snippets</h4>
+<pre><code>fulltime_df = df[df['Employment'] == 'Employed, full-time']
+print(f"Full-time median: ${fulltime_df['ConvertedCompYearly'].median():,.2f}")  # $69,814
+print(f"Overall median:   ${df['ConvertedCompYearly'].median():,.2f}")           # $65,000</code></pre>
+
+<pre><code>Q1, Q3 = df['ConvertedCompYearly'].quantile([0.25, 0.75])
+IQR = Q3 - Q1
+df_clean = df[(df['ConvertedCompYearly'] &gt;= Q1 - 1.5*IQR) &amp;
+              (df['ConvertedCompYearly'] &lt;= Q3 + 1.5*IQR)].copy()
+print(f"Cleaned rows: {df_clean.shape[0]}")  # 22,457</code></pre>
+
+<pre><code>corr_df     = df_clean[['ConvertedCompYearly','WorkExp','JobSatPoints_1']].dropna()
+corr_matrix = corr_df.corr(method='pearson')
+sns.heatmap(corr_matrix, annot=True, fmt='.4f', cmap='coolwarm', square=True)
+
+fig, axes = plt.subplots(1, 2, figsize=(16, 6))
+sns.regplot(data=corr_df, x='WorkExp',        y='ConvertedCompYearly', ax=axes[0])
+sns.regplot(data=corr_df, x='JobSatPoints_1', y='ConvertedCompYearly', ax=axes[1])</code></pre>
+
+<div class="finding">💡 Key finding: Work experience moderately predicts compensation (r = 0.407), but salary has essentially no relationship with job satisfaction (r = −0.060) — pay alone does not determine how satisfied developers feel.</div>
+<div class="screenshot">📸 Screenshot: Compensation histogram + KDE, country box plots, correlation heatmap, scatter plots with regression lines</div>
+
+<div class="skills-box">
+  <h3>Module 3 — Skills Demonstrated</h3>
+  <ul>
+    <li>Full EDA pipeline: structure profiling, missing value handling, distribution analysis</li>
+    <li>Exploding multi-value semicolon-delimited columns with <code>str.split(';').explode()</code></li>
+    <li>Cross-tabulation with <code>pd.crosstab()</code>; stacked and grouped bar chart visualization</li>
+    <li>Outlier detection using two methods: 3-standard-deviations threshold and IQR method</li>
+    <li>Mapping categorical text columns to numeric midpoints for quantitative analysis</li>
+    <li>Pearson correlation matrix computation and interpretation</li>
+    <li>Visualization suite: KDE plots, pie charts, annotated heatmaps, box plots, <code>sns.regplot()</code> scatter plots</li>
+    <li>Segmented analysis: filtering and comparing subgroups (full-time vs all, top countries)</li>
+  </ul>
+</div>
+
+</body>
+</html>

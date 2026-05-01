@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IBM Data Analyst Capstone: Portfolio Part 2</title>
+<style>
+  /* ── Base ── */
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f8fafc; color: #1e293b; margin: 0; padding: 0; }
+  .container { max-width: 960px; margin: 0 auto; padding: 2em 1.5em 4em; }
+
+  /* ── Header ── */
+  .part-banner { background: #1e3a5f; color: #fff; text-align: center; padding: 0.6em 1em; font-size: 0.9em; letter-spacing: 0.05em; }
+  h1 { font-size: 2em; color: #0f2a47; margin-bottom: 0.2em; }
+  .meta { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1em 1.4em; margin-bottom: 1.5em; }
+  .meta p { margin: 0.3em 0; font-size: 0.95em; }
+
+  /* ── Pipeline ── */
+  .pipeline { display: flex; align-items: center; flex-wrap: wrap; gap: 0.3em; margin: 1em 0 2em; }
+  .pipe-step { background: #e2e8f0; color: #64748b; padding: 0.4em 0.9em; border-radius: 20px; font-size: 0.85em; font-weight: 600; }
+  .pipe-step.active { background: #2563eb; color: #fff; }
+  .pipe-arrow { color: #94a3b8; font-size: 1.1em; }
+
+  /* ── Module sections ── */
+  .module-header { display: flex; align-items: center; gap: 0.7em; margin: 2em 0 0.4em; }
+  .module-badge { background: #2563eb; color: #fff; padding: 0.3em 0.9em; border-radius: 20px; font-size: 0.8em; font-weight: 700; letter-spacing: 0.05em; white-space: nowrap; }
+  .module-header h2 { font-size: 1.55em; color: #0f2a47; margin: 0; }
+  .module-overview { color: #334155; line-height: 1.7; margin-bottom: 1.5em; }
+
+  /* ── Lab cards ── */
+  .lab { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 1.4em 1.6em; margin-bottom: 1.4em; }
+  .lab h3 { font-size: 1.1em; color: #1e3a5f; margin: 0 0 0.8em; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.4em; }
+  .lab h4 { font-size: 0.95em; color: #2563eb; margin: 1em 0 0.4em; }
+  .lab ul { margin: 0.3em 0 0.8em 1.2em; padding: 0; }
+  .lab ul li { margin-bottom: 0.35em; line-height: 1.6; font-size: 0.95em; }
+
+  /* ── Callout boxes ── */
+  .finding { background: #eff6ff; border-left: 4px solid #2563eb; border-radius: 0 6px 6px 0; padding: 0.75em 1em; margin: 0.8em 0; font-size: 0.93em; color: #1e3a5f; }
+  .finding strong { display: block; margin-bottom: 0.2em; color: #1d4ed8; }
+  .screenshot { background: #fefce8; border-left: 4px solid #ca8a04; border-radius: 0 6px 6px 0; padding: 0.6em 1em; margin: 0.6em 0; font-size: 0.88em; color: #713f12; }
+
+  /* ── Tables ── */
+  table { width: 100%; border-collapse: collapse; font-size: 0.88em; margin: 0.8em 0 1em; }
+  th { background: #1e3a5f; color: #fff; padding: 0.5em 0.8em; text-align: left; font-weight: 600; }
+  td { padding: 0.45em 0.8em; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+
+  /* ── Code blocks ── */
+  pre { background: #0f172a; color: #e2e8f0; border-radius: 8px; padding: 1em 1.2em; overflow-x: auto; font-size: 0.82em; line-height: 1.55; margin: 0.8em 0; }
+  code { font-family: 'Consolas', 'Fira Code', monospace; }
+  pre code { color: #e2e8f0; }
+  .kw  { color: #93c5fd; }
+  .fn  { color: #fde68a; }
+  .st  { color: #86efac; }
+  .cm  { color: #6b7280; font-style: italic; }
+
+  /* ── Skills box ── */
+  .skills-box { background: #f0fdf4; border: 1px solid #86efac; border-radius: 8px; padding: 1em 1.4em; margin: 1.6em 0 0.5em; }
+  .skills-box h4 { color: #15803d; margin: 0 0 0.5em; font-size: 0.95em; text-transform: uppercase; letter-spacing: 0.05em; }
+  .skills-box .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4em; }
+  .skill-tag { background: #dcfce7; color: #15803d; border-radius: 12px; padding: 0.25em 0.75em; font-size: 0.82em; font-weight: 600; }
+
+  /* ── Placeholder (for unfilled modules) ── */
+  .placeholder { background: #f1f5f9; border: 2px dashed #cbd5e1; border-radius: 8px; padding: 2em; text-align: center; color: #94a3b8; font-size: 1.05em; margin: 2em 0; }
+  .placeholder strong { display: block; font-size: 1.2em; color: #64748b; margin-bottom: 8px; }
+
+  hr { border: none; border-top: 1px solid #e5e7eb; margin: 2em 0; }
+</style>
+</head>
+<body>
+
+<div class="part-banner">PART 2 OF 2: Modules 4, 5 &amp; 6 &nbsp;|&nbsp; See Part 1 for Modules 1, 2 &amp; 3</div>
+
+<div class="container">
+
+<h1>IBM Data Analyst Capstone: Portfolio</h1>
+<div class="meta">
+  <p><strong>Project:</strong> IBM Data Analyst Professional Certificate Capstone</p>
+  <p><strong>Dataset:</strong> Stack Overflow Developer Survey (65,437 respondents, 114 columns)</p>
+  <p><strong>Narrative:</strong> A complete data analyst workflow applied to a real-world dataset of 65,000+ developers. The project moves through every stage of the pipeline, from pulling raw data out of APIs and web pages to delivering a polished stakeholder presentation, with the findings grounded in the Stack Overflow Developer Survey.</p>
+</div>
+
+<h2>Project Pipeline</h2>
+<div class="pipeline">
+  <span class="pipe-step">Collect</span><span class="pipe-arrow">→</span>
+  <span class="pipe-step">Wrangle</span><span class="pipe-arrow">→</span>
+  <span class="pipe-step">Explore</span><span class="pipe-arrow">→</span>
+  <span class="pipe-step active">Visualize</span><span class="pipe-arrow">→</span>
+  <span class="pipe-step active">Dashboard</span><span class="pipe-arrow">→</span>
+  <span class="pipe-step active">Present</span>
+</div>
+
+<hr>
+
+<!-- ═══════════════════════════════════════════════════════════ MODULE 4 -->
+<div class="module-header">
+  <span class="module-badge">MODULE 4</span>
+  <h2>Data Visualization</h2>
+</div>
+
+<p class="module-overview">
+  Module 4 is where the cleaned, explored dataset becomes visual. Using <strong>Matplotlib</strong> and
+  <strong>Pandas</strong> plotting, I worked through every major chart type across nine labs, each one
+  applied to a specific analytical question about developer compensation, job satisfaction, technology
+  preferences, or demographics. Data was loaded both from CSV and directly via a <strong>SQLite RDBMS</strong>,
+  reinforcing the habit of writing SQL queries before plotting. IQR-based outlier removal was applied
+  consistently to any chart involving compensation, so the visuals reflect where most developers
+  actually land rather than being pulled by a handful of extreme earners.
+</p>
+
+<!-- ─── Lab 16 ─── -->
+<div class="lab">
+  <h3>Lab 16: Data Visualization Overview (All Chart Types)</h3>
+  <h4>What I Did</h4>
+  <ul>
+    <li>Downloaded the 152 MB survey CSV and loaded it into a <strong>SQLite database</strong> using <code>sqlite3</code> and <code>df.to_sql()</code>, creating a persistent RDBMS to query via SQL for the remainder of the module rather than re-reading the CSV each time.</li>
+    <li>Verified the database with a row count query (65,437 rows confirmed) and a schema inspection to review all 114 column definitions.</li>
+    <li>Worked through all eight major chart types in a single lab: a <strong>histogram</strong> of <code>CompTotal</code> after IQR outlier removal, a <strong>box plot</strong> of age-group counts, a <strong>scatter plot</strong> of age vs. work experience, a <strong>bubble plot</strong> of time searching vs. frustration, a <strong>pie chart</strong> of the top 5 desired databases, a <strong>stacked bar chart</strong> of time searching and answering by age, a <strong>line chart</strong> of median compensation for the 45–64 cohort, and a <strong>horizontal bar chart</strong> of respondents by <code>MainBranch</code>.</li>
+  </ul>
+
+  <h4>Key Results</h4>
+  <table>
+    <tr><th>Age Group</th><th>Respondent Count</th><th>% of Total</th></tr>
+    <tr><td>18–24 years old</td><td>14,098</td><td>21.5%</td></tr>
+    <tr><td>25–34 years old</td><td>23,911</td><td>36.5%</td></tr>
+    <tr><td>35–44 years old</td><td>14,942</td><td>22.8%</td></tr>
+    <tr><td>45–54 years old</td><td>6,249</td><td>9.6%</td></tr>
+    <tr><td>55–64 years old</td><td>2,575</td><td>3.9%</td></tr>
+    <tr><td>65 years or older</td><td>772</td><td>1.2%</td></tr>
+    <tr><td>Under 18 years old</td><td>2,568</td><td>3.9%</td></tr>
+  </table>
+
+  <div class="finding">
+    <strong>💡 Key Finding: One Age Group Speaks for the Survey</strong>
+    The 25–34 cohort represents over 36% of all respondents, nearly double the next-largest group.
+    That concentration matters: aggregate findings about language preferences, compensation, or
+    satisfaction in this dataset are, to a significant degree, findings about what 25–34 year-old
+    developers think.
+  </div>
+
+  <h4>Loading the Survey CSV into a Persistent SQLite Database</h4>
+  <p style="font-size:0.93em;color:#334155;margin:0.4em 0 0.6em;">The 152 MB CSV was the raw source for the entire module, but querying it repeatedly via pandas would be slow and fragile. I converted it into a SQLite database once, then queried it with SQL throughout every subsequent lab. After writing the data I immediately verified the row count to confirm nothing was dropped in the transfer.</p>
+<pre><code><span class="kw">import</span> sqlite3
+<span class="kw">import</span> pandas <span class="kw">as</span> pd
+
+df = pd.<span class="fn">read_csv</span>(<span class="st">'survey-data.csv'</span>)
+
+conn = sqlite3.<span class="fn">connect</span>(<span class="st">'survey-data.sqlite'</span>)
+df.<span class="fn">to_sql</span>(<span class="st">'main'</span>, conn, if_exists=<span class="st">'replace'</span>, index=<span class="kw">False</span>)
+conn.<span class="fn">close</span>()
+
+<span class="cm"># Verify row count</span>
+conn = sqlite3.<span class="fn">connect</span>(<span class="st">'survey-data.sqlite'</span>)
+QUERY = <span class="st">"SELECT COUNT(*) FROM main"</span>
+df_check = pd.<span class="fn">read_sql_query</span>(QUERY, conn)
+<span class="cm"># Output: 65437</span></code></pre>
+
+  <div class="screenshot">📸 Screenshot: Eight charts produced in sequence, histogram (CompTotal), box plot (age counts), scatter plot (age vs. work experience), bubble plot (time searching vs. frustration), pie chart (top 5 databases), stacked bar (time searching/answering by age), line chart (median comp, 45–64), horizontal bar (MainBranch).</div>
+</div>
+
+<!-- ─── Lab 17 ─── -->
+<div class="lab">
+  <h3>Lab 17: Histograms</h3>
+  <h4>What I Did</h4>
+  <ul>
+    <li>Connected to the SQLite database and ran demo queries (row count: 65,437; age group counts) before beginning visualization tasks.</li>
+    <li><strong>Task 1: Distribution:</strong> Plotted a histogram of <code>CompTotal</code> (50 bins, IQR outlier removal) revealing a right-skewed distribution peaking around $50–80K. Also plotted <code>YearsCodePro</code> (30 bins, orange) showing most developers have under 10 years of professional coding experience.</li>
+    <li><strong>Task 2: Relationships:</strong> Built overlapping multi-group histograms of <code>CompTotal</code> by age group (all 8 age brackets, <code>alpha=0.5</code>, colour-coded, with legend) to compare compensation spread side-by-side. Repeated the approach for <code>TimeSearching</code> across age groups using a 5-category numeric mapping (<15 min → >120 min), revealing that 30–60 min/day is the dominant search time across all ages.</li>
+    <li><strong>Task 3: Composition:</strong> Exploded <code>DatabaseWantToWorkWith</code> and plotted a bar-style histogram of the top 5 desired databases, confirming PostgreSQL (~24,000 mentions) is far ahead of SQLite (~13,500), MySQL (~12,000), MongoDB (~11,000), and Redis (~11,000). Also visualised <code>RemoteWork</code> preference, Hybrid (~23,000) narrowly leads Remote (~21,000), with In-person a distant third (~11,000).</li>
+    <li><strong>Task 4: Comparison:</strong> Filtered for ages 45–60 and plotted a histogram (40 bins, seagreen) of <code>CompTotal</code>, showing a broader, more spread distribution than the all-ages chart, indicating more compensation variance in mid/late career. Also overlaid job satisfaction (<code>JobSat</code>) histograms split by four experience brackets (0–5, 5–10, 10–20, >20 yrs), clearly showing that satisfaction distributions shift rightward, toward higher scores, with more years of experience.</li>
+  </ul>
+
+  <h4>Key Results: Top 5 Desired Databases (Lab 17 Bar Chart)</h4>
+  <table>
+    <tr><th>Rank</th><th>Database</th><th>Approx. Respondents</th></tr>
+    <tr><td>1</td><td>PostgreSQL</td><td>~24,000</td></tr>
+    <tr><td>2</td><td>SQLite</td><td>~13,500</td></tr>
+    <tr><td>3</td><td>MySQL</td><td>~12,000</td></tr>
+    <tr><td>4</td><td>MongoDB</td><td>~11,000</td></tr>
+    <tr><td>5</td><td>Redis</td><td>~11,000</td></tr>
+  </table>
+
+  <div class="finding">
+    <strong>💡 Key Finding: Experience Drives Satisfaction More Than Age</strong>
+    The overlaid satisfaction histograms show a clear rightward shift with experience level: developers with
+    0–5 years spread across all satisfaction scores, while those with 10–20+ years cluster strongly at scores
+    of 8–10. This pattern is more pronounced than any age-based trend, suggesting <em>what you've built</em>
+    matters more than <em>how long you've been alive</em> for career satisfaction.
+  </div>
+
+  <h4>Comparing Compensation Distributions Across Age Groups with Overlapping Histograms</h4>
+  <p style="font-size:0.93em;color:#334155;margin:0.4em 0 0.6em;">A single histogram of all compensation data hides whether younger or older developers earn differently. To surface that, I looped through every age group and overlaid each as a semi-transparent histogram on the same axes. The result makes it easy to see how the distribution shifts and spreads as age increases.</p>
+<pre><code><span class="cm"># Overlapping histograms of CompTotal per age group</span>
+age_groups = df_age_comp[<span class="st">'Age'</span>].<span class="fn">unique</span>()
+plt.<span class="fn">figure</span>(figsize=(14, 8))
+<span class="kw">for</span> age <span class="kw">in</span> <span class="fn">sorted</span>(age_groups):
+    subset = df_age_comp[df_age_comp[<span class="st">'Age'</span>] == age][<span class="st">'CompTotal'</span>]
+    plt.<span class="fn">hist</span>(subset, bins=30, alpha=0.5, label=age, edgecolor=<span class="st">'black'</span>)
+
+plt.<span class="fn">title</span>(<span class="st">'Compensation Distribution by Age Group'</span>)
+plt.<span class="fn">xlabel</span>(<span class="st">'Total Compensation (USD)'</span>)
+plt.<span class="fn">ylabel</span>(<span class="st">'Frequency'</span>)
+plt.<span class="fn">legend</span>(title=<span class="st">'Age Group'</span>, bbox_to_anchor=(1.05, 1), loc=<span class="st">'upper left'</span>)
+plt.<span class="fn">tight_layout</span>()
+plt.<span class="fn">show</span>()</code></pre>
+
+  <div class="screenshot">📸 Screenshot: Six histograms across the four tasks, CompTotal distribution, YearsCodePro distribution, CompTotal by age group (overlapping), TimeSearching by age group (overlapping), top 5 databases bar chart, RemoteWork preference bar chart, ages 45–60 CompTotal, and JobSat by experience range (overlapping).</div>
+</div>
+
+<!-- ─── Lab 18 ─── -->
+<div class="lab">
+  <h3>Lab 18: Box Plots</h3>
+  <h4>What I Did</h4>
+  <ul>
+    <li>Created box plots of <code>CompTotal</code> and numeric <code>Age</code> to visualize spread, median, and outliers for key variables.</li>
+    <li>Built grouped box plots of <code>CompTotal</code> across all seven age groups to compare compensation distributions side-by-side.</li>
+    <li>Plotted <code>CompTotal</code> grouped by <code>JobSatPoints_6</code> (job satisfaction score) to examine the relationship between pay and satisfaction.</li>
+    <li>Analyzed <strong>top 5 developer types</strong> by yearly compensation (<code>ConvertedCompYearly</code>) using grouped box plots after exploding the semicolon-delimited <code>DevType</code> field.</li>
+    <li>Compared compensation distributions across the <strong>top 5 countries</strong> by respondent count.</li>
+    <li>Visualized compensation by <strong>employment type</strong> (full-time, part-time, freelance, student, etc.) with shortened label mapping.</li>
+    <li>Examined <code>YearsCodePro</code> distribution grouped by job satisfaction level to explore whether more experienced developers report higher satisfaction.</li>
+  </ul>
+
+  <h4>Key Results</h4>
+  <table>
+    <tr><th>Grouping Variable</th><th>Plot Focus</th><th>Key Observation</th></tr>
+    <tr><td>Age Group</td><td>CompTotal distribution</td><td>Compensation spreads wider with age; 45–54 shows highest median</td></tr>
+    <tr><td>JobSatPoints_6</td><td>CompTotal by satisfaction</td><td>Compensation and satisfaction show weak positive association</td></tr>
+    <tr><td>Top 5 Dev Types</td><td>ConvertedCompYearly</td><td>Full-stack and back-end developers show widest IQR (highest variance)</td></tr>
+    <tr><td>Top 5 Countries</td><td>CompTotal spread</td><td>US respondents show significantly higher median and wider spread</td></tr>
+    <tr><td>Employment Type</td><td>CompTotal</td><td>Full-time employment shows the highest and most consistent compensation</td></tr>
+  </table>
+
+  <div class="finding">
+    <strong>💡 Key Finding: Salary Gaps Widen With Age, Not Just the Median</strong>
+    Early-career developers cluster tightly around low salaries, as shown by the narrow IQR for the
+    18–24 group. By the 45–54 bracket, the median is higher, but so is the spread. Senior developer
+    compensation is not just higher on average — it is far more variable, meaning the range of
+    outcomes grows significantly with career progression.
+  </div>
+
+  <h4>Building a Grouped Box Plot to Reveal How Compensation Spread Changes with Age</h4>
+  <p style="font-size:0.93em;color:#334155;margin:0.4em 0 0.6em;">To compare salary distributions across all seven age groups at once, I needed to pass pre-grouped arrays to Matplotlib's boxplot rather than a single column. I built the list comprehension to pull each group's values in order, then styled the plot with filled boxes and a red median line to make the IQR and median easy to read at a glance.</p>
+<pre><code><span class="cm"># Prepare grouped data by age group</span>
+age_order = [<span class="st">'Under 18 years old'</span>, <span class="st">'18-24 years old'</span>, <span class="st">'25-34 years old'</span>,
+             <span class="st">'35-44 years old'</span>, <span class="st">'45-54 years old'</span>, <span class="st">'55-64 years old'</span>, <span class="st">'65 years or older'</span>]
+grouped_data = [df_age_comp[df_age_comp[<span class="st">'Age'</span>] == age][<span class="st">'CompTotal'</span>].<span class="fn">values</span>
+                <span class="kw">for</span> age <span class="kw">in</span> age_order]
+
+plt.<span class="fn">figure</span>(figsize=(14, 7))
+plt.<span class="fn">boxplot</span>(grouped_data, tick_labels=age_order, patch_artist=<span class="kw">True</span>,
+            boxprops=<span class="fn">dict</span>(facecolor=<span class="st">'steelblue'</span>, color=<span class="st">'black'</span>),
+            medianprops=<span class="fn">dict</span>(color=<span class="st">'red'</span>, linewidth=2))
+plt.<span class="fn">title</span>(<span class="st">'Compensation Distribution by Age Group'</span>)
+plt.<span class="fn">xticks</span>(rotation=15, ha=<span class="st">'right'</span>)
+plt.<span class="fn">tight_layout</span>()
+plt.<span class="fn">show</span>()</code></pre>
+
+  <div class="screenshot">📸 Screenshot: Six box plots across the lab, CompTotal distribution, Age numeric distribution, grouped by age group, grouped by job satisfaction, top 5 developer types, top 5 countries, employment type, and YearsCodePro by satisfaction.</div>
+</div>
+
+<!-- ─── Lab 19 ─── -->
+<div class="lab">
+  <h3>Lab 19: Scatter Plots</h3>
+  <h4>What I Did</h4>
+  <ul>
+    <li>Plotted <strong>Age vs. Job Satisfaction</strong> (<code>JobSatPoints_6</code>) using numeric age mapping to reveal any demographic trend in satisfaction.</li>
+    <li>Created a <strong>Compensation vs. Job Satisfaction</strong> scatter plot after IQR outlier removal of <code>ConvertedCompYearly</code>.</li>
+    <li>Added a <strong>polynomial regression trend line</strong> (<code>np.polyfit</code>) to the Age vs. Job Satisfaction plot to surface any directional pattern.</li>
+    <li>Plotted <strong>Age vs. Work Experience</strong> (<code>YearsCodePro</code>) to examine the expected positive correlation between age and professional coding experience.</li>
+    <li>Built a <strong>bubble plot variant</strong> of Compensation vs. Job Satisfaction with bubble size and color scaled by respondent age.</li>
+    <li>Scatter-plotted <strong>top 10 programming languages vs. mean job satisfaction</strong>, with bubble size representing the number of users per language.</li>
+    <li>Created a <strong>color-coded multi-group scatter plot</strong> of Compensation vs. Satisfaction, differentiating employment types by color using <code>plt.cm.Set1</code>.</li>
+    <li>Compared <strong>Work Experience vs. Age</strong> across the top 5 countries using a per-country color map.</li>
+  </ul>
+
+  <h4>Key Results</h4>
+  <table>
+    <tr><th>Plot</th><th>X-Axis</th><th>Y-Axis</th><th>Key Observation</th></tr>
+    <tr><td>Age vs. Satisfaction</td><td>Age (numeric)</td><td>JobSatPoints_6</td><td>Slight positive trend, older developers marginally more satisfied</td></tr>
+    <tr><td>Comp vs. Satisfaction</td><td>ConvertedCompYearly</td><td>JobSatPoints_6</td><td>Weak positive correlation; high earners slightly more satisfied</td></tr>
+    <tr><td>Age vs. Work Exp</td><td>Age (numeric)</td><td>YearsCodePro</td><td>Strong expected positive correlation; wide spread at all age levels</td></tr>
+    <tr><td>Language vs. Satisfaction</td><td>Language (top 10)</td><td>Mean JobSatPoints_6</td><td>Satisfaction varies modestly by language, no single language dominates</td></tr>
+  </table>
+
+  <div class="finding">
+    <strong>💡 Key Finding: Pay Has a Ceiling on Satisfaction</strong>
+    Low earners do cluster at lower satisfaction scores, so compensation matters at the bottom of the
+    scale. But above a moderate threshold, satisfaction plateaus regardless of how much more a
+    developer earns. More money, past a certain point, does not produce more satisfied developers.
+  </div>
+
+  <h4>Adding a Regression Trend Line to a Scatter Plot to Surface a Directional Pattern</h4>
+  <p style="font-size:0.93em;color:#334155;margin:0.4em 0 0.6em;">With 65,000 data points, a raw scatter plot of age vs. job satisfaction is a near-solid mass of dots. To make the directional signal readable, I fit a first-degree polynomial with NumPy and overlaid the resulting line in red. The scatter points are kept at low alpha so density is still visible without obscuring the trend.</p>
+<pre><code><span class="kw">import</span> numpy <span class="kw">as</span> np
+
+scatter_df = df[[<span class="st">'Age_Numeric'</span>, <span class="st">'JobSatPoints_6'</span>]].<span class="fn">dropna</span>()
+
+<span class="cm"># Fit trend line</span>
+z = np.<span class="fn">polyfit</span>(scatter_df[<span class="st">'Age_Numeric'</span>], scatter_df[<span class="st">'JobSatPoints_6'</span>], 1)
+p = np.<span class="fn">poly1d</span>(z)
+x_line = np.<span class="fn">linspace</span>(scatter_df[<span class="st">'Age_Numeric'</span>].<span class="fn">min</span>(),
+                       scatter_df[<span class="st">'Age_Numeric'</span>].<span class="fn">max</span>(), 100)
+
+plt.<span class="fn">scatter</span>(scatter_df[<span class="st">'Age_Numeric'</span>], scatter_df[<span class="st">'JobSatPoints_6'</span>],
+            alpha=0.3, color=<span class="st">'steelblue'</span>, edgecolors=<span class="st">'none'</span>, label=<span class="st">'Data Points'</span>)
+plt.<span class="fn">plot</span>(x_line, p(x_line), color=<span class="st">'red'</span>, linewidth=2, label=<span class="st">'Trend Line'</span>)
+plt.<span class="fn">legend</span>()
+plt.<span class="fn">tight_layout</span>()
+plt.<span class="fn">show</span>()</code></pre>
+
+  <div class="screenshot">📸 Screenshot: Eight scatter plots, Age vs. Satisfaction (plain and with trend line), Compensation vs. Satisfaction, Age vs. Work Experience, bubble plot overlay, language popularity vs. satisfaction, employment-type color-coded scatter, and country comparison.</div>
+</div>
+
+<!-- ─── Lab 20 ─── -->
+<div class="lab">
+  <h3>Lab 20: Bubble Plots</h3>
+  <h4>What I Did</h4>
+  <ul>
+    <li>Built a bubble plot of age vs. Stack Overflow participation frequency (<code>SOPartFreq</code>), mapping the categorical frequency values to a numeric scale and sizing each bubble by mean job satisfaction to add a third dimension.</li>
+    <li>Aggregated compensation and satisfaction data to unique (comp, satisfaction) pairs and plotted a bubble chart with bubble size and color scaled by mean respondent age, making the relationship between all three variables visible in a single view.</li>
+    <li>Exploded <code>LanguageHaveWorkedWith</code> and built a bubble matrix of programming language popularity by age group, with each bubble sized by respondent count, to show which languages each cohort dominates.</li>
+    <li>Compared developer role compensation across the top 8 <code>DevType</code> values using median yearly pay, with bubble size scaled by mean job satisfaction, revealing that high pay and high satisfaction do not always align.</li>
+    <li>Extended the bubble matrix approach to collaboration tools by age, web framework preference by job satisfaction, and a cross-country matrix of admired programming languages (top 8 languages × top 8 countries).</li>
+  </ul>
+
+  <div class="finding">
+    <strong>💡 Key Finding: 25–34 Developers Dominate Language Usage</strong>
+    The language-by-age bubble matrix reveals that the 25–34 group is by far the most active across all top
+    10 languages. Their bubble sizes dwarf other age groups, reinforcing their outsized influence on
+    technology trend data throughout the entire survey.
+  </div>
+
+  <h4>Exploding a Multi-Value Column to Build a Language-by-Age Bubble Matrix</h4>
+  <p style="font-size:0.93em;color:#334155;margin:0.4em 0 0.6em;">The <code>LanguageHaveWorkedWith</code> field stores multiple languages per respondent as a semicolon-separated string. To count how many respondents of each age used each language, I split and exploded the column into one row per language, then aggregated. Bubble size and color are both mapped to respondent count so patterns are readable even without a legend.</p>
+<pre><code><span class="cm"># Explode multi-value language field</span>
+lang_df = df[[<span class="st">'LanguageHaveWorkedWith'</span>, <span class="st">'Age_Numeric'</span>]].<span class="fn">dropna</span>()
+lang_df = lang_df.<span class="fn">assign</span>(
+    Language=lang_df[<span class="st">'LanguageHaveWorkedWith'</span>].str.<span class="fn">split</span>(<span class="st">';'</span>)
+).<span class="fn">explode</span>(<span class="st">'Language'</span>)
+
+<span class="cm"># Aggregate by language and age</span>
+agg_df = lang_df.<span class="fn">groupby</span>([<span class="st">'Language'</span>, <span class="st">'Age_Numeric'</span>]).<span class="fn">size</span>().<span class="fn">reset_index</span>(name=<span class="st">'Count'</span>)
+
+plt.<span class="fn">scatter</span>(agg_df[<span class="st">'Age_Numeric'</span>], agg_df[<span class="st">'Language'</span>],
+            s=agg_df[<span class="st">'Count'</span>] * 0.3, c=agg_df[<span class="st">'Count'</span>],
+            cmap=<span class="st">'Blues'</span>, alpha=0.7, edgecolors=<span class="st">'black'</span>)
+plt.<span class="fn">colorbar</span>(label=<span class="st">'Number of Respondents'</span>)
+plt.<span class="fn">title</span>(<span class="st">'Programming Language Popularity by Age (Bubble Size = Frequency)'</span>)</code></pre>
+
+  <div class="screenshot">📸 Screenshot: Eight bubble plots, Age vs. SO participation frequency, Compensation vs. Satisfaction, language popularity by age matrix, database preference vs. satisfaction, developer role compensation, collaboration tools by age, web framework satisfaction, and admired languages by country.</div>
+</div>
+
+<!-- ─── Lab 21 ─── -->
+<div class="lab">
+  <h3>Lab 21: Pie Charts</h3>
+  <h4>What I Did</h4>
+  <ul>
+    <li>Applied the same explode-then-count pattern across nine different multi-value survey columns to produce pie charts for the top 5 desired databases, top 5 developer roles, professional operating systems, top programming languages, collaboration tools, most admired languages, AI development tools in current use, preferred web frameworks, and desired embedded technologies.</li>
+    <li>Used distinct colormaps per chart (Blues for databases, orange for developer roles, green for operating systems) so each visualization has a clear visual identity while the code structure stays consistent throughout.</li>
+  </ul>
+
+  <h4>Key Results: Top 5 Databases Respondents Want to Work With</h4>
+  <table>
+    <tr><th>Rank</th><th>Database</th><th>Share</th></tr>
+    <tr><td>1</td><td>PostgreSQL</td><td>Largest slice (~28%)</td></tr>
+    <tr><td>2</td><td>MySQL</td><td>Second largest</td></tr>
+    <tr><td>3</td><td>SQLite</td><td>Third</td></tr>
+    <tr><td>4</td><td>MongoDB</td><td>Fourth</td></tr>
+    <tr><td>5</td><td>Redis</td><td>Fifth</td></tr>
+  </table>
+
+  <div class="finding">
+    <strong>💡 Key Finding: PostgreSQL Leads on Both Current Use and Future Desire</strong>
+    Most technologies hold strong in one category or the other. PostgreSQL does both, topping the
+    "have worked with" charts and leading the "want to work with" charts by a clear margin. That
+    consistency across present and future signals a sustained shift toward open-source relational
+    databases rather than a fleeting trend.
+  </div>
+
+  <h4>Counting Preferences from a Multi-Value Field to Drive a Pie Chart</h4>
+  <p style="font-size:0.93em;color:#334155;margin:0.4em 0 0.6em;">Database preferences were stored as semicolon-delimited strings in a single column, meaning a naive value count would treat each unique combination as its own category. I split and exploded the column first, then took the top 5 individual databases by count. The pie chart uses a Blues colormap and percentage labels so proportions are immediately readable.</p>
+<pre><code><span class="cm"># Explode semicolon-delimited values and count</span>
+db_df = df[<span class="st">'DatabaseWantToWorkWith'</span>].<span class="fn">dropna</span>().str.<span class="fn">split</span>(<span class="st">';'</span>).<span class="fn">explode</span>().str.<span class="fn">strip</span>()
+top5_db = db_df.<span class="fn">value_counts</span>().<span class="fn">head</span>(5)
+
+plt.<span class="fn">figure</span>(figsize=(10, 8))
+plt.<span class="fn">pie</span>(top5_db.<span class="fn">values</span>, labels=top5_db.<span class="fn">index</span>, autopct=<span class="st">'%1.1f%%'</span>,
+        colors=plt.cm.<span class="fn">Blues</span>(<span class="fn">range</span>(50, 255, 40)),
+        startangle=140, wedgeprops={<span class="st">'edgecolor'</span>: <span class="st">'black'</span>})
+plt.<span class="fn">title</span>(<span class="st">'Top 5 Databases Respondents Want to Work With'</span>)
+plt.<span class="fn">tight_layout</span>()
+plt.<span class="fn">show</span>()</code></pre>
+
+  <div class="screenshot">📸 Screenshot: Nine pie charts, top databases, developer roles, professional OS, programming languages, collaboration tools, admired languages, AI tools currently used, preferred web frameworks, and desired embedded technologies.</div>
+</div>
+
+<!-- ─── Lab 22 ─── -->
+<div class="lab">
+  <h3>Lab 22: Stacked Charts</h3>
+  <h4>What I Did</h4>
+  <ul>
+    <li>Calculated and stacked median <code>JobSatPoints_6</code> and <code>JobSatPoints_7</code> across all age groups to compare two satisfaction dimensions side-by-side in a single chart.</li>
+    <li>Repeated the dual-satisfaction stacked chart grouped by <strong>employment type</strong> to compare full-time, freelance, student, and other workers.</li>
+    <li>Built a stacked chart of normalized <strong>median compensation + median satisfaction</strong> for the 25–44 age range (the 30–35 proxy), scaling comp to a 0–10 range for visual comparability.</li>
+    <li>Extended this analysis to <strong>all age groups</strong>, producing a full-span stacked bar showing how compensation and satisfaction co-vary across the career arc.</li>
+    <li>Exploded <code>DatabaseWantToWorkWith</code> and built a stacked bar of the <strong>top 5 preferred databases by age group</strong>, showing how database preferences shift with seniority.</li>
+    <li>Binned <code>JobSatPoints_6</code> into five ranges (0–2, 2–4, 4–6, 6–8, 8–10) and cross-tabulated against employment type for a <strong>stacked satisfaction-by-employment</strong> distribution chart.</li>
+    <li>Analyzed <strong>admired language preferences</strong> (<code>LanguageAdmired</code>) across age groups using a stacked bar (top 5 languages).</li>
+    <li>Compared <strong>admired platform adoption</strong> (<code>PlatformAdmired</code>) across employment types using a stacked chart.</li>
+  </ul>
+
+  <h4>Key Results: Median Time Searching vs. Answering (Ages 25–44)</h4>
+  <table>
+    <tr><th>Age Group</th><th>Median TimeSearching</th><th>Median TimeAnswering</th></tr>
+    <tr><td>25–34 years old</td><td>45 min/day</td><td>22.5 min/day</td></tr>
+    <tr><td>35–44 years old</td><td>45 min/day</td><td>45 min/day</td></tr>
+  </table>
+
+  <div class="finding">
+    <strong>💡 Key Finding: Seniority Shifts the Balance from Consuming to Contributing</strong>
+    Developers aged 25–34 spend roughly twice as long searching Stack Overflow as they do answering
+    questions. By the 35–44 bracket, the two measures reach parity. Senior developers are not just
+    more experienced — they have become active contributors to the ecosystem they once primarily relied on.
+  </div>
+
+  <h4>Stacking Two Satisfaction Metrics by Age Group to Compare Dimensions in One Chart</h4>
+  <p style="font-size:0.93em;color:#334155;margin:0.4em 0 0.6em;">I wanted to show two satisfaction scores side by side across all age groups without producing two separate charts. By grouping on age, computing medians for both columns simultaneously, and calling <code>.plot(stacked=True)</code>, I got a single bar per age group where each segment represents one satisfaction dimension. The reindex step ensures the age groups appear in chronological order rather than alphabetical.</p>
+<pre><code><span class="cm"># Median satisfaction scores by age group</span>
+sat_age = df.<span class="fn">groupby</span>(<span class="st">'Age'</span>)[[<span class="st">'JobSatPoints_6'</span>, <span class="st">'JobSatPoints_7'</span>]].<span class="fn">median</span>()
+sat_age = sat_age.<span class="fn">reindex</span>([a <span class="kw">for</span> a <span class="kw">in</span> age_order <span class="kw">if</span> a <span class="kw">in</span> sat_age.index])
+
+sat_age.<span class="fn">plot</span>(kind=<span class="st">'bar'</span>, stacked=<span class="kw">True</span>, figsize=(14, 7),
+             color=[<span class="st">'steelblue'</span>, <span class="st">'darkorange'</span>], edgecolor=<span class="st">'black'</span>)
+plt.<span class="fn">title</span>(<span class="st">'Median Job Satisfaction (Points 6 & 7) by Age Group'</span>)
+plt.<span class="fn">xlabel</span>(<span class="st">'Age Group'</span>)
+plt.<span class="fn">ylabel</span>(<span class="st">'Median Satisfaction Score'</span>)
+plt.<span class="fn">xticks</span>(rotation=20, ha=<span class="st">'right'</span>)
+plt.<span class="fn">tight_layout</span>()
+plt.<span class="fn">show</span>()</code></pre>
+
+  <div class="screenshot">📸 Screenshot: Eight stacked bar charts, satisfaction (points 6 & 7) by age group and employment type, compensation + satisfaction for ages 25–44 and all groups, top 5 databases by age, employment type by satisfaction level, admired languages by age, and platform adoption by employment type.</div>
+</div>
+
+<!-- ─── Lab 23 ─── -->
+<div class="lab">
+  <h3>Lab 23: Line Charts</h3>
+  <h4>What I Did</h4>
+  <ul>
+    <li>Plotted <strong>median yearly compensation by age group</strong> as a line chart, applying IQR outlier removal and ordering age groups sequentially to reveal the career earnings arc.</li>
+    <li>Zoomed in on the <strong>25–45 age range</strong> (the "mid-career" window) with an orange line chart to examine compensation growth during the most professionally active years.</li>
+    <li>Binned <code>YearsCodePro</code> into six experience brackets (0–2, 2–5, 5–10, 10–15, 15–20, 20+) and plotted <strong>median job satisfaction by experience level</strong> as a green line chart.</li>
+    <li>Binned <code>WorkExp</code> into seven ranges and plotted <strong>median yearly compensation by work experience level</strong> to show earnings growth over time.</li>
+    <li>Plotted <strong>median job satisfaction by work experience level</strong> to surface any satisfaction trend correlated with career tenure.</li>
+  </ul>
+
+  <h4>Key Results: Compensation Trend by Work Experience</h4>
+  <table>
+    <tr><th>Experience Level</th><th>Trend Direction</th></tr>
+    <tr><td>0–2 years</td><td>Lowest median compensation baseline</td></tr>
+    <tr><td>2–10 years</td><td>Steepest compensation growth phase</td></tr>
+    <tr><td>10–20 years</td><td>Growth continues but at reduced slope</td></tr>
+    <tr><td>20+ years</td><td>Plateau or modest additional growth</td></tr>
+  </table>
+
+  <div class="finding">
+    <strong>💡 Key Finding: The First Decade Is Where Most Salary Growth Happens</strong>
+    The steepest part of the compensation curve falls between two and ten years of experience. After
+    that, the slope levels off noticeably. The data suggests that technical skill development drives
+    early earnings growth, while continued advancement beyond the mid-career stage depends more on
+    factors like specialization, management, or industry than on experience alone.
+  </div>
+
+  <h4>Applying IQR Outlier Removal Before Plotting a Compensation Trend Line</h4>
+  <p style="font-size:0.93em;color:#334155;margin:0.4em 0 0.6em;">Compensation data includes extreme high-end values that compress the y-axis and make the median trend invisible. I removed outliers using the standard 1.5 x IQR method before grouping and plotting, so the line chart reflects where most developers actually land rather than being distorted by a small number of very high earners.</p>
+<pre><code><span class="cm"># Remove compensation outliers using IQR</span>
+Q1 = df[<span class="st">'ConvertedCompYearly'</span>].<span class="fn">quantile</span>(0.25)
+Q3 = df[<span class="st">'ConvertedCompYearly'</span>].<span class="fn">quantile</span>(0.75)
+IQR = Q3 - Q1
+df_clean = df[(df[<span class="st">'ConvertedCompYearly'</span>] >= Q1 - 1.5 * IQR) &
+              (df[<span class="st">'ConvertedCompYearly'</span>] <= Q3 + 1.5 * IQR)]
+
+median_comp = df_clean.<span class="fn">groupby</span>(<span class="st">'Age'</span>)[<span class="st">'ConvertedCompYearly'</span>].<span class="fn">median</span>()
+median_comp = median_comp.<span class="fn">reindex</span>([a <span class="kw">for</span> a <span class="kw">in</span> age_order <span class="kw">if</span> a <span class="kw">in</span> median_comp.index])
+
+plt.<span class="fn">plot</span>(<span class="fn">range</span>(<span class="fn">len</span>(median_comp)), median_comp.<span class="fn">values</span>,
+         marker=<span class="st">'o'</span>, color=<span class="st">'steelblue'</span>, linewidth=2, markersize=8)
+plt.<span class="fn">xticks</span>(<span class="fn">range</span>(<span class="fn">len</span>(median_comp)), median_comp.index, rotation=20, ha=<span class="st">'right'</span>)
+plt.<span class="fn">grid</span>(axis=<span class="st">'y'</span>, linestyle=<span class="st">'--'</span>, alpha=0.7)</code></pre>
+
+  <div class="screenshot">📸 Screenshot: Five line charts, median comp by all age groups, median comp for ages 25–45, median satisfaction by professional coding experience, median comp by work experience level, and median satisfaction by work experience level.</div>
+</div>
+
+<!-- ─── Lab 24 ─── -->
+<div class="lab">
+  <h3>Lab 24: Bar Charts</h3>
+  <h4>What I Did</h4>
+  <ul>
+    <li>Used a compensation histogram and an Age box plot as distribution baselines before moving into the chart types that are the focus of the lab, then demonstrated that all prior chart types can be combined within a single notebook.</li>
+    <li>Built a horizontal bar chart of <code>MainBranch</code> to show the respondent breakdown by professional classification, a vertical bar chart of the top 5 desired programming languages, and a stacked bar of two satisfaction dimensions across age groups.</li>
+    <li>Plotted the top 10 most-used databases as a vertical bar chart to establish a current-usage baseline, then built a grouped bar chart of median compensation by age group with standard deviation overlaid as error bars to show spread alongside the central tendency.</li>
+    <li>Closed the lab with a purple horizontal bar chart of the top 15 countries by respondent count, making the geographic concentration of the survey sample immediately visible.</li>
+  </ul>
+
+  <h4>Key Results: Top 15 Countries by Respondent Count</h4>
+  <table>
+    <tr><th>Rank</th><th>Country</th><th>Pattern</th></tr>
+    <tr><td>1</td><td>United States</td><td>Largest single respondent block by a significant margin</td></tr>
+    <tr><td>2–3</td><td>India, Germany</td><td>Second tier, large but well below US volume</td></tr>
+    <tr><td>4–15</td><td>UK, Canada, France, Poland, Brazil…</td><td>Long tail of international representation</td></tr>
+  </table>
+
+  <div class="finding">
+    <strong>💡 Key Finding: Global Compensation Averages Are Pulled Upward by US Salaries</strong>
+    The United States contributes the largest respondent block in the survey and also reports the
+    highest median compensation by a substantial margin. Any global aggregate figure produced from
+    this dataset should be treated with that in mind. Country-level filtering is not optional for
+    meaningful international comparisons — it is required.
+  </div>
+
+  <h4>Adding Error Bars to a Bar Chart to Show Compensation Variability Alongside the Median</h4>
+  <p style="font-size:0.93em;color:#334155;margin:0.4em 0 0.6em;">A bar chart showing only median compensation by age group tells an incomplete story, because two groups can have the same median but very different spreads. I calculated both median and standard deviation in a single <code>.agg()</code> call, plotted the bars for median, then overlaid <code>plt.errorbar()</code> with <code>fmt='none'</code> so only the whiskers appear without a connecting line.</p>
+<pre><code><span class="cm"># Calculate median and std compensation by age group</span>
+comp_age = df_clean.<span class="fn">groupby</span>(<span class="st">'Age'</span>)[<span class="st">'ConvertedCompYearly'</span>].<span class="fn">agg</span>([<span class="st">'median'</span>, <span class="st">'std'</span>])
+comp_age = comp_age.<span class="fn">reindex</span>([a <span class="kw">for</span> a <span class="kw">in</span> age_order <span class="kw">if</span> a <span class="kw">in</span> comp_age.index])
+
+x = <span class="fn">range</span>(<span class="fn">len</span>(comp_age))
+plt.<span class="fn">bar</span>(x, comp_age[<span class="st">'median'</span>], color=<span class="st">'steelblue'</span>,
+        edgecolor=<span class="st">'black'</span>, label=<span class="st">'Median Compensation'</span>)
+plt.<span class="fn">errorbar</span>(x, comp_age[<span class="st">'median'</span>], yerr=comp_age[<span class="st">'std'</span>],
+             fmt=<span class="st">'none'</span>, color=<span class="st">'black'</span>, capsize=5, label=<span class="st">'Std Dev'</span>)
+plt.<span class="fn">xticks</span>(x, comp_age.index, rotation=20, ha=<span class="st">'right'</span>)
+plt.<span class="fn">legend</span>()
+plt.<span class="fn">tight_layout</span>()
+plt.<span class="fn">show</span>()</code></pre>
+
+  <div class="screenshot">📸 Screenshot: Eight charts, compensation histogram, Age box plot, scatter (age vs. comp), bubble (comp vs. satisfaction), horizontal bar (MainBranch), vertical bar (top 5 languages wanted), stacked bar (satisfaction by age), database popularity bar, grouped bar with error bars (comp by age), top 15 countries bar.</div>
+</div>
+
+<!-- ─── Module 4 Skills Box ─── -->
+<div class="skills-box">
+  <h4>✅ Skills Demonstrated: Module 4</h4>
+  <div class="skill-tags">
+    <span class="skill-tag">Matplotlib</span>
+    <span class="skill-tag">Pandas Plotting</span>
+    <span class="skill-tag">SQLite / SQL Queries</span>
+    <span class="skill-tag">Histograms</span>
+    <span class="skill-tag">Box Plots</span>
+    <span class="skill-tag">Scatter Plots</span>
+    <span class="skill-tag">Bubble Plots</span>
+    <span class="skill-tag">Pie Charts</span>
+    <span class="skill-tag">Stacked Bar Charts</span>
+    <span class="skill-tag">Line Charts</span>
+    <span class="skill-tag">Bar Charts</span>
+    <span class="skill-tag">IQR Outlier Removal</span>
+    <span class="skill-tag">Trend Line Fitting (NumPy polyfit)</span>
+    <span class="skill-tag">Multi-value Field Exploding</span>
+    <span class="skill-tag">Data Aggregation (groupby / agg)</span>
+    <span class="skill-tag">Categorical-to-Numeric Mapping</span>
+    <span class="skill-tag">Color Mapping (plt.cm)</span>
+    <span class="skill-tag">Storytelling with Visuals</span>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══════════════════════════════════════════════════════════ MODULE 5 -->
+<div class="module-header">
+  <span class="module-badge">MODULE 5</span>
+  <h2>Dashboards</h2>
+</div>
+
+<p class="module-overview">
+  Module 5 moves from static Python charts to a fully interactive, three-tab dashboard built in
+  <strong>Google Looker Studio</strong>. The course originally specified IBM Cognos Analytics, but the lab
+  was completed in Looker Studio using the same dataset and chart specifications. The finished dashboard
+  covers current technology usage, future technology trends, and developer demographics across 12 panels,
+  each connected directly to the Stack Overflow survey data. One substitution was necessary: a
+  <strong>Treemap</strong> replaced the specified Word Cloud on Tab 1 because Community Visualizations
+  were unavailable in this Looker Studio account.
+</p>
+
+<!-- ─── Lab 25 ─── -->
+<div class="lab">
+  <h3>Lab 25: Building a Dashboard with Google Looker Studio</h3>
+  <h4>What I Did</h4>
+  <ul>
+    <li>Connected the Looker Studio report to the Stack Overflow survey dataset and organized it into three named tabs: <strong>Current Technology Usage</strong>, <strong>Future Technology Trends</strong>, and <strong>Demographics</strong>.</li>
+    <li><strong>Tab 1: Current Technology Usage</strong> presents four panels in a 2×2 grid: a stacked bar of the top 10 languages in use, a stacked column chart of the top 10 databases, a Treemap of platform usage (substituted for the unavailable Word Cloud), and a bubble scatter of the top 10 web frameworks.</li>
+    <li><strong>Tab 2: Future Technology Trends</strong> mirrors the Tab 1 layout using the corresponding "WantToWorkWith" columns, giving an immediate visual contrast between what developers use today and what they plan to use next year. All charts are limited to 10 entries.</li>
+    <li><strong>Tab 3: Demographics</strong> surfaces the respondent profile through four panels: an age breakdown pie chart, a world geographic map by country, a combo chart of education level distribution, and a stacked bar of age crossed with education level.</li>
+    <li>Applied null-value exclusion filters to every panel so that blank dimension entries do not distort the chart proportions.</li>
+    <li>Arranged all panels in consistent <strong>2×2 grid layouts</strong> per tab for visual balance and professional presentation-readiness.</li>
+    <li>Captured screenshots of each completed dashboard tab for submission and embedded them into the final capstone presentation.</li>
+  </ul>
+
+  <h4>Dashboard Structure: 12 Panels Across 3 Tabs</h4>
+  <table>
+    <tr><th>Tab</th><th>Panel</th><th>Chart Type</th><th>Dimension</th></tr>
+    <tr><td rowspan="4"><strong>Tab 1</strong><br>Current Usage</td><td>Top 10 Languages Used</td><td>Stacked Bar</td><td>LanguageHaveWorkedWith</td></tr>
+    <tr><td>Top 10 Databases Used</td><td>Stacked Column</td><td>DatabaseHaveWorkedWith</td></tr>
+    <tr><td>Top Platforms Used</td><td>Treemap ⚠️</td><td>PlatformHaveWorkedWith</td></tr>
+    <tr><td>Top 10 Web Frameworks Used</td><td>Scatter / Bubble</td><td>WebframeHaveWorkedWith</td></tr>
+    <tr><td rowspan="4"><strong>Tab 2</strong><br>Future Trends</td><td>Top 10 Languages Desired</td><td>Stacked Bar</td><td>LanguageWantToWorkWith</td></tr>
+    <tr><td>Top 10 Databases Desired</td><td>Stacked Column</td><td>DatabaseWantToWorkWith</td></tr>
+    <tr><td>Top 10 Desired Platforms</td><td>Treemap</td><td>PlatformWantToWorkWith</td></tr>
+    <tr><td>Top 10 Desired Web Frameworks</td><td>Scatter / Bubble</td><td>WebframeWantToWorkWith</td></tr>
+    <tr><td rowspan="4"><strong>Tab 3</strong><br>Demographics</td><td>Respondents by Age</td><td>Pie Chart</td><td>Age</td></tr>
+    <tr><td>Respondent Count by Country</td><td>Geo / Map Chart</td><td>Country</td></tr>
+    <tr><td>Distribution by Education Level</td><td>Combo (Bar + Line)</td><td>EdLevel</td></tr>
+    <tr><td>Count by Age × Education Level</td><td>Stacked Bar</td><td>Age + EdLevel</td></tr>
+  </table>
+  <p style="font-size:0.8em;color:#64748b;margin-top:-0.5em;">⚠️ Treemap substituted for Word Cloud, Community Visualizations unavailable in this Looker Studio account.</p>
+
+  <div class="finding">
+    <strong>💡 Key Finding: The Developer Workforce Skews Heavily Mid-Career</strong>
+    With 41.3% of respondents aged 25–34 and another 27.3% in the 35–44 bracket, nearly 69% of the
+    survey population falls within a single sixteen-year window. The geo map reinforces this: the
+    sample is heavily concentrated in the US and India. Any talent or technology strategy built on
+    this data should account for who is actually in it.
+  </div>
+
+  <div class="finding">
+    <strong>💡 Key Finding: Python's Appeal Crosses Generational Lines</strong>
+    Tab 2's desired languages chart shows Python appearing prominently across every age group surveyed,
+    not just among younger developers. That breadth of demand distinguishes it from other trending
+    languages and makes it the most strategically defensible skill to prioritize.
+  </div>
+
+  <h4>Key Configuration: Null Filter Applied to Every Panel</h4>
+<pre><code><span class="cm"># Looker Studio filter configuration (applied per chart)</span>
+<span class="cm"># Chart Properties → Filter tab → Add a Filter</span>
+
+Filter Name: <span class="st">Exclude Nulls</span>
+Condition:   <span class="st">Exclude</span>
+Field:       [Dimension field e.g. LanguageHaveWorkedWith]
+Operator:    <span class="st">Is Null</span>
+
+<span class="cm"># Applied to all 12 panels across 3 tabs to ensure</span>
+<span class="cm"># blank/null entries do not distort chart proportions</span></code></pre>
+
+  <div class="screenshot">📸 Screenshot: Three full-tab dashboard screenshots, Tab 1 (Current Technology Usage: language stacked bar, database column, platform treemap, framework bubble), Tab 2 (Future Trends: desired language bar, database column, platform treemap, framework bubble), Tab 3 (Demographics: age pie chart, country geo map, education combo chart, age × education stacked bar).</div>
+</div>
+
+<!-- ─── Module 5 Skills Box ─── -->
+<div class="skills-box">
+  <h4>✅ Skills Demonstrated: Module 5</h4>
+  <div class="skill-tags">
+    <span class="skill-tag">Google Looker Studio</span>
+    <span class="skill-tag">Interactive Dashboard Design</span>
+    <span class="skill-tag">Stacked Bar Charts</span>
+    <span class="skill-tag">Treemap Visualizations</span>
+    <span class="skill-tag">Scatter / Bubble Charts</span>
+    <span class="skill-tag">Pie Charts</span>
+    <span class="skill-tag">Geographic Map Charts</span>
+    <span class="skill-tag">Combo Charts</span>
+    <span class="skill-tag">Null Filter Configuration</span>
+    <span class="skill-tag">Multi-Tab Dashboard Layout</span>
+    <span class="skill-tag">Dimension / Metric Configuration</span>
+    <span class="skill-tag">Data Storytelling</span>
+    <span class="skill-tag">Dashboard-to-Presentation Integration</span>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══════════════════════════════════════════════════════════ MODULE 6 -->
+<div class="module-header">
+  <span class="module-badge">MODULE 6</span>
+  <h2>Presentation</h2>
+</div>
+
+<p class="module-overview">
+  Module 6 is where everything comes together. Every insight from the preceding five modules is synthesized into a single cohesive presentation built in <strong>PowerPoint</strong> and exported to PDF. The 17-section deck is structured as an executive report, moving from summary through methodology, results, dashboard, discussion, and conclusion. The design follows a consistent navy and teal theme throughout, with one idea per slide, quantitative evidence behind every claim, and findings explicitly paired with implications so the audience knows what to do with the data. The final PDF was submitted for AI grading and peer review.
+</p>
+
+<!-- ─── Lab (Module 6) ─── -->
+<div class="lab">
+  <h3>Final Presentation: Stack Overflow Developer Survey 2024</h3>
+  <h4>What I Did</h4>
+  <ul>
+    <li>Designed a 17-section presentation in PowerPoint with a consistent dark navy and teal color scheme, numbered section cards, and subtitle captions that orient the audience before each slide's content begins.</li>
+    <li>Opened with an Outline slide mapping all 17 sections in a two-column numbered card layout, followed by an Executive Summary presenting four quadrant panels (Programming Languages, Database Technologies, Job Market Demand, Developer Demographics), each with three evidence-backed bullets.</li>
+    <li>Built an Introduction slide leading with four prominent stat cards: 65,000+ survey respondents, 180+ countries represented, 27,005 job records analyzed, and 3 dashboard tabs built.</li>
+    <li>Documented the full methodology across four numbered panels covering data sources, collection methods, wrangling decisions, and the analysis and visualization approach.</li>
+    <li>Presented Programming Language Trends as side-by-side horizontal bar charts comparing current usage against desired next year for the top 10 languages, with exact percentage labels, followed by a two-panel Findings and Implications slide drawing five analytical conclusions and five actionable recommendations.</li>
+    <li>Repeated the same Results then Findings and Implications structure for Database Trends, then produced a Job Postings slide with a horizontal bar chart of 12 technologies ordered by descending count (C at 25,114 down to PostgreSQL at 86).</li>
+    <li>Devoted three slides to the dashboard: an overview naming all three tabs, then one full-screenshot slide per tab with annotation.</li>
+    <li>Synthesized a Discussion slide across five cross-cutting themes: Technology Convergence, Job Market Alignment, Cloud Platform Dominance, Demographic Concentration, and the rise of NoSQL and in-memory databases.</li>
+    <li>Closed with an Overall Findings and Implications slide (five findings, five broader implications) and a four-card Conclusion slide, then included an Appendix table mapping every lab to its description for full traceability.</li>
+    <li>Exported the completed deck to PDF and submitted for AI grading and peer review.</li>
+  </ul>
+
+  <h4>Presentation Structure: 17 Sections</h4>
+  <table>
+    <tr><th>#</th><th>Section</th><th>Format / Key Content</th></tr>
+    <tr><td>01</td><td>Executive Summary</td><td>4-quadrant panel: Languages, Databases, Job Market, Demographics</td></tr>
+    <tr><td>02</td><td>Introduction</td><td>Purpose, audience, value, scope + 4 stat cards (65K+, 180+, 27,005, 3)</td></tr>
+    <tr><td>03</td><td>Methodology</td><td>4 numbered panels: Data Sources, Collection, Wrangling, Analysis</td></tr>
+    <tr><td>04</td><td>Results, Programming Language Trends</td><td>Side-by-side bar charts: current (top 10) vs. desired (top 10) with % labels</td></tr>
+    <tr><td>05</td><td>Prog. Lang. Findings & Implications</td><td>5 findings + 5 implications (two-panel layout)</td></tr>
+    <tr><td>06</td><td>Results, Database Trends</td><td>Side-by-side bar charts: current (top 10) vs. desired (top 10)</td></tr>
+    <tr><td>07</td><td>Database Findings & Implications</td><td>5 findings + 5 implications (two-panel layout)</td></tr>
+    <tr><td>08</td><td>Results, Job Postings</td><td>Horizontal bar: 12 technologies by job count (C: 25,114 → PostgreSQL: 86)</td></tr>
+    <tr><td>09</td><td>Dashboard Overview</td><td>Intro card listing 3 tab names</td></tr>
+    <tr><td>10–12</td><td>Dashboard Tabs 1, 2, 3</td><td>Full-page screenshots of each Looker Studio tab</td></tr>
+    <tr><td>13</td><td>Dashboard Insights</td><td>3 labelled panels, 4 bullet observations per tab</td></tr>
+    <tr><td>14</td><td>Discussion</td><td>5 thematic insight boxes (Technology Convergence, Job Market, Cloud, Demographics, NoSQL)</td></tr>
+    <tr><td>15</td><td>Overall Findings & Implications</td><td>5 overall findings + 5 broader implications (two-panel)</td></tr>
+    <tr><td>16</td><td>Conclusion</td><td>4 numbered takeaway cards</td></tr>
+    <tr><td>17</td><td>Appendix</td><td>Lab traceability table (Labs 2–26 with descriptions)</td></tr>
+  </table>
+
+  <h4>Key Results: Programming Language Trends (Slide 04)</h4>
+  <table>
+    <tr><th>Language</th><th>Current Usage (%)</th><th>Desired Next Year (%)</th><th>Direction</th></tr>
+    <tr><td>JavaScript</td><td>62%</td><td>39%</td><td>↓ Declining desire relative to use</td></tr>
+    <tr><td>Python</td><td>51%</td><td>57%</td><td>↑ Most desired, #1 next year</td></tr>
+    <tr><td>TypeScript</td><td>39%</td><td>44%</td><td>↑ Strong growth in demand</td></tr>
+    <tr><td>Rust</td><td>N/A</td><td>29%</td><td>↑ Emerging, not in current top 10</td></tr>
+    <tr><td>PHP</td><td>18%</td><td>N/A</td><td>↓ Declining, absent from desired top 10</td></tr>
+  </table>
+
+  <h4>Key Results: Job Postings by Technology (Slide 08)</h4>
+  <table>
+    <tr><th>Rank</th><th>Technology</th><th>Job Postings</th></tr>
+    <tr><td>1</td><td>C</td><td>25,114</td></tr>
+    <tr><td>2</td><td>Java</td><td>3,428</td></tr>
+    <tr><td>3</td><td>JavaScript</td><td>2,248</td></tr>
+    <tr><td>4</td><td>Python</td><td>1,173</td></tr>
+    <tr><td>5</td><td>MySQL</td><td>952</td></tr>
+    <tr><td>…</td><td>PostgreSQL</td><td>86</td></tr>
+  </table>
+
+  <div class="finding">
+    <strong>💡 Key Finding: Python's Job Market Demand Is Growing Faster Than Postings Reflect</strong>
+    C dominates the job posting count at 25,114, nearly seven times Java's 3,428. Python ranks fourth
+    at 1,173 postings, yet sits at the top of the desired languages chart among developers. That
+    divergence is a leading indicator: job seekers and hiring managers who prioritize Python now are
+    positioning ahead of where demand is visibly headed.
+  </div>
+
+  <div class="finding">
+    <strong>💡 Key Finding: The Same Four Technologies Surface Across Every Data Source</strong>
+    Survey responses, dashboard visualizations, and job posting counts all point toward the same
+    conclusion. Python, JavaScript/TypeScript, PostgreSQL, and AWS appear at or near the top of
+    every relevant chart. When multiple independent data sources agree, the signal is worth trusting.
+  </div>
+
+  <h4>Key Narrative: Conclusion (Slide 16)</h4>
+<pre><code><span class="cm">01  Technology Landscape is Evolving Rapidly</span>
+    Python and TypeScript are displacing older paradigms.
+    PostgreSQL consolidates as the relational database of choice.
+    AWS leads cloud adoption across all developer segments.
+
+<span class="cm">02  Job Market Reflects Survey Trends</span>
+    C, Java, JavaScript dominate raw hiring volume.
+    Python signals outsized and growing data-focused presence.
+
+<span class="cm">03  Demographics Inform Talent Strategy</span>
+    68.6% of developers are aged 25-44.
+    US and India represent the largest respondent bases.
+    Bachelor's degree is the dominant credential.
+
+<span class="cm">04  Data-Driven Insights Enable Real-World Decisions</span>
+    Rigorous collection → wrangling → visualization → dashboard
+    → presentation transforms survey data into actionable intelligence.</code></pre>
+
+  <div class="screenshot">📸 Screenshot: 17-slide PDF presentation, title slide, outline, executive summary (4-quadrant), introduction (4 stat cards), methodology (4-panel numbered), language trends (side-by-side bar charts), findings & implications (two-panel), database trends and findings, job postings bar chart, dashboard tab screenshots (×3), dashboard insights, discussion, overall findings, conclusion, and appendix table.</div>
+</div>
+
+<!-- ─── Module 6 Skills Box ─── -->
+<div class="skills-box">
+  <h4>✅ Skills Demonstrated: Module 6</h4>
+  <div class="skill-tags">
+    <span class="skill-tag">PowerPoint / Presentation Design</span>
+    <span class="skill-tag">PDF Export</span>
+    <span class="skill-tag">Data Storytelling</span>
+    <span class="skill-tag">Executive Summary Writing</span>
+    <span class="skill-tag">Findings & Implications Framing</span>
+    <span class="skill-tag">Slide Structure & Information Hierarchy</span>
+    <span class="skill-tag">Chart-to-Slide Integration</span>
+    <span class="skill-tag">Dashboard Screenshot Documentation</span>
+    <span class="skill-tag">Audience-Aware Communication</span>
+    <span class="skill-tag">Cross-Module Synthesis</span>
+    <span class="skill-tag">Quantitative Evidence Presentation</span>
+    <span class="skill-tag">Professional Visual Design</span>
+    <span class="skill-tag">Lab Traceability Documentation</span>
+  </div>
+</div>
+
+</div><!-- /container -->
+</body>
+</html>
