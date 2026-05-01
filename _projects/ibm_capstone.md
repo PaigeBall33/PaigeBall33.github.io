@@ -76,44 +76,61 @@ const modules = [
 let selectedMod = null;
 
 function renderModules() {
-  const grid = document.getElementById('modGrid');
+  var grid = document.getElementById('modGrid');
   if (!grid) return;
-  grid.innerHTML = modules.map(function(m, i) {
-    var tagsHtml = m.tags.map(function(t){ return '<span class="tag">' + t + '</span>'; }).join('');
-    return '<div class="mod-card ' + (selectedMod === i ? 'selected' : '') + '" onclick="selectModule(' + i + ')">' +
-      '<div class="mod-num">' + m.num + '</div>' +
-      '<div class="mod-icon">' + m.icon + '</div>' +
-      '<div class="mod-title">' + m.title + '</div>' +
+  var html = '';
+  for (var idx = 0; idx < modules.length; idx++) {
+    var mod = modules[idx];
+    var tagsHtml = '';
+    for (var j = 0; j < mod.tags.length; j++) {
+      tagsHtml += '<span class="tag">' + mod.tags[j] + '</span>';
+    }
+    var selectedClass = (selectedMod === idx) ? 'selected' : '';
+    html += '<div class="mod-card ' + selectedClass + '" data-idx="' + idx + '">' +
+      '<div class="mod-num">' + mod.num + '</div>' +
+      '<div class="mod-icon">' + mod.icon + '</div>' +
+      '<div class="mod-title">' + mod.title + '</div>' +
       '<div class="tags">' + tagsHtml + '</div>' +
     '</div>';
-  }).join('');
+  }
+  grid.innerHTML = html;
 }
 
-function selectModule(i) {
-  selectedMod = selectedMod === i ? null : i;
+function selectModule(idx) {
+  selectedMod = (selectedMod === idx) ? null : idx;
   renderModules();
-  const panel = document.getElementById('detailPanel');
+  var panel = document.getElementById('detailPanel');
   if (selectedMod === null) { panel.style.display = 'none'; return; }
-  const m = modules[i];
+  var mod = modules[idx];
+  var skillsHtml = '';
+  for (var s = 0; s < mod.skills.length; s++) { skillsHtml += '<li>' + mod.skills[s] + '</li>'; }
+  var toolsHtml = '';
+  for (var t = 0; t < mod.tools.length; t++) { toolsHtml += '<li>' + mod.tools[t] + '</li>'; }
+  var previewHtml = mod.preview ? '<img src="' + mod.preview + '" alt="' + mod.title + ' preview" style="width:100%;border-radius:8px;border:1px solid #e2e8f0;margin-bottom:1rem;display:block;">' : '';
   panel.style.display = 'block';
-  const skillsHtml = m.skills.map(function(s){ return '<li>' + s + '</li>'; }).join('');
-  const toolsHtml  = m.tools.map(function(t){ return '<li>' + t + '</li>'; }).join('');
-  const previewHtml = m.preview ? '<img src="' + m.preview + '" alt="' + m.title + ' preview" style="width:100%;border-radius:8px;border:1px solid #e2e8f0;margin-bottom:1rem;display:block;">' : '';
   panel.innerHTML =
     '<div class="detail-header">' +
-      '<div class="detail-avatar" style="background:' + m.color + ';">' + m.icon + '</div>' +
-      '<div><div class="detail-title">' + m.num + ': ' + m.title + '</div><div class="detail-sub">' + m.tools.join(' · ') + '</div></div>' +
+      '<div class="detail-avatar" style="background:' + mod.color + ';">' + mod.icon + '</div>' +
+      '<div><div class="detail-title">' + mod.num + ': ' + mod.title + '</div>' +
+      '<div class="detail-sub">' + mod.tools.join(' · ') + '</div></div>' +
     '</div>' +
-    '<div class="detail-body">' + m.desc + '</div>' +
+    '<div class="detail-body">' + mod.desc + '</div>' +
     previewHtml +
     '<div class="detail-cols">' +
       '<div class="detail-col"><h4>Skills demonstrated</h4><ul>' + skillsHtml + '</ul></div>' +
       '<div class="detail-col"><h4>Tools used</h4><ul>' + toolsHtml + '</ul></div>' +
     '</div>' +
-    '<div class="artifact-hint"><strong>Portfolio artifacts:</strong> ' + m.artifacts + '</div>' +
-    '<a class="detail-link" href="' + m.link + '">View full module →</a>';
+    '<div class="artifact-hint"><strong>Portfolio artifacts:</strong> ' + mod.artifacts + '</div>' +
+    '<a class="detail-link" href="' + mod.link + '">View full module →</a>';
   panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
-document.addEventListener('DOMContentLoaded', function() { renderModules(); });
+document.addEventListener('DOMContentLoaded', function() {
+  renderModules();
+  document.getElementById('modGrid').addEventListener('click', function(ev) {
+    var card = ev.target.closest('.mod-card');
+    if (!card) return;
+    selectModule(parseInt(card.getAttribute('data-idx'), 10));
+  });
+});
 </script>
