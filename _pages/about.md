@@ -7,7 +7,7 @@ nav: false
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: selfieapr2026.jpeg
   image_circular: false # crops the image to make it circular
   more_info: >
     <p>Calgary, AB</p>
@@ -28,23 +28,21 @@ latest_posts:
 
 /* ────────────────────────────────────────────────────────
    1. HERO SECTION
-   The profile photo (from frontmatter, profile.align: right) floats right
-   and sits beside this text, giving the photo-on-right layout automatically.
    ──────────────────────────────────────────────────────── */
 .ab-hero { padding: 1.5rem 0 0; }
 
 .ab-uvp {
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 800;
-  color: #1e293b;
+  color: #1C1812;
   line-height: 1.2;
   margin: 0 0 1rem;
 }
-.ab-uvp span { color: #2563eb; }
+.ab-uvp span { color: #2D4A3E; }
 
 .ab-sub {
   font-size: 1.02rem;
-  color: #475569;
+  color: #9C8B7A;
   line-height: 1.7;
   max-width: 500px;
   margin: 0 0 1.75rem;
@@ -61,10 +59,10 @@ latest_posts:
   text-decoration: none;
   transition: all 0.18s;
 }
-.ab-btn-primary  { background: #2563eb; color: #fff; border: 2px solid #2563eb; }
-.ab-btn-primary:hover  { background: #1d4ed8; border-color: #1d4ed8; color: #fff; text-decoration: none; }
-.ab-btn-secondary { background: transparent; color: #2563eb; border: 2px solid #2563eb; }
-.ab-btn-secondary:hover { background: #eff6ff; color: #1d4ed8; text-decoration: none; }
+.ab-btn-primary  { background: #2D4A3E; color: #F5EFE6; border: 2px solid #2D4A3E; }
+.ab-btn-primary:hover  { background: #243d34; border-color: #243d34; color: #F5EFE6; text-decoration: none; }
+.ab-btn-secondary { background: transparent; color: #2D4A3E; border: 2px solid #2D4A3E; }
+.ab-btn-secondary:hover { background: rgba(45,74,62,0.08); color: #2D4A3E; text-decoration: none; }
 
 /* ────────────────────────────────────────────────────────
    2. SKILLS STRIP
@@ -76,8 +74,8 @@ latest_posts:
   margin: 3rem 0;
 }
 .ab-strip-card {
-  background: #fff;
-  border: 1.5px solid #e2e8f0;
+  background: #FAF4EB;
+  border: 1.5px solid rgba(156,139,122,0.25);
   border-radius: 12px;
   padding: 1.1rem 1.25rem;
   text-align: center;
@@ -85,7 +83,7 @@ latest_posts:
 .ab-strip-card .strip-label {
   font-size: 0.68rem;
   font-weight: 700;
-  color: #94a3b8;
+  color: #9C8B7A;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-bottom: 0.35rem;
@@ -93,13 +91,12 @@ latest_posts:
 .ab-strip-card .strip-value {
   font-size: 0.92rem;
   font-weight: 700;
-  color: #1e293b;
+  color: #1C1812;
   line-height: 1.3;
 }
 
 /* ────────────────────────────────────────────────────────
    3. ABOUT SECTION
-   Photo left, text right.
    ──────────────────────────────────────────────────────── */
 .ab-about {
   display: grid;
@@ -117,7 +114,7 @@ latest_posts:
 .ab-small-label {
   font-size: 0.7rem;
   font-weight: 700;
-  color: #2563eb;
+  color: #2D4A3E;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-bottom: 0.5rem;
@@ -125,20 +122,20 @@ latest_posts:
 .ab-about-text h2 {
   font-size: 1.45rem;
   font-weight: 800;
-  color: #1e293b;
+  color: #1C1812;
   margin: 0 0 0.9rem;
   line-height: 1.25;
 }
 .ab-about-text p {
   font-size: 0.93rem;
-  color: #334155;
+  color: #9C8B7A;
   line-height: 1.7;
   margin: 0 0 0.85rem;
 }
 .ab-tool-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
 .ab-tool-tag {
-  background: #eff6ff;
-  color: #1d4ed8;
+  background: rgba(45,74,62,0.1);
+  color: #2D4A3E;
   border-radius: 20px;
   padding: 0.22rem 0.75rem;
   font-size: 0.76rem;
@@ -153,7 +150,7 @@ latest_posts:
 .ab-h2 {
   font-size: 1.45rem;
   font-weight: 800;
-  color: #1e293b;
+  color: #1C1812;
   margin: 0 0 1.4rem;
 }
 
@@ -163,28 +160,28 @@ latest_posts:
   gap: 1rem;
 }
 .ab-skill-card {
-  background: #fff;
-  border: 1.5px solid #e2e8f0;
+  background: #FAF4EB;
+  border: 1.5px solid rgba(156,139,122,0.25);
   border-radius: 12px;
   padding: 1.4rem 1.25rem;
   transition: all 0.18s;
 }
 .ab-skill-card:hover {
-  border-color: #2563eb;
-  box-shadow: 0 4px 14px rgba(37,99,235,0.12);
+  border-color: #2D4A3E;
+  box-shadow: 0 4px 14px rgba(45,74,62,0.12);
   transform: translateY(-2px);
 }
 .ab-skill-icon { font-size: 1.8rem; margin-bottom: 0.6rem; }
-.ab-skill-title { font-size: 1rem; font-weight: 700; color: #1e293b; margin: 0 0 0.45rem; }
-.ab-skill-desc  { font-size: 0.86rem; color: #475569; line-height: 1.55; margin: 0; }
+.ab-skill-title { font-size: 1rem; font-weight: 700; color: #1C1812; margin: 0 0 0.45rem; }
+.ab-skill-desc  { font-size: 0.86rem; color: #9C8B7A; line-height: 1.55; margin: 0; }
 
 /* ────────────────────────────────────────────────────────
    5. PROJECTS SECTION
    ──────────────────────────────────────────────────────── */
 .ab-projects { margin: 3.5rem 0; }
 .ab-project-card {
-  background: #fff;
-  border: 1.5px solid #e2e8f0;
+  background: #FAF4EB;
+  border: 1.5px solid rgba(156,139,122,0.25);
   border-radius: 12px;
   padding: 1.75rem;
   display: flex;
@@ -194,70 +191,70 @@ latest_posts:
   transition: all 0.18s;
 }
 .ab-project-card:hover {
-  border-color: #2563eb;
-  box-shadow: 0 4px 18px rgba(37,99,235,0.12);
+  border-color: #2D4A3E;
+  box-shadow: 0 4px 18px rgba(45,74,62,0.12);
 }
 .proj-label {
   font-size: 0.7rem;
   font-weight: 700;
-  color: #2563eb;
+  color: #2D4A3E;
   text-transform: uppercase;
   letter-spacing: 0.07em;
   margin-bottom: 0.4rem;
 }
-.proj-title { font-size: 1.12rem; font-weight: 800; color: #1e293b; margin: 0 0 0.5rem; }
-.proj-desc  { font-size: 0.9rem; color: #475569; line-height: 1.6; margin: 0; }
+.proj-title { font-size: 1.12rem; font-weight: 800; color: #1C1812; margin: 0 0 0.5rem; }
+.proj-desc  { font-size: 0.9rem; color: #9C8B7A; line-height: 1.6; margin: 0; }
 
 /* ────────────────────────────────────────────────────────
-   6. TESTIMONIALS SECTION
+   6. TESTIMONIALS SECTION (hidden until quotes are ready)
    ──────────────────────────────────────────────────────── */
-.ab-testimonials { margin: 3.5rem 0; }
+.ab-testimonials { display: none; }
 .ab-testimonials-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 .ab-testimonial-card {
-  background: #fff;
-  border: 1.5px solid #e2e8f0;
+  background: #FAF4EB;
+  border: 1.5px solid rgba(156,139,122,0.25);
   border-radius: 12px;
   padding: 1.4rem;
 }
 .ab-avatar {
   width: 52px; height: 52px;
   border-radius: 50%;
-  background: #e2e8f0;
+  background: rgba(156,139,122,0.25);
   margin-bottom: 0.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.35rem;
 }
-.ab-t-name { font-size: 0.95rem; font-weight: 700; color: #1e293b; margin: 0 0 0.15rem; }
-.ab-t-role { font-size: 0.76rem; color: #64748b; margin: 0 0 0.75rem; }
-.ab-t-quote { font-size: 0.86rem; color: #334155; line-height: 1.6; font-style: italic; margin: 0; }
+.ab-t-name { font-size: 0.95rem; font-weight: 700; color: #1C1812; margin: 0 0 0.15rem; }
+.ab-t-role { font-size: 0.76rem; color: #9C8B7A; margin: 0 0 0.75rem; }
+.ab-t-quote { font-size: 0.86rem; color: #9C8B7A; line-height: 1.6; font-style: italic; margin: 0; }
 
 /* ────────────────────────────────────────────────────────
    7. FINAL CTA SECTION
    ──────────────────────────────────────────────────────── */
 .ab-final-cta {
-  background: #1e293b;
+  background: #1C1812;
   border-radius: 16px;
   padding: 3rem 2rem;
   text-align: center;
   margin: 3.5rem 0 2.5rem;
 }
-.ab-final-cta h2 { font-size: 1.65rem; font-weight: 800; color: #f8fafc; margin: 0 0 0.7rem; }
-.ab-final-cta p  { font-size: 1rem; color: #94a3b8; line-height: 1.6; margin: 0 0 1.75rem; }
+.ab-final-cta h2 { font-size: 1.65rem; font-weight: 800; color: #F5EFE6; margin: 0 0 0.7rem; }
+.ab-final-cta p  { font-size: 1rem; color: #9C8B7A; line-height: 1.6; margin: 0 0 1.75rem; }
 .ab-final-cta .ab-ctas { justify-content: center; margin: 0; }
 .ab-final-cta .ab-btn-secondary {
-  color: #f8fafc;
-  border-color: rgba(248,250,252,0.5);
+  color: #F5EFE6;
+  border-color: rgba(245,239,230,0.5);
 }
 .ab-final-cta .ab-btn-secondary:hover {
-  background: rgba(248,250,252,0.1);
-  color: #f8fafc;
-  border-color: #f8fafc;
+  background: rgba(245,239,230,0.1);
+  color: #F5EFE6;
+  border-color: #F5EFE6;
 }
 
 /* ────────────────────────────────────────────────────────
@@ -315,7 +312,7 @@ latest_posts:
   </div>
   <div class="ab-strip-card">
     <div class="strip-label">Education</div>
-    <div class="strip-value">Bachelor of Management · Completing 2026</div>
+    <div class="strip-value">Bachelor of Business Management · Completing 2026</div>
   </div>
   <div class="ab-strip-card">
     <div class="strip-label">Location</div>
@@ -325,36 +322,119 @@ latest_posts:
 
 <!-- ══════════════════════════════════════════════════════
      3. ABOUT SECTION
-     Photo left, text right.
      ══════════════════════════════════════════════════════ -->
-<div class="ab-about">
-  <div class="ab-about-photo">
-    <img src="/assets/img/prof_pic.jpg" alt="Paige Ball">
+<style>
+.about-split {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 0;
+  align-items: center;
+  margin: 3rem 0 4rem;
+  min-height: 420px;
+}
+.about-split-image {
+  position: relative;
+}
+.about-split-image img {
+  width: 100%;
+  max-width: 420px;
+  height: 420px;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  border-radius: 4px;
+}
+.about-split-image-placeholder {
+  width: 100%;
+  max-width: 420px;
+  height: 420px;
+  background: #FAF4EB;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9C8B7A;
+  font-size: 0.85rem;
+}
+.about-split-content {
+  padding: 2rem 0 2rem 3.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.about-greeting {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1C1812;
+  margin-bottom: 0.6rem;
+}
+.about-headline {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 800;
+  color: #1C1812;
+  line-height: 1.3;
+  margin-bottom: 1.8rem;
+}
+.about-headline .accent-blue {
+  color: #2D4A3E;
+}
+.about-headline .accent-sky {
+  color: #7A9E87;
+}
+.about-headline .accent-italic {
+  font-style: italic;
+  font-weight: 700;
+  color: #1C1812;
+}
+.about-body {
+  font-size: 0.92rem;
+  color: #9C8B7A;
+  line-height: 1.8;
+  max-width: 480px;
+  border-top: 1px solid rgba(156,139,122,0.25);
+  padding-top: 1.4rem;
+}
+@media (max-width: 768px) {
+  .about-split {
+    grid-template-columns: 1fr;
+    min-height: unset;
+  }
+  .about-split-image img,
+  .about-split-image-placeholder {
+    height: 320px;
+    max-width: 100%;
+  }
+  .about-split-content {
+    padding: 2rem 0 0;
+  }
+}
+</style>
+
+<div class="about-split">
+  <div class="about-split-image">
+    <img src="/assets/img/bridgephoto.jpeg" alt="Paige Ball">
   </div>
-  <div class="ab-about-text">
-    <div class="ab-small-label">About Me</div>
-    <h2>Data analyst. Ranch hand.<br>Lifelong problem solver.</h2>
-    <!-- Add your first bio paragraph here -->
-    <p>
-      I grew up on a mixed grain and cattle farm in rural Saskatchewan — a place where
-      every system is connected and every decision has a downstream consequence. That
-      way of thinking shaped how I approach data: follow the chain, find the leverage
-      point, communicate the finding clearly.
-    </p>
-    <!-- Add a second paragraph here, or delete if not needed -->
-    <p>
-      I currently work at a grass-fed beef ranch while finishing my Bachelor of Management
-      and building a career in data analytics. I completed eleven IBM Professional Certificate
-      courses, applying Python, SQL, Excel, and Tableau to real business problems along the way.
-    </p>
-    <div class="ab-tool-tags">
-      <span class="ab-tool-tag">Python</span>
-      <span class="ab-tool-tag">SQL</span>
-      <span class="ab-tool-tag">Tableau</span>
-      <span class="ab-tool-tag">Excel</span>
+  <div class="about-split-content">
+    <div class="about-greeting">Hello there!</div>
+    <div class="about-headline">
+      My name is Paige and I <span class="accent-blue">analyze</span> and
+      <span class="accent-sky">visualize</span>
+      <span class="accent-italic">(and wrangle a few cattle).</span>
+    </div>
+    <div class="about-body">
+      <!-- Replace this paragraph with your actual bio text -->
+      I grew up on a mixed grain and cattle farm in rural Saskatchewan and
+      currently work at a grass-fed beef cattle ranch outside Calgary. Agriculture
+      taught me that every system is connected and every decision has a downstream
+      consequence — a mindset that followed me into data analytics. I completed
+      the IBM Data Analytics Professional Certificate across eleven courses while
+      working and am finishing my Bachelor of Business Management degree in
+      Summer 2026. I work best where the analysis has real stakes and the findings
+      actually drive decisions.
     </div>
   </div>
 </div>
+
 
 <!-- ══════════════════════════════════════════════════════
      4. KEY SKILLS SECTION

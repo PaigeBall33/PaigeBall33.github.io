@@ -3,6 +3,55 @@
  * To adjust anything, simply edit the variables below and rebuild the theme.
  ******************************************************************************/
 
+// ============================================================
+// SITE COLOR PALETTE — Warm Editorial Theme
+// ============================================================
+//
+// LIGHT MODE
+// --global-bg-color:              #F5EFE6  — Warm cream (page background)
+// --global-card-bg-color:         #FAF4EB  — Parchment (card backgrounds)
+// navbar background:              #E8D5C4  — Dusty blush (navbar)
+// --global-text-color:            #1C1812  — Dark espresso (headings, body text)
+// --global-text-color-light:      #9C8B7A  — Warm taupe (muted text, borders)
+// --global-theme-color:           #2D4A3E  — Forest green (links, accents, hover)
+// --global-hover-color:           #2D4A3E  — Forest green (hover states)
+// --global-hover-text-color:      #F5EFE6  — Warm cream (text on green)
+// --global-footer-bg-color:       #1C1812  — Dark espresso (footer background)
+// --global-footer-text-color:     #9C8B7A  — Warm taupe (footer text)
+// --global-footer-link-color:     #F5EFE6  — Warm cream (footer links)
+// --global-divider-color:         rgba(156, 139, 122, 0.25) — Taupe dividers
+//
+// DARK MODE
+// --global-bg-color:              #1C1812  — Dark espresso (page background)
+// --global-card-bg-color:         #2A2118  — Rich brown (card backgrounds)
+// --global-footer-bg-color:       #141008  — Deep espresso (footer background)
+// --global-text-color:            #F5EFE6  — Warm cream (body text)
+// --global-text-color-light:      #9C8B7A  — Warm taupe (muted text)
+// --global-theme-color:           #7A9E87  — Sage (links, accents, hover)
+// --global-hover-color:           #7A9E87  — Sage (hover states)
+// --global-hover-text-color:      #1C1812  — Dark espresso (text on sage)
+// --global-divider-color:         rgba(156, 139, 122, 0.20) — Taupe dividers
+//
+// USAGE RULES
+// — Never use hardcoded hex values in SCSS files other than _themes.scss
+// — Always reference --global-* CSS variables in component files
+// — Forest green (#2D4A3E) is the primary accent in light mode
+// — Sage (#7A9E87) is the primary accent in dark mode
+// — Warm taupe (#9C8B7A) is always the muted/secondary text color
+// — Dark espresso (#1C1812) is always the darkest surface or text
+// — Warm cream (#F5EFE6) is always the lightest surface or text
+// ============================================================
+
+$warm-cream:      #F5EFE6;
+$parchment:       #FAF4EB;
+$dusty-blush:     #E8D5C4;
+$dark-espresso:   #1C1812;
+$deep-espresso:   #141008;
+$rich-brown:      #2A2118;
+$warm-taupe:      #9C8B7A;
+$forest-green:    #2D4A3E;
+$sage:            #7A9E87;
+
 @use "sass:color";
 
 // Colors

@@ -17,33 +17,33 @@
 
 $light-tokens: (
   // -- Surfaces --
-  bg:                 #F8FAFC,
-  card-bg:            #FFFFFF,
-  newsletter-bg:      #FFFFFF,
+  bg:                 #F5EFE6,
+  card-bg:            #FAF4EB,
+  newsletter-bg:      #FAF4EB,
 
-  // -- Text (all verified on bg #F8FAFC) --
-  text:               #1E293B,  // 15.55:1
-  text-light:         #475569,  //  6.39:1  ← Slate-600; #64748B was 4.20:1, fails AA
-  newsletter-text:    #1E293B,
+  // -- Text (all verified on bg #F5EFE6) --
+  text:               #1C1812,
+  text-light:         #9C8B7A,
+  newsletter-text:    #1C1812,
 
-  // -- Brand / interactive (verified on bg #F8FAFC) --
-  theme:              #2563EB,  //  4.76:1
-  hover:              #1D4ED8,  //  5.84:1  ← Blue-700; #0EA5E9 was 2.52:1, fails AA
-  hover-text:         #F8FAFC,  //  5.84:1 on hover bg
-  highlight:          #2563EB,
+  // -- Brand / interactive --
+  theme:              #2D4A3E,
+  hover:              #2D4A3E,
+  hover-text:         #F5EFE6,
+  highlight:          #2D4A3E,
 
-  // -- Footer (verified on footer-bg #1E293B) --
-  footer-bg:          #1E293B,
-  footer-text:        #94A3B8,  //  5.24:1
-  footer-link:        #F8FAFC,  // 12.11:1
-  footer-hover:       #60A5FA,  //  5.21:1  ← dedicated token; theme-color gives 2.54:1 here, fails AA
+  // -- Footer --
+  footer-bg:          #1C1812,
+  footer-text:        #9C8B7A,
+  footer-link:        #F5EFE6,
+  footer-hover:       #60A5FA,
 
   // -- Utility --
   code-bg:            rgba(181, 9, 172, 0.05),  // v.$purple-color @ 5% opacity
-  divider:            rgba(30, 41, 59, 0.10),
+  divider:            rgba(156, 139, 122, 0.25),
   distill-app:        #828282,
-  back-to-top-bg:     rgba(30, 41, 59, 0.40),
-  back-to-top-text:   #F8FAFC,
+  back-to-top-bg:     rgba(28, 24, 18, 0.4),
+  back-to-top-text:   #F5EFE6,
 
   // -- Callout blocks (text verified on block bg) --
   tip:                #42b983,
@@ -62,33 +62,33 @@ $light-tokens: (
 
 $dark-tokens: (
   // -- Surfaces --
-  bg:                 #0F172A,  // Slate-900
-  card-bg:            #1E293B,  // Slate-800
-  newsletter-bg:      #1E293B,
+  bg:                 #1C1812,
+  card-bg:            #2A2118,
+  newsletter-bg:      #2A2118,
 
-  // -- Text (verified on bg #0F172A) --
-  text:               #F1F5F9,  // 16.48:1  Slate-100
-  text-light:         #94A3B8,  //  7.44:1  Slate-400
-  newsletter-text:    #F1F5F9,
+  // -- Text --
+  text:               #F5EFE6,
+  text-light:         #9C8B7A,
+  newsletter-text:    #F5EFE6,
 
-  // -- Brand / interactive (verified on bg #0F172A) --
-  theme:              #38BDF8,  //  8.74:1  Sky-400
-  hover:              #7DD3FC,  // 11.02:1  Sky-300
-  hover-text:         #0F172A,  // 11.02:1 on hover bg
-  highlight:          #38BDF8,
+  // -- Brand / interactive --
+  theme:              #7A9E87,
+  hover:              #7A9E87,
+  hover-text:         #1C1812,
+  highlight:          #7A9E87,
 
-  // -- Footer (verified on footer-bg #020617 / Slate-950) --
-  footer-bg:          #020617,
-  footer-text:        #94A3B8,  //  8.14:1
-  footer-link:        #F1F5F9,  // 20.37:1
-  footer-hover:       #38BDF8,  //  9.75:1 on footer-bg
+  // -- Footer --
+  footer-bg:          #141008,
+  footer-text:        #9C8B7A,
+  footer-link:        #F5EFE6,
+  footer-hover:       #7A9E87,
 
   // -- Utility --
   code-bg:            #2c3237,  // v.$code-bg-color-dark; text contrast 10.26:1
-  divider:            rgba(241, 245, 249, 0.10),
-  distill-app:        #94A3B8,
-  back-to-top-bg:     rgba(241, 245, 249, 0.15),
-  back-to-top-text:   #F1F5F9,
+  divider:            rgba(156, 139, 122, 0.2),
+  distill-app:        #9C8B7A,
+  back-to-top-bg:     rgba(245, 239, 230, 0.15),
+  back-to-top-text:   #F5EFE6,
 
   // -- Callout blocks --
   tip:                #4ade80,

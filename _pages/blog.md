@@ -10,7 +10,7 @@ pagination:
 
 <style>
 .blog-hero {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0f2a47 100%);
+  background: linear-gradient(135deg, #1C1812 0%, #1C1812 60%, #141008 100%);
   color: white;
   text-align: center;
   padding: 4rem 2rem;
@@ -23,7 +23,7 @@ pagination:
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, rgba(37,99,235,0.15) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(45,74,62,0.15) 0%, transparent 70%);
 }
 .blog-hero h1 {
   font-size: clamp(2.5rem, 6vw, 4rem);
@@ -39,7 +39,7 @@ pagination:
   font-size: 0.82rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #94a3b8;
+  color: #9C8B7A;
   margin: 0;
   position: relative;
 }
@@ -49,12 +49,12 @@ pagination:
   gap: 1.5rem;
   margin-bottom: 2.5rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid rgba(156,139,122,0.25);
   flex-wrap: wrap;
 }
 .blog-categories-label {
   font-style: italic;
-  color: #64748b;
+  color: #9C8B7A;
   font-size: 0.95rem;
   white-space: nowrap;
 }
@@ -63,24 +63,24 @@ pagination:
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #475569;
+  color: #9C8B7A;
   text-decoration: none;
   transition: color 0.15s;
 }
-.blog-cat-link:hover { color: #2563eb; text-decoration: none; }
+.blog-cat-link:hover { color: #2D4A3E; text-decoration: none; }
 .featured-post {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0;
-  background: white;
-  border: 1px solid #e2e8f0;
+  background: #FAF4EB;
+  border: 1px solid rgba(156,139,122,0.25);
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: 2.5rem;
   min-height: 380px;
 }
 .featured-post-image {
-  background: linear-gradient(135deg, #1e293b, #0f2a47);
+  background: linear-gradient(135deg, #1C1812, #141008);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -93,7 +93,7 @@ pagination:
   left: 1.2rem;
   width: 64px;
   height: 64px;
-  background: #1e293b;
+  background: #1C1812;
   color: white;
   border-radius: 50%;
   display: flex;
@@ -110,7 +110,7 @@ pagination:
   width: 100%;
   height: 100%;
   min-height: 320px;
-  background: linear-gradient(135deg, #1e293b 0%, #0f2a47 50%, #1e3a5f 100%);
+  background: linear-gradient(135deg, #1C1812 0%, #141008 50%, #2A2118 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -128,13 +128,13 @@ pagination:
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #2563eb;
+  color: #2D4A3E;
   margin-bottom: 0.75rem;
 }
 .featured-post-title {
   font-size: clamp(1.3rem, 2.5vw, 1.8rem);
   font-weight: 800;
-  color: #0f172a;
+  color: #1C1812;
   line-height: 1.25;
   margin-bottom: 1rem;
   text-transform: uppercase;
@@ -142,20 +142,20 @@ pagination:
 }
 .featured-post-excerpt {
   font-size: 0.9rem;
-  color: #475569;
+  color: #9C8B7A;
   line-height: 1.7;
   margin-bottom: 1.5rem;
   flex-grow: 1;
 }
 .featured-post-meta {
   font-size: 0.75rem;
-  color: #94a3b8;
+  color: #9C8B7A;
   margin-bottom: 1rem;
 }
 .btn-read {
   display: inline-block;
-  border: 1.5px solid #1e293b;
-  color: #1e293b;
+  border: 1.5px solid #1C1812;
+  color: #1C1812;
   padding: 0.5rem 1.2rem;
   font-size: 0.78rem;
   font-weight: 700;
@@ -166,7 +166,7 @@ pagination:
   transition: all 0.18s;
   align-self: flex-start;
 }
-.btn-read:hover { background: #1e293b; color: white; text-decoration: none; }
+.btn-read:hover { background: #1C1812; color: white; text-decoration: none; }
 .posts-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -174,8 +174,8 @@ pagination:
   margin-bottom: 2.5rem;
 }
 .post-card {
-  background: white;
-  border: 1px solid #e2e8f0;
+  background: #FAF4EB;
+  border: 1px solid rgba(156,139,122,0.25);
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.18s;
@@ -184,15 +184,15 @@ pagination:
   display: block;
 }
 .post-card:hover {
-  border-color: #2563eb;
-  box-shadow: 0 4px 16px rgba(37,99,235,0.12);
+  border-color: #2D4A3E;
+  box-shadow: 0 4px 16px rgba(45,74,62,0.12);
   transform: translateY(-3px);
   text-decoration: none;
   color: inherit;
 }
 .post-card-image {
   height: 180px;
-  background: linear-gradient(135deg, #1e293b, #0f2a47);
+  background: linear-gradient(135deg, #1C1812, #141008);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -216,13 +216,13 @@ pagination:
 .post-card-title {
   font-size: 0.95rem;
   font-weight: 700;
-  color: #0f172a;
+  color: #1C1812;
   line-height: 1.4;
   margin-bottom: 0.5rem;
 }
 .post-card-excerpt {
   font-size: 0.82rem;
-  color: #64748b;
+  color: #9C8B7A;
   line-height: 1.6;
   margin-bottom: 0.8rem;
   display: -webkit-box;
@@ -233,23 +233,23 @@ pagination:
 .post-card-read-more {
   font-size: 0.78rem;
   font-weight: 700;
-  color: #2563eb;
+  color: #2D4A3E;
   text-decoration: none;
   display: flex;
   align-items: center;
   gap: 0.3rem;
 }
-.post-card-read-more:hover { color: #1d4ed8; text-decoration: none; }
+.post-card-read-more:hover { color: #2D4A3E; text-decoration: none; }
 .no-posts {
   text-align: center;
   padding: 4rem 2rem;
-  color: #94a3b8;
-  background: white;
-  border: 1px dashed #e2e8f0;
+  color: #9C8B7A;
+  background: #FAF4EB;
+  border: 1px dashed rgba(156,139,122,0.25);
   border-radius: 12px;
   margin-bottom: 2.5rem;
 }
-.no-posts h3 { color: #64748b; margin-bottom: 0.5rem; }
+.no-posts h3 { color: #9C8B7A; margin-bottom: 0.5rem; }
 @media (max-width: 768px) {
   .featured-post { grid-template-columns: 1fr; }
   .posts-grid { grid-template-columns: 1fr; }

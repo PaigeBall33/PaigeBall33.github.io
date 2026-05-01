@@ -7,7 +7,7 @@ tags: [IBM, Python, SQL, capstone, data analytics]
 description: Six modules, 65,000 respondents, and more pandas errors than I care to admit. Here is what the capstone actually felt like from the inside.
 ---
 
-I finished the IBM Data Analytics Professional Certificate capstone while working full time on a cattle ranch in rural Alberta. That context matters, because the capstone is not a weekend project. It is eleven courses worth of skills applied to one real dataset — the Stack Overflow Developer Survey — across six modules that each build directly on the last.
+I finished the IBM Data Analytics Professional Certificate capstone while working on a cattle ranch in rural Alberta. That context matters, because the capstone is not a weekend project. It is eleven courses worth of skills applied to one real dataset — the Stack Overflow Developer Survey — across six modules that each build directly on the last.
 
 What follows is what I actually learned, which is not the same list as what the course says you will learn.
 
