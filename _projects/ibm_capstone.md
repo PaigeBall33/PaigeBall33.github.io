@@ -73,42 +73,46 @@ const modules = [
   { num: "Module 6", icon: "🏆", title: "Final Presentation", color: "#fef9c3", textColor: "#854d0e", tags: ["PowerPoint", "Storytelling", "Report"], tools: ["PowerPoint", "PDF Export"], desc: "Every insight from five modules synthesized into a 17-section executive presentation. One idea per slide, quantitative evidence behind every claim, findings paired with implications.", skills: ["Executive summary and findings framing", "Data storytelling and slide structure", "Chart-to-slide integration", "Cross-module synthesis", "Audience-aware communication"], artifacts: "17-slide PDF deck, language trend charts, job postings bar chart, dashboard tab screenshots", link: "/capstone/module6/" }
 ];
 
-let selected = null;
+let selectedMod = null;
 
-function render() {
-  document.getElementById('modGrid').innerHTML = modules.map((m, i) => `
-    <div class="mod-card ${selected === i ? 'selected' : ''}" onclick="select(${i})">
+function renderModules() {
+  const grid = document.getElementById('modGrid');
+  if (!grid) return;
+  grid.innerHTML = modules.map((m, i) => `
+    <div class="mod-card ${selectedMod === i ? 'selected' : ''}" onclick="selectModule(${i})">
       <div class="mod-num">${m.num}</div>
       <div class="mod-icon">${m.icon}</div>
       <div class="mod-title">${m.title}</div>
-      <div class="tags">${m.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+      <div class="tags">${m.tags.map(function(t){ return '<span class="tag">' + t + '</span>'; }).join('')}</div>
     </div>
   `).join('');
 }
 
-function select(i) {
-  selected = selected === i ? null : i;
-  render();
+function selectModule(i) {
+  selectedMod = selectedMod === i ? null : i;
+  renderModules();
   const panel = document.getElementById('detailPanel');
-  if (selected === null) { panel.style.display = 'none'; return; }
+  if (selectedMod === null) { panel.style.display = 'none'; return; }
   const m = modules[i];
   panel.style.display = 'block';
-  panel.innerHTML = `
-    <div class="detail-header">
-      <div class="detail-avatar" style="background:${m.color};">${m.icon}</div>
-      <div><div class="detail-title">${m.num}: ${m.title}</div><div class="detail-sub">${m.tools.join(' · ')}</div></div>
-    </div>
-    <div class="detail-body">${m.desc}</div>
-    ${m.preview ? `<img src="${m.preview}" alt="${m.title} preview" style="width:100%;border-radius:8px;border:1px solid #e2e8f0;margin-bottom:1rem;display:block;">` : ''}
-    <div class="detail-cols">
-      <div class="detail-col"><h4>Skills demonstrated</h4><ul>${m.skills.map(s => `<li>${s}</li>`).join('')}</ul></div>
-      <div class="detail-col"><h4>Tools used</h4><ul>${m.tools.map(t => `<li>${t}</li>`).join('')}</ul></div>
-    </div>
-    <div class="artifact-hint"><strong>Portfolio artifacts:</strong> ${m.artifacts}</div>
-    <a class="detail-link" href="${m.link}">View full module →</a>
-  `;
+  const skillsHtml = m.skills.map(function(s){ return '<li>' + s + '</li>'; }).join('');
+  const toolsHtml  = m.tools.map(function(t){ return '<li>' + t + '</li>'; }).join('');
+  const previewHtml = m.preview ? '<img src="' + m.preview + '" alt="' + m.title + ' preview" style="width:100%;border-radius:8px;border:1px solid #e2e8f0;margin-bottom:1rem;display:block;">' : '';
+  panel.innerHTML =
+    '<div class="detail-header">' +
+      '<div class="detail-avatar" style="background:' + m.color + ';">' + m.icon + '</div>' +
+      '<div><div class="detail-title">' + m.num + ': ' + m.title + '</div><div class="detail-sub">' + m.tools.join(' · ') + '</div></div>' +
+    '</div>' +
+    '<div class="detail-body">' + m.desc + '</div>' +
+    previewHtml +
+    '<div class="detail-cols">' +
+      '<div class="detail-col"><h4>Skills demonstrated</h4><ul>' + skillsHtml + '</ul></div>' +
+      '<div class="detail-col"><h4>Tools used</h4><ul>' + toolsHtml + '</ul></div>' +
+    '</div>' +
+    '<div class="artifact-hint"><strong>Portfolio artifacts:</strong> ' + m.artifacts + '</div>' +
+    '<a class="detail-link" href="' + m.link + '">View full module →</a>';
   panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
-render();
+document.addEventListener('DOMContentLoaded', function() { renderModules(); });
 </script>
