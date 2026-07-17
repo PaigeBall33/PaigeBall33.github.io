@@ -60,10 +60,8 @@ GEM
       csl (~> 2.0)
     css_parser (1.21.1)
       addressable
-    cssminify2 (2.1.0)
     csv (3.3.5)
     date (3.5.1)
-    deep_merge (1.2.2)
     drb (2.2.3)
     em-websocket (0.5.3)
       eventmachine (>= 0.12.9)
@@ -80,6 +78,7 @@ GEM
     ffi (1.17.3-arm-linux-gnu)
     ffi (1.17.3-arm-linux-musl)
     ffi (1.17.3-arm64-darwin)
+    ffi (1.17.3-x64-mingw-ucrt)
     ffi (1.17.3-x86_64-darwin)
     ffi (1.17.3-x86_64-linux-gnu)
     ffi (1.17.3-x86_64-linux-musl)
@@ -98,6 +97,9 @@ GEM
     google-protobuf (4.33.4-arm64-darwin)
       bigdecimal
       rake (>= 13)
+    google-protobuf (4.33.4-x64-mingw-ucrt)
+      bigdecimal
+      rake (>= 13)
     google-protobuf (4.33.4-x86_64-darwin)
       bigdecimal
       rake (>= 13)
@@ -110,7 +112,6 @@ GEM
     html-pipeline (2.14.3)
       activesupport (>= 2)
       nokogiri (>= 1.4)
-    htmlcompressor (0.4.0)
     http_parser.rb (0.8.1)
     httparty (0.24.2)
       csv
@@ -144,25 +145,13 @@ GEM
     jekyll-archives-v2 (0.0.7)
       activesupport
       jekyll (>= 3.6, < 5.0)
-    jekyll-cache-bust (0.0.1)
-      jekyll (>= 3.6, < 5.0)
     jekyll-email-protect (1.1.0)
     jekyll-feed (0.17.0)
       jekyll (>= 3.7, < 5.0)
-    jekyll-get-json (1.0.0)
-      deep_merge (~> 1.2)
-      jekyll (>= 3.0)
     jekyll-imagemagick (1.4.0)
       jekyll (>= 3.4)
     jekyll-jupyter-notebook (0.0.6)
       jekyll
-    jekyll-link-attributes (1.0.1)
-    jekyll-minifier (0.2.2)
-      cssminify2 (~> 2.1.0)
-      htmlcompressor (~> 0.4)
-      jekyll (~> 4.0)
-      json-minify (~> 0.0.3)
-      terser (~> 1.2.3)
     jekyll-paginate-v2 (3.0.0)
       jekyll (>= 3.0, < 5.0)
     jekyll-regex-replace (1.1.0)
@@ -182,7 +171,6 @@ GEM
     jekyll-toc (0.19.0)
       jekyll (>= 3.9)
       nokogiri (~> 1.12)
-    jekyll-twitter-plugin (2.1.0)
     jekyll-watch (2.2.1)
       listen (~> 3.0)
     jemoji (0.13.0)
@@ -190,8 +178,6 @@ GEM
       html-pipeline (~> 2.2)
       jekyll (>= 3.0, < 5.0)
     json (2.18.0)
-    json-minify (0.0.3)
-      json (> 0)
     kramdown (2.5.2)
       rexml (>= 3.4.4)
     kramdown-parser-gfm (1.1.0)
@@ -224,6 +210,8 @@ GEM
     nokogiri (1.19.0-arm-linux-musl)
       racc (~> 1.4)
     nokogiri (1.19.0-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.19.0-x64-mingw-ucrt)
       racc (~> 1.4)
     nokogiri (1.19.0-x86_64-darwin)
       racc (~> 1.4)
@@ -259,6 +247,8 @@ GEM
       google-protobuf (~> 4.31)
     sass-embedded (1.97.2-arm64-darwin)
       google-protobuf (~> 4.31)
+    sass-embedded (1.97.2-x64-mingw-ucrt)
+      google-protobuf (~> 4.31)
     sass-embedded (1.97.2-x86_64-darwin)
       google-protobuf (~> 4.31)
     sass-embedded (1.97.2-x86_64-linux-gnu)
@@ -291,6 +281,7 @@ PLATFORMS
   arm-linux-musl
   arm-linux-musleabihf
   arm64-darwin
+  x64-mingw-ucrt
   x86_64-darwin
   x86_64-linux
   x86_64-linux-gnu
@@ -304,14 +295,10 @@ DEPENDENCIES
   jekyll
   jekyll-3rd-party-libraries
   jekyll-archives-v2
-  jekyll-cache-bust
   jekyll-email-protect
   jekyll-feed
-  jekyll-get-json
   jekyll-imagemagick
   jekyll-jupyter-notebook
-  jekyll-link-attributes
-  jekyll-minifier
   jekyll-paginate-v2
   jekyll-regex-replace
   jekyll-scholar
@@ -320,7 +307,6 @@ DEPENDENCIES
   jekyll-tabs
   jekyll-terser!
   jekyll-toc
-  jekyll-twitter-plugin
   jemoji
   observer
   ostruct

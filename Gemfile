@@ -6,14 +6,13 @@ gem 'jekyll'
 group :jekyll_plugins do
     gem 'jekyll-3rd-party-libraries'
     gem 'jekyll-archives-v2'
-    gem 'jekyll-cache-bust'
+# gem 'jekyll-cache-bust'
     gem 'jekyll-email-protect'
     gem 'jekyll-feed'
-    gem 'jekyll-get-json'
+# gem 'jekyll-get-json'
     gem 'jekyll-imagemagick'
     gem 'jekyll-jupyter-notebook'
-    gem 'jekyll-link-attributes'
-    gem 'jekyll-minifier'
+# gem 'jekyll-link-attributes'
     gem 'jekyll-paginate-v2'
     gem 'jekyll-regex-replace'
     gem 'jekyll-scholar'
@@ -22,7 +21,7 @@ group :jekyll_plugins do
     gem 'jekyll-tabs'
     gem 'jekyll-terser', :git => "https://github.com/RobertoJBeltran/jekyll-terser.git"
     gem 'jekyll-toc'
-    gem 'jekyll-twitter-plugin'
+# gem 'jekyll-twitter-plugin'
     gem 'jemoji'
 
     gem 'classifier-reborn'  # used for content categorization during the build
