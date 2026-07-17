@@ -11,7 +11,7 @@ profile:
   image_circular: false # crops the image to make it circular
   more_info: >
     <p>Calgary, AB</p>
-    <p>p.a.ball@hotmail.com</p>
+    <p>paige.a.pro@gmail.com</p>
   
 selected_papers: false #no research papers to post yet
 social: true # includes social icons at the bottom of the page
@@ -539,7 +539,7 @@ latest_posts:
   <p>Open to analyst and BI roles in Calgary and remote opportunities across Canada.<br>
   Let's talk about how data can drive better decisions for your team.</p>
   <div class="ab-ctas">
-    <a href="mailto:p.a.ball@hotmail.com" class="ab-btn ab-btn-primary">Get In Touch</a>
+    <a href="mailto:paige.a.pro@gmail.com" class="ab-btn ab-btn-primary">Get In Touch</a>
     <a href="/portfolio/" class="ab-btn ab-btn-secondary">View My Portfolio</a>
   </div>
 </div>

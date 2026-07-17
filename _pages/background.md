@@ -466,7 +466,7 @@ nav_order: 6
       Currently seeking data analyst and business intelligence roles in Calgary and open to remote opportunities across Canada. I'd love to hear from you.
     </div>
     <div class="connect-buttons">
-      <a class="connect-btn-primary" href="mailto:p.a.ball@hotmail.com">Send Me an Email</a>
+      <a class="connect-btn-primary" href="mailto:paige.a.pro@gmail.com">Send Me an Email</a>
       <a class="connect-btn-secondary" href="/assets/pdf/resume.pdf">Download Resume</a>
     </div>
   </div>
@@ -482,7 +482,7 @@ nav_order: 6
       <span class="connect-detail-icon">✉️</span>
       <div>
         <div class="connect-detail-label">Email</div>
-        <div class="connect-detail-value">p.a.ball@hotmail.com</div>
+        <div class="connect-detail-value">paige.a.pro@gmail.com</div>
       </div>
     </div>
     <div class="connect-detail-item">
