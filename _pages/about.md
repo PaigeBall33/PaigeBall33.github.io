@@ -340,7 +340,7 @@ latest_posts:
   max-width: 420px;
   height: 420px;
   object-fit: cover;
-  object-position: center 25%;
+  object-position: 60% 85%;
   display: block;
   border-radius: 4px;
 }
