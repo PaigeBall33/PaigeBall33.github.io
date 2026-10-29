@@ -42,18 +42,22 @@
   content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"
 >
 
-<!-- Resource hints: establish connections to external origins before they're needed.
-     preconnect eliminates the DNS + TCP + TLS roundtrip for fonts (saves 200-500ms).
-     dns-prefetch is a lighter hint for CDN domains used by deferred scripts. -->
+<!--
+  Resource hints: establish connections to external origins before they're needed.
+  preconnect eliminates the DNS + TCP + TLS roundtrip for fonts (saves 200-500ms).
+  dns-prefetch is a lighter hint for CDN domains used by deferred scripts.
+-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 
-<!-- Preload critical render-blocking CSS so the browser fetches it at the
-     earliest possible moment, overlapping with the rest of <head> parsing.
-     This does NOT make them non-blocking, but moves their download earlier
-     in the waterfall and reduces time to first paint. -->
+<!--
+  Preload critical render-blocking CSS so the browser fetches it at the
+  earliest possible moment, overlapping with the rest of <head> parsing.
+  This does NOT make them non-blocking, but moves their download earlier
+  in the waterfall and reduces time to first paint.
+-->
 <link rel="preload" as="style" href="/assets/css/bootstrap.min.css">
 <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" crossorigin="anonymous">
 <link rel="preload" as="style" href="/assets/css/main.css">
@@ -69,11 +73,13 @@
 
 
 
-<!-- Fonts & Icons: loaded non-blocking via media="print" swap.
-     The browser downloads these without blocking render; onload flips them to
-     apply to all media. The <noscript> fallback covers JS-disabled visitors.
-     (The previous 'defer' attribute on <link> tags is a no-op in all browsers
-     and was silently not working — these were unintentionally render-blocking.) -->
+<!--
+  Fonts & Icons: loaded non-blocking via media="print" swap.
+  The browser downloads these without blocking render; onload flips them to
+  apply to all media. The <noscript> fallback covers JS-disabled visitors.
+  (The previous 'defer' attribute on <link> tags is a no-op in all browsers
+  and was silently not working — these were unintentionally render-blocking.)
+-->
 <link
   rel="stylesheet"
   href="/assets/css/academicons.min.css"
@@ -420,6 +426,7 @@
 <h2 id="code-highlights">Code Highlights</h2>
 
 <p><strong>Outlier detection using IQR:</strong></p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Q1</span><span class="p">,</span> <span class="n">Q3</span> <span class="o">=</span> <span class="n">comp_data</span><span class="p">.</span><span class="nf">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">),</span> <span class="n">comp_data</span><span class="p">.</span><span class="nf">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
 <span class="n">IQR</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">-</span> <span class="n">Q1</span>
 <span class="n">lower_bound</span> <span class="o">=</span> <span class="n">Q1</span> <span class="o">-</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQR</span>
@@ -430,6 +437,7 @@
 </span></code></pre></div></div>
 
 <p><strong>Exploding multi-value columns for heatmap:</strong></p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">lang_df</span> <span class="o">=</span> <span class="n">df_filtered</span><span class="p">[[</span><span class="sh">'</span><span class="s">Country</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">LanguageHaveWorkedWith</span><span class="sh">'</span><span class="p">]].</span><span class="nf">dropna</span><span class="p">()</span>
 <span class="n">lang_df</span> <span class="o">=</span> <span class="n">lang_df</span><span class="p">.</span><span class="nf">assign</span><span class="p">(</span>
     <span class="n">Language</span><span class="o">=</span><span class="n">lang_df</span><span class="p">[</span><span class="sh">'</span><span class="s">LanguageHaveWorkedWith</span><span class="sh">'</span><span class="p">].</span><span class="nb">str</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="sh">'</span><span class="s">;</span><span class="sh">'</span><span class="p">)</span>
@@ -441,6 +449,7 @@
 </code></pre></div></div>
 
 <p><strong>Pearson correlation matrix:</strong></p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">corr_df</span> <span class="o">=</span> <span class="n">df_clean</span><span class="p">[[</span><span class="sh">'</span><span class="s">ConvertedCompYearly</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">WorkExp</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">JobSatPoints_1</span><span class="sh">'</span><span class="p">]].</span><span class="nf">dropna</span><span class="p">()</span>
 <span class="n">corr_matrix</span> <span class="o">=</span> <span class="n">corr_df</span><span class="p">.</span><span class="nf">corr</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="sh">'</span><span class="s">pearson</span><span class="sh">'</span><span class="p">)</span>
 <span class="n">sns</span><span class="p">.</span><span class="nf">heatmap</span><span class="p">(</span><span class="n">corr_matrix</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="sh">'</span><span class="s">.4f</span><span class="sh">'</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="sh">'</span><span class="s">coolwarm</span><span class="sh">'</span><span class="p">,</span> <span class="n">square</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>

@@ -42,18 +42,22 @@
   content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"
 >
 
-<!-- Resource hints: establish connections to external origins before they're needed.
-     preconnect eliminates the DNS + TCP + TLS roundtrip for fonts (saves 200-500ms).
-     dns-prefetch is a lighter hint for CDN domains used by deferred scripts. -->
+<!--
+  Resource hints: establish connections to external origins before they're needed.
+  preconnect eliminates the DNS + TCP + TLS roundtrip for fonts (saves 200-500ms).
+  dns-prefetch is a lighter hint for CDN domains used by deferred scripts.
+-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 
-<!-- Preload critical render-blocking CSS so the browser fetches it at the
-     earliest possible moment, overlapping with the rest of <head> parsing.
-     This does NOT make them non-blocking, but moves their download earlier
-     in the waterfall and reduces time to first paint. -->
+<!--
+  Preload critical render-blocking CSS so the browser fetches it at the
+  earliest possible moment, overlapping with the rest of <head> parsing.
+  This does NOT make them non-blocking, but moves their download earlier
+  in the waterfall and reduces time to first paint.
+-->
 <link rel="preload" as="style" href="/assets/css/bootstrap.min.css">
 <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" crossorigin="anonymous">
 <link rel="preload" as="style" href="/assets/css/main.css">
@@ -69,11 +73,13 @@
 
 
 
-<!-- Fonts & Icons: loaded non-blocking via media="print" swap.
-     The browser downloads these without blocking render; onload flips them to
-     apply to all media. The <noscript> fallback covers JS-disabled visitors.
-     (The previous 'defer' attribute on <link> tags is a no-op in all browsers
-     and was silently not working — these were unintentionally render-blocking.) -->
+<!--
+  Fonts & Icons: loaded non-blocking via media="print" swap.
+  The browser downloads these without blocking render; onload flips them to
+  apply to all media. The <noscript> fallback covers JS-disabled visitors.
+  (The previous 'defer' attribute on <link> tags is a no-op in all browsers
+  and was silently not working — these were unintentionally render-blocking.)
+-->
 <link
   rel="stylesheet"
   href="/assets/css/academicons.min.css"
@@ -462,6 +468,7 @@
 <h2 id="code-highlights">Code Highlights</h2>
 
 <p><strong>Duplicate detection and removal:</strong></p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">duplicate_count</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="nf">duplicated</span><span class="p">().</span><span class="nf">sum</span><span class="p">()</span>
 <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Number of duplicate rows:</span><span class="sh">"</span><span class="p">,</span> <span class="n">duplicate_count</span><span class="p">)</span>  <span class="c1"># 20
 </span>
@@ -471,6 +478,7 @@
 </span></code></pre></div></div>
 
 <p><strong>Missing value imputation:</strong></p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">most_frequent_edlevel</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="sh">'</span><span class="s">EdLevel</span><span class="sh">'</span><span class="p">].</span><span class="nf">mode</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">df</span><span class="p">[</span><span class="sh">'</span><span class="s">EdLevel</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="sh">'</span><span class="s">EdLevel</span><span class="sh">'</span><span class="p">].</span><span class="nf">fillna</span><span class="p">(</span><span class="n">most_frequent_edlevel</span><span class="p">)</span>
 
@@ -479,6 +487,7 @@
 </code></pre></div></div>
 
 <p><strong>Min-Max and Z-score normalization:</strong></p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">col_min</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="sh">'</span><span class="s">ConvertedCompYearly</span><span class="sh">'</span><span class="p">].</span><span class="nf">min</span><span class="p">()</span>
 <span class="n">col_max</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="sh">'</span><span class="s">ConvertedCompYearly</span><span class="sh">'</span><span class="p">].</span><span class="nf">max</span><span class="p">()</span>
 <span class="n">df</span><span class="p">[</span><span class="sh">'</span><span class="s">ConvertedCompYearly_MinMax</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="sh">'</span><span class="s">ConvertedCompYearly</span><span class="sh">'</span><span class="p">]</span> <span class="o">-</span> <span class="n">col_min</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">col_max</span> <span class="o">-</span> <span class="n">col_min</span><span class="p">)</span>
@@ -489,6 +498,7 @@
 </code></pre></div></div>
 
 <p><strong>Custom experience level binning:</strong></p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">assign_experience_level</span><span class="p">(</span><span class="n">years</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">pd</span><span class="p">.</span><span class="nf">isnull</span><span class="p">(</span><span class="n">years</span><span class="p">):</span>   <span class="k">return</span> <span class="sh">'</span><span class="s">Unknown</span><span class="sh">'</span>
     <span class="k">elif</span> <span class="n">years</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>        <span class="k">return</span> <span class="sh">'</span><span class="s">Junior</span><span class="sh">'</span>
