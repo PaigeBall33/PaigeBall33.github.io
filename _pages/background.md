@@ -414,7 +414,7 @@ nav_order: 6
       <div class="timeline-desc">End-to-end data analytics workflow covering Python, SQL, Excel, Tableau, and IBM Cognos Analytics. Capstone project applied to the Stack Overflow Developer Survey — 65,000+ respondents across 114 variables.</div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-date">Completing Summer 2026</div>
+      <div class="timeline-date">Completing 2026</div>
       <div class="timeline-title">Bachelor of Business Management</div>
       <div class="timeline-subtitle">Athabasca University · Calgary, AB</div>
       <div class="timeline-desc"><!-- Add relevant coursework or focus areas if desired --></div>
@@ -434,6 +434,9 @@ nav_order: 6
       <span class="skill-tag">NumPy</span>
       <span class="skill-tag">Matplotlib</span>
       <span class="skill-tag">Seaborn</span>
+      <span class="skill-tag">Plotly</span>
+      <span class="skill-tag">SciPy</span>
+      <span class="skill-tag">Scikit-learn</span>
     </div>
   </div>
   <div class="skill-card">
@@ -453,6 +456,7 @@ nav_order: 6
       <span class="skill-tag">Git</span>
       <span class="skill-tag">GitHub</span>
       <span class="skill-tag">SQLite</span>
+      <span class="skill-tag">Beautiful Soup</span>
       <span class="skill-tag">Microsoft Office</span>
     </div>
   </div>

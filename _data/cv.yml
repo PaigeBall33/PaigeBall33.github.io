@@ -19,20 +19,18 @@ cv:
         area: Business Management
         studyType: Bachelor of Business Management
         end_date: 2026
-        highlights:
-          - Completing Summer 2026 with an expected GPA of 
 
     Experience:
       - company: Sheppard Creek Cattle Company
         position: Marketing Manager
         location: Calgary, AB
-        start_date: 2024
+        start_date: 01/2023
         end_date: present
         highlights:
-          - Leveraged comprehensive market research on consumer buying habits to drive a 135% surge in company sales through 2025
-          - Spearheaded the design and deployment of a robust database management system, transitioning from Excel.
-          - Inventory and supply chain coordination and scheduling of weekly deliveries
-          - Develop and execute diverse marketing content for brand, leading to increase of engagement on social media platforms.
+          - Analyzed market research on consumer buying habits to guide sales strategy, driving a 135% increase in company sales through 2025
+          - Designed and deployed a database management system to replace Excel-based record keeping
+          - Coordinated inventory, supply chain logistics, and weekly delivery scheduling across Calgary and Edmonton
+          - Developed and executed marketing content for the brand, increasing engagement across social media platforms
 
       - company: Arcane Lights
         position: Manager
@@ -40,8 +38,8 @@ cv:
         start_date: 02/2022
         end_date: 10/2023
         highlights:
-          - Oversaw online sales channels while evaluating and optimizing marketing KPIs to increase revenue generation
-          - Developed promotional content for social media channels, including successful work with influencers to promote products
+          - Oversaw online sales channels (Shopify, Etsy), evaluating and optimizing marketing KPIs to grow revenue
+          - Developed promotional content for social media channels, including influencer partnerships to drive product awareness and sales
           - Directed physical inventory management and product assembly processes to ensure seamless supply chain operations
 
 
@@ -57,15 +55,15 @@ cv:
     Skills:
       - name: Programming and Data
         icon: fa-solid fa-code
-        keywords: "Python, SQL, Pandas, NumPy, Matplotlib, Seaborn"
+        keywords: "Python, SQL, Pandas, NumPy, SciPy, Scikit-learn, Matplotlib, Seaborn, Plotly"
 
       - name: Visualization
         icon: fa-solid fa-chart-bar
-        keywords: "Tableau, IBM Cognos Analytics, Excel, Power BI"
+        keywords: "Tableau, Power BI, Looker Studio, IBM Cognos Analytics, Excel (Pivot Tables, Power Query)"
 
       - name: Tools and Platforms
         icon: fa-solid fa-tools
-        keywords: "Jupyter Notebooks, Git, GitHub, Microsoft Office Suite"
+        keywords: "Jupyter Notebooks, Git, GitHub, SQLite, Beautiful Soup, Microsoft Office Suite"
 
     Languages:
       - name: English

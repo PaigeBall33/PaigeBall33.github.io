@@ -340,7 +340,7 @@ latest_posts:
   max-width: 420px;
   height: 420px;
   object-fit: cover;
-  object-position: center center;
+  object-position: center 25%;
   display: block;
   border-radius: 4px;
 }
@@ -412,7 +412,7 @@ latest_posts:
 
 <div class="about-split">
   <div class="about-split-image">
-    <img src="/assets/img/bridgephoto.jpeg" alt="Paige Ball">
+    <img src="/assets/img/westernphoto.jpg" alt="Paige Ball">
   </div>
   <div class="about-split-content">
     <div class="about-greeting">Hello there!</div>
@@ -429,7 +429,7 @@ latest_posts:
       consequence — a mindset that followed me into data analytics. I completed
       the IBM Data Analytics Professional Certificate across eleven courses while
       working and am finishing my Bachelor of Business Management degree in
-      Summer 2026. I work best where the analysis has real stakes and the findings
+      2026. I work best where the analysis has real stakes and the findings
       actually drive decisions.
     </div>
   </div>
