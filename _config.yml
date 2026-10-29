@@ -4,9 +4,9 @@
 
 title: Paige Ball # the website title (if blank, full name will be used instead)
 first_name: Paige
-middle_name: 
+middle_name:
 last_name: Ball
-contact_note: 
+contact_note:
 description: IBM-Certified Data Analyst | Calgary, AB | Open to remote work
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
@@ -230,11 +230,11 @@ defaults:
 sass:
   style: compressed
 
-# -----------------------------------------------------------------------------
-# Jekyll Minifier
-# -----------------------------------------------------------------------------
+  # -----------------------------------------------------------------------------
+  # Jekyll Minifier
+  # -----------------------------------------------------------------------------
 
-#jekyll-minifier:
+  #jekyll-minifier:
   enabled: false
   compress_html: false
   compress_javascript: false # set to false since we are using terser as the js minifier
@@ -373,7 +373,6 @@ imagemagick:
     - ".gif"
   output_formats:
     webp: "-auto-orient -quality 85 -define registry:temporary-path=C:/Windows/Temp"
-
 
 # Lazy loading images
 #   If you enable lazy loading, all images will add the loading="lazy" attribute.

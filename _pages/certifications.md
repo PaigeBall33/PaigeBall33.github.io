@@ -13,12 +13,13 @@ nav_order: 5
 **Completed:** 2026  
 **Credential:** [View certificate](https://www.coursera.org/account/accomplishments/professional-cert/L9OHY8714VR5)
 
-This certificate covers eleven courses spanning the full 
-data analytics workflow including data collection, cleaning, 
-analysis, visualization, and storytelling. Tools covered 
+This certificate covers eleven courses spanning the full
+data analytics workflow including data collection, cleaning,
+analysis, visualization, and storytelling. Tools covered
 include Python, SQL, Excel, Tableau, and IBM Cognos Analytics.
 
 ### Courses completed:
+
 - Introduction to Data Analytics
 - Excel Basics for Data Analysis
 - Data Visualization and Dashboards with Excel and Cognos

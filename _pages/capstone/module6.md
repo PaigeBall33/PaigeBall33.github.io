@@ -34,35 +34,35 @@ Python's job market demand is growing faster than current postings reflect — C
 
 ## Programming Language Trends
 
-| Language | Current Usage | Desired Next Year | Direction |
-|---|---|---|---|
-| JavaScript | 62% | 39% | ↓ Declining desire |
-| Python | 51% | 57% | ↑ Most desired, #1 |
-| TypeScript | 39% | 44% | ↑ Strong growth |
-| Rust | — | 29% | ↑ Emerging |
-| PHP | 18% | — | ↓ Declining |
+| Language   | Current Usage | Desired Next Year | Direction          |
+| ---------- | ------------- | ----------------- | ------------------ |
+| JavaScript | 62%           | 39%               | ↓ Declining desire |
+| Python     | 51%           | 57%               | ↑ Most desired, #1 |
+| TypeScript | 39%           | 44%               | ↑ Strong growth    |
+| Rust       | —             | 29%               | ↑ Emerging         |
+| PHP        | 18%           | —                 | ↓ Declining        |
 
 ---
 
 ## Presentation Structure: 17 Sections
 
-| # | Section | Format |
-|---|---|---|
-| 01 | Executive Summary | 4-quadrant panel |
-| 02 | Introduction | Purpose and 4 stat cards |
-| 03 | Methodology | 4 numbered panels |
-| 04 | Results: Programming Language Trends | Side-by-side bar charts |
-| 05 | Language Findings & Implications | 5 findings + 5 implications |
-| 06 | Results: Database Trends | Side-by-side bar charts |
-| 07 | Database Findings & Implications | 5 findings + 5 implications |
-| 08 | Results: Job Postings | Horizontal bar chart |
-| 09 | Dashboard Overview | Tab summary card |
-| 10–12 | Dashboard Tabs 1, 2, 3 | Full-page screenshots |
-| 13 | Dashboard Insights | 3 panels, 4 bullets each |
-| 14 | Discussion | 5 thematic insight boxes |
-| 15 | Overall Findings & Implications | Two-panel layout |
-| 16 | Conclusion | 4 numbered takeaway cards |
-| 17 | Appendix | Lab traceability table |
+| #     | Section                              | Format                      |
+| ----- | ------------------------------------ | --------------------------- |
+| 01    | Executive Summary                    | 4-quadrant panel            |
+| 02    | Introduction                         | Purpose and 4 stat cards    |
+| 03    | Methodology                          | 4 numbered panels           |
+| 04    | Results: Programming Language Trends | Side-by-side bar charts     |
+| 05    | Language Findings & Implications     | 5 findings + 5 implications |
+| 06    | Results: Database Trends             | Side-by-side bar charts     |
+| 07    | Database Findings & Implications     | 5 findings + 5 implications |
+| 08    | Results: Job Postings                | Horizontal bar chart        |
+| 09    | Dashboard Overview                   | Tab summary card            |
+| 10–12 | Dashboard Tabs 1, 2, 3               | Full-page screenshots       |
+| 13    | Dashboard Insights                   | 3 panels, 4 bullets each    |
+| 14    | Discussion                           | 5 thematic insight boxes    |
+| 15    | Overall Findings & Implications      | Two-panel layout            |
+| 16    | Conclusion                           | 4 numbered takeaway cards   |
+| 17    | Appendix                             | Lab traceability table      |
 
 ---
 

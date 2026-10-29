@@ -32,17 +32,18 @@ Median job satisfaction was uniformly 8/10 across all experience ranges, suggest
 
 ## Correlation Matrix (Post-IQR Removal)
 
-| | Age | YearsCodePro | ConvertedCompYearly |
-|---|---|---|---|
-| Age | 1.0000 | 0.8201 | 0.3588 |
-| YearsCodePro | 0.8201 | 1.0000 | 0.3869 |
-| ConvertedCompYearly | 0.3588 | 0.3869 | 1.0000 |
+|                     | Age    | YearsCodePro | ConvertedCompYearly |
+| ------------------- | ------ | ------------ | ------------------- |
+| Age                 | 1.0000 | 0.8201       | 0.3588              |
+| YearsCodePro        | 0.8201 | 1.0000       | 0.3869              |
+| ConvertedCompYearly | 0.3588 | 0.3869       | 1.0000              |
 
 ---
 
 ## Code Highlights
 
 **Outlier detection using IQR:**
+
 ```python
 Q1, Q3 = comp_data.quantile(0.25), comp_data.quantile(0.75)
 IQR = Q3 - Q1
@@ -54,6 +55,7 @@ print("Cleaned rows:", df_clean.shape[0])  # 22,457
 ```
 
 **Exploding multi-value columns for heatmap:**
+
 ```python
 lang_df = df_filtered[['Country', 'LanguageHaveWorkedWith']].dropna()
 lang_df = lang_df.assign(
@@ -66,6 +68,7 @@ sns.heatmap(lang_country, cmap='YlGnBu', annot=True, fmt='d')
 ```
 
 **Pearson correlation matrix:**
+
 ```python
 corr_df = df_clean[['ConvertedCompYearly', 'WorkExp', 'JobSatPoints_1']].dropna()
 corr_matrix = corr_df.corr(method='pearson')

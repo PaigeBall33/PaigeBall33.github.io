@@ -32,20 +32,20 @@ With 41.3% of respondents aged 25–34 and another 27.3% in the 35–44 bracket,
 
 ## Dashboard Structure: 12 Panels Across 3 Tabs
 
-| Tab | Panel | Chart Type | Dimension |
-|---|---|---|---|
-| Tab 1: Current Usage | Top 10 Languages Used | Stacked Bar | LanguageHaveWorkedWith |
-| Tab 1: Current Usage | Top 10 Databases Used | Stacked Column | DatabaseHaveWorkedWith |
-| Tab 1: Current Usage | Top Platforms Used | Treemap | PlatformHaveWorkedWith |
-| Tab 1: Current Usage | Top 10 Web Frameworks | Scatter/Bubble | WebframeHaveWorkedWith |
-| Tab 2: Future Trends | Top 10 Languages Desired | Stacked Bar | LanguageWantToWorkWith |
-| Tab 2: Future Trends | Top 10 Databases Desired | Stacked Column | DatabaseWantToWorkWith |
-| Tab 2: Future Trends | Top 10 Desired Platforms | Treemap | PlatformWantToWorkWith |
-| Tab 2: Future Trends | Top 10 Desired Frameworks | Scatter/Bubble | WebframeWantToWorkWith |
-| Tab 3: Demographics | Respondents by Age | Pie Chart | Age |
-| Tab 3: Demographics | Respondent Count by Country | Geo Map | Country |
-| Tab 3: Demographics | Distribution by Education | Combo Chart | EdLevel |
-| Tab 3: Demographics | Age × Education Level | Stacked Bar | Age + EdLevel |
+| Tab                  | Panel                       | Chart Type     | Dimension              |
+| -------------------- | --------------------------- | -------------- | ---------------------- |
+| Tab 1: Current Usage | Top 10 Languages Used       | Stacked Bar    | LanguageHaveWorkedWith |
+| Tab 1: Current Usage | Top 10 Databases Used       | Stacked Column | DatabaseHaveWorkedWith |
+| Tab 1: Current Usage | Top Platforms Used          | Treemap        | PlatformHaveWorkedWith |
+| Tab 1: Current Usage | Top 10 Web Frameworks       | Scatter/Bubble | WebframeHaveWorkedWith |
+| Tab 2: Future Trends | Top 10 Languages Desired    | Stacked Bar    | LanguageWantToWorkWith |
+| Tab 2: Future Trends | Top 10 Databases Desired    | Stacked Column | DatabaseWantToWorkWith |
+| Tab 2: Future Trends | Top 10 Desired Platforms    | Treemap        | PlatformWantToWorkWith |
+| Tab 2: Future Trends | Top 10 Desired Frameworks   | Scatter/Bubble | WebframeWantToWorkWith |
+| Tab 3: Demographics  | Respondents by Age          | Pie Chart      | Age                    |
+| Tab 3: Demographics  | Respondent Count by Country | Geo Map        | Country                |
+| Tab 3: Demographics  | Distribution by Education   | Combo Chart    | EdLevel                |
+| Tab 3: Demographics  | Age × Education Level       | Stacked Bar    | Age + EdLevel          |
 
 ---
 

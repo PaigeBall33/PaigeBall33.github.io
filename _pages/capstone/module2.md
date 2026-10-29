@@ -33,31 +33,32 @@ After imputation, the median annual compensation across all respondents was $65,
 
 ## Top Columns by Missing Percentage
 
-| Column | Missing Count | Missing % |
-|---|---|---|
-| AINextMuch less integrated | 64,289 | 98.25% |
-| AINextLess integrated | 63,082 | 96.40% |
-| AINextNo change | 52,939 | 80.90% |
-| ConvertedCompYearly | 42,002 | 64.19% |
-| EdLevel | 4,653 | 7.11% |
+| Column                     | Missing Count | Missing % |
+| -------------------------- | ------------- | --------- |
+| AINextMuch less integrated | 64,289        | 98.25%    |
+| AINextLess integrated      | 63,082        | 96.40%    |
+| AINextNo change            | 52,939        | 80.90%    |
+| ConvertedCompYearly        | 42,002        | 64.19%    |
+| EdLevel                    | 4,653         | 7.11%     |
 
 ---
 
 ## EdLevel After Standardization
 
-| EdLevel | Count |
-|---|---|
-| Bachelor's | 24,942 |
-| Master's | 15,557 |
-| Some College | 7,651 |
-| Secondary School | 5,793 |
-| Professional Degree | 2,970 |
+| EdLevel             | Count  |
+| ------------------- | ------ |
+| Bachelor's          | 24,942 |
+| Master's            | 15,557 |
+| Some College        | 7,651  |
+| Secondary School    | 5,793  |
+| Professional Degree | 2,970  |
 
 ---
 
 ## Code Highlights
 
 **Duplicate detection and removal:**
+
 ```python
 duplicate_count = df.duplicated().sum()
 print("Number of duplicate rows:", duplicate_count)  # 20
@@ -68,6 +69,7 @@ print("After deduplication:", df_cleaned.shape[0])  # 4748
 ```
 
 **Missing value imputation:**
+
 ```python
 most_frequent_edlevel = df['EdLevel'].mode()[0]
 df['EdLevel'] = df['EdLevel'].fillna(most_frequent_edlevel)
@@ -77,6 +79,7 @@ df['ConvertedCompYearly'] = df['ConvertedCompYearly'].fillna(median_comp)
 ```
 
 **Min-Max and Z-score normalization:**
+
 ```python
 col_min = df['ConvertedCompYearly'].min()
 col_max = df['ConvertedCompYearly'].max()
@@ -88,6 +91,7 @@ df['ConvertedCompYearly_Zscore'] = (df['ConvertedCompYearly'] - mean_comp) / std
 ```
 
 **Custom experience level binning:**
+
 ```python
 def assign_experience_level(years):
     if pd.isnull(years):   return 'Unknown'

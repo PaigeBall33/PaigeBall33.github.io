@@ -17,134 +17,139 @@
 
 $light-tokens: (
   // -- Surfaces --
-  bg:                 #F5EFE6,
-  card-bg:            #FAF4EB,
-  newsletter-bg:      #FAF4EB,
+  bg: #f5efe6,
+  card-bg: #faf4eb,
+  newsletter-bg: #faf4eb,
 
   // -- Text (all verified on bg #F5EFE6) --
-  text:               #1C1812,
-  text-light:         #9C8B7A,
-  newsletter-text:    #1C1812,
+  text: #1c1812,
+  text-light: #9c8b7a,
+  newsletter-text: #1c1812,
 
   // -- Brand / interactive --
-  theme:              #2D4A3E,
-  hover:              #2D4A3E,
-  hover-text:         #F5EFE6,
-  highlight:          #2D4A3E,
+  theme: #2d4a3e,
+  hover: #2d4a3e,
+  hover-text: #f5efe6,
+  highlight: #2d4a3e,
 
   // -- Footer --
-  footer-bg:          #1C1812,
-  footer-text:        #9C8B7A,
-  footer-link:        #F5EFE6,
-  footer-hover:       #60A5FA,
+  footer-bg: #1c1812,
+  footer-text: #9c8b7a,
+  footer-link: #f5efe6,
+  footer-hover: #60a5fa,
 
   // -- Utility --
-  code-bg:            rgba(181, 9, 172, 0.05),  // v.$purple-color @ 5% opacity
-  divider:            rgba(156, 139, 122, 0.25),
-  distill-app:        #828282,
-  back-to-top-bg:     rgba(28, 24, 18, 0.4),
-  back-to-top-text:   #F5EFE6,
+  code-bg: rgba(181, 9, 172, 0.05),
+  // v.$purple-color @ 5% opacity
+  divider: rgba(156, 139, 122, 0.25),
+  distill-app: #828282,
+  back-to-top-bg: rgba(28, 24, 18, 0.4),
+  back-to-top-text: #f5efe6,
 
   // -- Callout blocks (text verified on block bg) --
-  tip:                #42b983,
-  tip-bg:             #e2f5ec,
-  tip-text:           #215d42,  //  7.77:1 on tip-bg
-  tip-title:          #359469,
-  warning:            #e7c000,
-  warning-bg:         #fff8d8,
-  warning-text:       #6b5900,  //  7.10:1 on warning-bg
-  warning-title:      #b29400,
-  danger:             #cc0000,
-  danger-bg:          #ffe0e0,
-  danger-text:        #600000,  // 10.59:1 on danger-bg
-  danger-title:       #cc0000,
+  tip: #42b983,
+  tip-bg: #e2f5ec,
+  tip-text: #215d42,
+  //  7.77:1 on tip-bg
+  tip-title: #359469,
+  warning: #e7c000,
+  warning-bg: #fff8d8,
+  warning-text: #6b5900,
+  //  7.10:1 on warning-bg
+  warning-title: #b29400,
+  danger: #cc0000,
+  danger-bg: #ffe0e0,
+  danger-text: #600000,
+  // 10.59:1 on danger-bg
+  danger-title: #cc0000
 );
 
 $dark-tokens: (
   // -- Surfaces --
-  bg:                 #1C1812,
-  card-bg:            #2A2118,
-  newsletter-bg:      #2A2118,
+  bg: #1c1812,
+  card-bg: #2a2118,
+  newsletter-bg: #2a2118,
 
   // -- Text --
-  text:               #F5EFE6,
-  text-light:         #9C8B7A,
-  newsletter-text:    #F5EFE6,
+  text: #f5efe6,
+  text-light: #9c8b7a,
+  newsletter-text: #f5efe6,
 
   // -- Brand / interactive --
-  theme:              #7A9E87,
-  hover:              #7A9E87,
-  hover-text:         #1C1812,
-  highlight:          #7A9E87,
+  theme: #7a9e87,
+  hover: #7a9e87,
+  hover-text: #1c1812,
+  highlight: #7a9e87,
 
   // -- Footer --
-  footer-bg:          #141008,
-  footer-text:        #9C8B7A,
-  footer-link:        #F5EFE6,
-  footer-hover:       #7A9E87,
+  footer-bg: #141008,
+  footer-text: #9c8b7a,
+  footer-link: #f5efe6,
+  footer-hover: #7a9e87,
 
   // -- Utility --
-  code-bg:            #2c3237,  // v.$code-bg-color-dark; text contrast 10.26:1
-  divider:            rgba(156, 139, 122, 0.2),
-  distill-app:        #9C8B7A,
-  back-to-top-bg:     rgba(245, 239, 230, 0.15),
-  back-to-top-text:   #F5EFE6,
+  code-bg: #2c3237,
+  // v.$code-bg-color-dark; text contrast 10.26:1
+  divider: rgba(156, 139, 122, 0.2),
+  distill-app: #9c8b7a,
+  back-to-top-bg: rgba(245, 239, 230, 0.15),
+  back-to-top-text: #f5efe6,
 
   // -- Callout blocks --
-  tip:                #4ade80,
-  tip-bg:             rgba(74, 222, 128, 0.15),
-  tip-text:           #86efac,
-  tip-title:          #4ade80,
-  warning:            #fbbf24,
-  warning-bg:         rgba(251, 191, 36, 0.15),
-  warning-text:       #fde68a,
-  warning-title:      #fbbf24,
-  danger:             #f87171,
-  danger-bg:          rgba(248, 113, 113, 0.15),
-  danger-text:        #fca5a5,
-  danger-title:       #f87171,
+  tip: #4ade80,
+  tip-bg: rgba(74, 222, 128, 0.15),
+  tip-text: #86efac,
+  tip-title: #4ade80,
+  warning: #fbbf24,
+  warning-bg: rgba(251, 191, 36, 0.15),
+  warning-text: #fde68a,
+  warning-title: #fbbf24,
+  danger: #f87171,
+  danger-bg: rgba(248, 113, 113, 0.15),
+  danger-text: #fca5a5,
+  danger-title: #f87171
 );
 
 // ---------------------------------------------------------------------------
 // Mixin — emits all CSS custom properties from a token map.
 // ---------------------------------------------------------------------------
 @mixin apply-theme($tokens) {
-  --global-bg-color:               #{map.get($tokens, bg)};
-  --global-card-bg-color:          #{map.get($tokens, card-bg)};
-  --global-newsletter-bg-color:    #{map.get($tokens, newsletter-bg)};
+  --global-bg-color: #{map.get($tokens, bg)};
+  --global-card-bg-color: #{map.get($tokens, card-bg)};
+  --global-newsletter-bg-color: #{map.get($tokens, newsletter-bg)};
 
-  --global-text-color:             #{map.get($tokens, text)};
-  --global-text-color-light:       #{map.get($tokens, text-light)};
-  --global-newsletter-text-color:  #{map.get($tokens, newsletter-text)};
+  --global-text-color: #{map.get($tokens, text)};
+  --global-text-color-light: #{map.get($tokens, text-light)};
+  --global-newsletter-text-color: #{map.get($tokens, newsletter-text)};
 
-  --global-theme-color:            #{map.get($tokens, theme)};
-  --global-hover-color:            #{map.get($tokens, hover)};
-  --global-hover-text-color:       #{map.get($tokens, hover-text)};
-  --global-highlight-color:        #{map.get($tokens, highlight)};
+  --global-theme-color: #{map.get($tokens, theme)};
+  --global-hover-color: #{map.get($tokens, hover)};
+  --global-hover-text-color: #{map.get($tokens, hover-text)};
+  --global-highlight-color: #{map.get($tokens, highlight)};
 
-  --global-footer-bg-color:        #{map.get($tokens, footer-bg)};
-  --global-footer-text-color:      #{map.get($tokens, footer-text)};
-  --global-footer-link-color:      #{map.get($tokens, footer-link)};
-  --global-footer-hover-color:     #{map.get($tokens, footer-hover)};
+  --global-footer-bg-color: #{map.get($tokens, footer-bg)};
+  --global-footer-text-color: #{map.get($tokens, footer-text)};
+  --global-footer-link-color: #{map.get($tokens, footer-link)};
+  --global-footer-hover-color: #{map.get($tokens, footer-hover)};
 
-  --global-code-bg-color:          #{map.get($tokens, code-bg)};
-  --global-divider-color:          #{map.get($tokens, divider)};
-  --global-distill-app-color:      #{map.get($tokens, distill-app)};
-  --global-back-to-top-bg-color:   #{map.get($tokens, back-to-top-bg)};
+  --global-code-bg-color: #{map.get($tokens, code-bg)};
+  --global-divider-color: #{map.get($tokens, divider)};
+  --global-distill-app-color: #{map.get($tokens, distill-app)};
+  --global-back-to-top-bg-color: #{map.get($tokens, back-to-top-bg)};
   --global-back-to-top-text-color: #{map.get($tokens, back-to-top-text)};
 
-  --global-tip-block:              #{map.get($tokens, tip)};
-  --global-tip-block-bg:           #{map.get($tokens, tip-bg)};
-  --global-tip-block-text:         #{map.get($tokens, tip-text)};
-  --global-tip-block-title:        #{map.get($tokens, tip-title)};
-  --global-warning-block:          #{map.get($tokens, warning)};
-  --global-warning-block-bg:       #{map.get($tokens, warning-bg)};
-  --global-warning-block-text:     #{map.get($tokens, warning-text)};
-  --global-warning-block-title:    #{map.get($tokens, warning-title)};
-  --global-danger-block:           #{map.get($tokens, danger)};
-  --global-danger-block-bg:        #{map.get($tokens, danger-bg)};
-  --global-danger-block-text:      #{map.get($tokens, danger-text)};
-  --global-danger-block-title:     #{map.get($tokens, danger-title)};
+  --global-tip-block: #{map.get($tokens, tip)};
+  --global-tip-block-bg: #{map.get($tokens, tip-bg)};
+  --global-tip-block-text: #{map.get($tokens, tip-text)};
+  --global-tip-block-title: #{map.get($tokens, tip-title)};
+  --global-warning-block: #{map.get($tokens, warning)};
+  --global-warning-block-bg: #{map.get($tokens, warning-bg)};
+  --global-warning-block-text: #{map.get($tokens, warning-text)};
+  --global-warning-block-title: #{map.get($tokens, warning-title)};
+  --global-danger-block: #{map.get($tokens, danger)};
+  --global-danger-block-bg: #{map.get($tokens, danger-bg)};
+  --global-danger-block-text: #{map.get($tokens, danger-text)};
+  --global-danger-block-title: #{map.get($tokens, danger-title)};
 }
 
 // ---------------------------------------------------------------------------
@@ -192,35 +197,69 @@ $dark-tokens: (
 
 // Default (no data-theme): treat as system/light, show the system button
 :root {
-  .only-light          { display: block; }
-  .only-dark           { display: none; }
-  #light-toggle-system { display: inline-block; }
-  #light-toggle-dark   { display: none; }
-  #light-toggle-light  { display: none; }
+  .only-light {
+    display: block;
+  }
+  .only-dark {
+    display: none;
+  }
+  #light-toggle-system {
+    display: inline-block;
+  }
+  #light-toggle-dark {
+    display: none;
+  }
+  #light-toggle-light {
+    display: none;
+  }
 }
 
 // When the system prefers dark and no explicit override is active
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
-    .only-light { display: none; }
-    .only-dark  { display: block; }
+    .only-light {
+      display: none;
+    }
+    .only-dark {
+      display: block;
+    }
   }
 }
 
 // Explicit light
 [data-theme="light"] {
-  .only-light          { display: block; }
-  .only-dark           { display: none; }
-  #light-toggle-system { display: none; }
-  #light-toggle-dark   { display: none; }
-  #light-toggle-light  { display: inline-block; }
+  .only-light {
+    display: block;
+  }
+  .only-dark {
+    display: none;
+  }
+  #light-toggle-system {
+    display: none;
+  }
+  #light-toggle-dark {
+    display: none;
+  }
+  #light-toggle-light {
+    display: inline-block;
+  }
 }
 
 // Explicit dark
 [data-theme="dark"] {
-  .only-light          { display: none; }
-  .only-dark           { display: block; }
-  #light-toggle-system { display: none; }
-  #light-toggle-dark   { display: inline-block; }
-  #light-toggle-light  { display: none; }
+  .only-light {
+    display: none;
+  }
+  .only-dark {
+    display: block;
+  }
+  #light-toggle-system {
+    display: none;
+  }
+  #light-toggle-dark {
+    display: inline-block;
+  }
+  #light-toggle-light {
+    display: none;
+  }
 }

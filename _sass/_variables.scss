@@ -42,15 +42,15 @@
 // — Warm cream (#F5EFE6) is always the lightest surface or text
 // ============================================================
 
-$warm-cream:      #F5EFE6;
-$parchment:       #FAF4EB;
-$dusty-blush:     #E8D5C4;
-$dark-espresso:   #1C1812;
-$deep-espresso:   #141008;
-$rich-brown:      #2A2118;
-$warm-taupe:      #9C8B7A;
-$forest-green:    #2D4A3E;
-$sage:            #7A9E87;
+$warm-cream: #f5efe6;
+$parchment: #faf4eb;
+$dusty-blush: #e8d5c4;
+$dark-espresso: #1c1812;
+$deep-espresso: #141008;
+$rich-brown: #2a2118;
+$warm-taupe: #9c8b7a;
+$forest-green: #2d4a3e;
+$sage: #7a9e87;
 
 @use "sass:color";
 
@@ -72,10 +72,10 @@ $light-purple-color: color.adjust($purple-color, $lightness: 25%);
 $pink-color: #f92080 !default;
 $pink-color-light: #ffdddd !default;
 $yellow-color: #efcc00 !default;
-$cobalt-color: #2563EB !default;
-$sky-color: #0EA5E9 !default;
-$slate-dark: #1E293B !default;
-$slate-bg: #F8FAFC !default;
+$cobalt-color: #2563eb !default;
+$sky-color: #0ea5e9 !default;
+$slate-dark: #1e293b !default;
+$slate-bg: #f8fafc !default;
 
 $grey-color: #828282 !default;
 $grey-color-light: color.adjust($grey-color, $lightness: 40%);

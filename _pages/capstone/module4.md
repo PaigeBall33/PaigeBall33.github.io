@@ -33,19 +33,20 @@ The 25–34 cohort represents over 36% of all respondents — nearly double the 
 
 ## Top 5 Desired Databases
 
-| Rank | Database | Approx. Respondents |
-|---|---|---|
-| 1 | PostgreSQL | ~24,000 |
-| 2 | SQLite | ~13,500 |
-| 3 | MySQL | ~12,000 |
-| 4 | MongoDB | ~11,000 |
-| 5 | Redis | ~11,000 |
+| Rank | Database   | Approx. Respondents |
+| ---- | ---------- | ------------------- |
+| 1    | PostgreSQL | ~24,000             |
+| 2    | SQLite     | ~13,500             |
+| 3    | MySQL      | ~12,000             |
+| 4    | MongoDB    | ~11,000             |
+| 5    | Redis      | ~11,000             |
 
 ---
 
 ## Code Highlights
 
 **Loading CSV into a persistent SQLite database:**
+
 ```python
 import sqlite3
 import pandas as pd
@@ -63,6 +64,7 @@ df_check = pd.read_sql_query("SELECT COUNT(*) FROM main", conn)
 ```
 
 **Adding error bars to show compensation variability:**
+
 ```python
 comp_age = df_clean.groupby('Age')['ConvertedCompYearly'].agg(['median', 'std'])
 
@@ -74,6 +76,7 @@ plt.errorbar(x, comp_age['median'], yerr=comp_age['std'],
 ```
 
 **Regression trend line on a scatter plot:**
+
 ```python
 import numpy as np
 

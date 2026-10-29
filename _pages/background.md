@@ -402,7 +402,6 @@ nav_order: 6
   </div>
 </div>
 
-
 <!-- EDUCATION -->
 <div class="timeline-section">
   <div class="facts-heading">Education & Certifications</div>

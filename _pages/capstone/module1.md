@@ -32,37 +32,38 @@ C had the highest job posting count at 25,114 — nearly seven times Java's 3,42
 ## Job Postings by Technology
 
 | Technology | Job Count |
-|---|---|
-| C | 25,114 |
-| Java | 3,428 |
-| JavaScript | 2,248 |
-| Python | 1,173 |
-| MySQL | 952 |
-| Oracle | 899 |
-| C# | 526 |
-| SQL Server | 423 |
-| MongoDB | 208 |
-| PostgreSQL | 86 |
+| ---------- | --------- |
+| C          | 25,114    |
+| Java       | 3,428     |
+| JavaScript | 2,248     |
+| Python     | 1,173     |
+| MySQL      | 952       |
+| Oracle     | 899       |
+| C#         | 526       |
+| SQL Server | 423       |
+| MongoDB    | 208       |
+| PostgreSQL | 86        |
 
 ---
 
 ## Average Annual Salary by Language
 
-| Language | Average Annual Salary |
-|---|---|
-| Swift | $130,801 |
-| Python | $114,383 |
-| C++ | $113,865 |
-| JavaScript | $110,981 |
-| Java | $101,013 |
-| Go | $94,082 |
-| R | $92,037 |
+| Language   | Average Annual Salary |
+| ---------- | --------------------- |
+| Swift      | $130,801              |
+| Python     | $114,383              |
+| C++        | $113,865              |
+| JavaScript | $110,981              |
+| Java       | $101,013              |
+| Go         | $94,082               |
+| R          | $92,037               |
 
 ---
 
 ## Code Highlights
 
 **API data collection and querying:**
+
 ```python
 def count_jobs_for_skill(data, skill):
     count = 0
@@ -74,6 +75,7 @@ def count_jobs_for_skill(data, skill):
 ```
 
 **Exporting results to Excel:**
+
 ```python
 from openpyxl import Workbook
 
@@ -92,6 +94,7 @@ workbook.save("job-postings.xlsx")
 ```
 
 **Age feature engineering with regex:**
+
 ```python
 df['Age'] = df['Age'].astype(str)
 df[['Age_start', 'Age_end']] = df['Age'].str.extract(r'(\d+)\D+(\d+)')

@@ -12,7 +12,7 @@ profile:
   more_info: >
     <p>Calgary, AB</p>
     <p>paige.a.pro@gmail.com</p>
-  
+
 selected_papers: false #no research papers to post yet
 social: true # includes social icons at the bottom of the page
 
@@ -434,7 +434,6 @@ latest_posts:
     </div>
   </div>
 </div>
-
 
 <!-- ══════════════════════════════════════════════════════
      4. KEY SKILLS SECTION
